@@ -20,4 +20,12 @@ extension UIView {
         let bottom = bottomAnchor.constraint(equalTo: view.bottomAnchor)
         NSLayoutConstraint.activate([leading, trailing, top, bottom])
     }
+
+    func pinToSafeEdges(in view: UIView) {
+        let leading = leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
+        let trailing = trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        let top = topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        let bottom = bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        NSLayoutConstraint.activate([leading, trailing, top, bottom])
+    }
 }

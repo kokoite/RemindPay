@@ -16,10 +16,11 @@
 		A6F514552C464D1B002053CA /* RemindPayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514542C464D1B002053CA /* RemindPayTests.swift */; };
 		A6F5145F2C464D1B002053CA /* RemindPayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5145E2C464D1B002053CA /* RemindPayUITests.swift */; };
 		A6F514612C464D1B002053CA /* RemindPayUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514602C464D1B002053CA /* RemindPayUITestsLaunchTests.swift */; };
-		A6F5146E2C46524A002053CA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5146D2C46524A002053CA /* CardView.swift */; };
+		A6F5146E2C46524A002053CA /* GymCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5146D2C46524A002053CA /* GymCardView.swift */; };
 		A6F514702C4653B3002053CA /* Utility+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5146F2C4653B3002053CA /* Utility+View.swift */; };
 		A6F514732C465B02002053CA /* GymViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514722C465B02002053CA /* GymViewController.swift */; };
 		A6F514752C465B2A002053CA /* GymHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514742C465B2A002053CA /* GymHeaderView.swift */; };
+		A6F514772C468035002053CA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514762C468035002053CA /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +54,11 @@
 		A6F5145A2C464D1B002053CA /* RemindPayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemindPayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F5145E2C464D1B002053CA /* RemindPayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPayUITests.swift; sourceTree = "<group>"; };
 		A6F514602C464D1B002053CA /* RemindPayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPayUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		A6F5146D2C46524A002053CA /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		A6F5146D2C46524A002053CA /* GymCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymCardView.swift; sourceTree = "<group>"; };
 		A6F5146F2C4653B3002053CA /* Utility+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utility+View.swift"; sourceTree = "<group>"; };
 		A6F514722C465B02002053CA /* GymViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymViewController.swift; sourceTree = "<group>"; };
 		A6F514742C465B2A002053CA /* GymHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymHeaderView.swift; sourceTree = "<group>"; };
+		A6F514762C468035002053CA /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				A6F514482C464D1B002053CA /* LaunchScreen.storyboard */,
 				A6F5144B2C464D1B002053CA /* Info.plist */,
 				A6F514432C464D1A002053CA /* RemindPay.xcdatamodeld */,
+				A6F514762C468035002053CA /* SearchView.swift */,
 			);
 			path = RemindPay;
 			sourceTree = "<group>";
@@ -140,7 +143,7 @@
 		A6F514712C465AE0002053CA /* Gym */ = {
 			isa = PBXGroup;
 			children = (
-				A6F5146D2C46524A002053CA /* CardView.swift */,
+				A6F5146D2C46524A002053CA /* GymCardView.swift */,
 				A6F514722C465B02002053CA /* GymViewController.swift */,
 				A6F514742C465B2A002053CA /* GymHeaderView.swift */,
 			);
@@ -278,12 +281,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6F5143F2C464D1A002053CA /* ViewController.swift in Sources */,
+				A6F514772C468035002053CA /* SearchView.swift in Sources */,
 				A6F5143B2C464D1A002053CA /* AppDelegate.swift in Sources */,
 				A6F5143D2C464D1A002053CA /* SceneDelegate.swift in Sources */,
 				A6F514702C4653B3002053CA /* Utility+View.swift in Sources */,
 				A6F514732C465B02002053CA /* GymViewController.swift in Sources */,
 				A6F514452C464D1A002053CA /* RemindPay.xcdatamodeld in Sources */,
-				A6F5146E2C46524A002053CA /* CardView.swift in Sources */,
+				A6F5146E2C46524A002053CA /* GymCardView.swift in Sources */,
 				A6F514752C465B2A002053CA /* GymHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

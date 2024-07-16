@@ -1,12 +1,12 @@
 //
-//  CardView.swift
+//  GymCardView.swift
 //  RemindPay
 //
 //  Created by Pranjal Agarwal on 16/07/24.
 //
 import UIKit
 
-final class CardView: UICollectionViewCell {
+final class GymCardView: UICollectionViewCell {
 
     private var containerView: UIView? = nil
     private var imageView: UIImageView? = nil
@@ -38,10 +38,13 @@ final class CardView: UICollectionViewCell {
         let container = UIView()
         contentView.addSubview(container)
         container.setTranslatesMask()
-        container.pinToEdges(in: contentView)
-        container.backgroundColor = UIColor(named: "CardBackground")
-        container.layer.cornerRadius = 12
-        container.clipsToBounds = true
+        let leading = container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12)
+        let trailing = container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12)
+        let top = container.topAnchor.constraint(equalTo: contentView.topAnchor)
+        let bottom = container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        NSLayoutConstraint.activate([leading, trailing, top, bottom])
+        container.backgroundColor = .cardBackground
+        container.layer.cornerRadius = 20
         self.containerView = container
     }
 
@@ -53,12 +56,11 @@ final class CardView: UICollectionViewCell {
         let height = image.heightAnchor.constraint(equalToConstant: 100)
         let width = image.widthAnchor.constraint(equalToConstant: 100)
         let leading = image.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20)
-        let top = image.topAnchor.constraint(equalTo: container.topAnchor, constant: 20)
-        NSLayoutConstraint.activate([height, width, leading, top])
+        let centerY = image.centerYAnchor.constraint(equalTo: container.centerYAnchor)
+        NSLayoutConstraint.activate([height, width, leading, centerY])
         image.layer.cornerRadius = 50
         image.clipsToBounds = true
-        image.layer.borderWidth = 2
-        image.layer.borderColor = UIColor.black.cgColor
-
+        image.layer.borderWidth = 1
+        image.layer.borderColor = UIColor.gray.cgColor
     }
 }
