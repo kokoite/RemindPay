@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A6F5143B2C464D1A002053CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5143A2C464D1A002053CA /* AppDelegate.swift */; };
+		A6F5143D2C464D1A002053CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5143C2C464D1A002053CA /* SceneDelegate.swift */; };
+		A6F5143F2C464D1A002053CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5143E2C464D1A002053CA /* ViewController.swift */; };
+		A6F514452C464D1A002053CA /* RemindPay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6F514432C464D1A002053CA /* RemindPay.xcdatamodeld */; };
+		A6F514472C464D1B002053CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F514462C464D1B002053CA /* Assets.xcassets */; };
+		A6F5144A2C464D1B002053CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F514482C464D1B002053CA /* LaunchScreen.storyboard */; };
+		A6F514552C464D1B002053CA /* RemindPayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514542C464D1B002053CA /* RemindPayTests.swift */; };
+		A6F5145F2C464D1B002053CA /* RemindPayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5145E2C464D1B002053CA /* RemindPayUITests.swift */; };
+		A6F514612C464D1B002053CA /* RemindPayUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514602C464D1B002053CA /* RemindPayUITestsLaunchTests.swift */; };
+		A6F5146E2C46524A002053CA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5146D2C46524A002053CA /* CardView.swift */; };
+		A6F514702C4653B3002053CA /* Utility+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5146F2C4653B3002053CA /* Utility+View.swift */; };
+		A6F514732C465B02002053CA /* GymViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514722C465B02002053CA /* GymViewController.swift */; };
+		A6F514752C465B2A002053CA /* GymHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514742C465B2A002053CA /* GymHeaderView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A6F514512C464D1B002053CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6F5142F2C464D1A002053CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6F514362C464D1A002053CA;
+			remoteInfo = RemindPay;
+		};
+		A6F5145B2C464D1B002053CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6F5142F2C464D1A002053CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6F514362C464D1A002053CA;
+			remoteInfo = RemindPay;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A6F514372C464D1A002053CA /* RemindPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemindPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6F5143A2C464D1A002053CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A6F5143C2C464D1A002053CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A6F5143E2C464D1A002053CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A6F514442C464D1A002053CA /* RemindPay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RemindPay.xcdatamodel; sourceTree = "<group>"; };
+		A6F514462C464D1B002053CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A6F514492C464D1B002053CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A6F5144B2C464D1B002053CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6F514502C464D1B002053CA /* RemindPayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemindPayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6F514542C464D1B002053CA /* RemindPayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPayTests.swift; sourceTree = "<group>"; };
+		A6F5145A2C464D1B002053CA /* RemindPayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemindPayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6F5145E2C464D1B002053CA /* RemindPayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPayUITests.swift; sourceTree = "<group>"; };
+		A6F514602C464D1B002053CA /* RemindPayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPayUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A6F5146D2C46524A002053CA /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		A6F5146F2C4653B3002053CA /* Utility+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utility+View.swift"; sourceTree = "<group>"; };
+		A6F514722C465B02002053CA /* GymViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymViewController.swift; sourceTree = "<group>"; };
+		A6F514742C465B2A002053CA /* GymHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymHeaderView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A6F514342C464D1A002053CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6F5144D2C464D1B002053CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6F514572C464D1B002053CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A6F5142E2C464D1A002053CA = {
+			isa = PBXGroup;
+			children = (
+				A6F514392C464D1A002053CA /* RemindPay */,
+				A6F514532C464D1B002053CA /* RemindPayTests */,
+				A6F5145D2C464D1B002053CA /* RemindPayUITests */,
+				A6F514382C464D1A002053CA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A6F514382C464D1A002053CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A6F514372C464D1A002053CA /* RemindPay.app */,
+				A6F514502C464D1B002053CA /* RemindPayTests.xctest */,
+				A6F5145A2C464D1B002053CA /* RemindPayUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A6F514392C464D1A002053CA /* RemindPay */ = {
+			isa = PBXGroup;
+			children = (
+				A6F5143A2C464D1A002053CA /* AppDelegate.swift */,
+				A6F5143C2C464D1A002053CA /* SceneDelegate.swift */,
+				A6F5143E2C464D1A002053CA /* ViewController.swift */,
+				A6F514712C465AE0002053CA /* Gym */,
+				A6F5146F2C4653B3002053CA /* Utility+View.swift */,
+				A6F514462C464D1B002053CA /* Assets.xcassets */,
+				A6F514482C464D1B002053CA /* LaunchScreen.storyboard */,
+				A6F5144B2C464D1B002053CA /* Info.plist */,
+				A6F514432C464D1A002053CA /* RemindPay.xcdatamodeld */,
+			);
+			path = RemindPay;
+			sourceTree = "<group>";
+		};
+		A6F514532C464D1B002053CA /* RemindPayTests */ = {
+			isa = PBXGroup;
+			children = (
+				A6F514542C464D1B002053CA /* RemindPayTests.swift */,
+			);
+			path = RemindPayTests;
+			sourceTree = "<group>";
+		};
+		A6F5145D2C464D1B002053CA /* RemindPayUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A6F5145E2C464D1B002053CA /* RemindPayUITests.swift */,
+				A6F514602C464D1B002053CA /* RemindPayUITestsLaunchTests.swift */,
+			);
+			path = RemindPayUITests;
+			sourceTree = "<group>";
+		};
+		A6F514712C465AE0002053CA /* Gym */ = {
+			isa = PBXGroup;
+			children = (
+				A6F5146D2C46524A002053CA /* CardView.swift */,
+				A6F514722C465B02002053CA /* GymViewController.swift */,
+				A6F514742C465B2A002053CA /* GymHeaderView.swift */,
+			);
+			path = Gym;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A6F514362C464D1A002053CA /* RemindPay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6F514642C464D1B002053CA /* Build configuration list for PBXNativeTarget "RemindPay" */;
+			buildPhases = (
+				A6F514332C464D1A002053CA /* Sources */,
+				A6F514342C464D1A002053CA /* Frameworks */,
+				A6F514352C464D1A002053CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RemindPay;
+			productName = RemindPay;
+			productReference = A6F514372C464D1A002053CA /* RemindPay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A6F5144F2C464D1B002053CA /* RemindPayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6F514672C464D1B002053CA /* Build configuration list for PBXNativeTarget "RemindPayTests" */;
+			buildPhases = (
+				A6F5144C2C464D1B002053CA /* Sources */,
+				A6F5144D2C464D1B002053CA /* Frameworks */,
+				A6F5144E2C464D1B002053CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A6F514522C464D1B002053CA /* PBXTargetDependency */,
+			);
+			name = RemindPayTests;
+			productName = RemindPayTests;
+			productReference = A6F514502C464D1B002053CA /* RemindPayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A6F514592C464D1B002053CA /* RemindPayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6F5146A2C464D1B002053CA /* Build configuration list for PBXNativeTarget "RemindPayUITests" */;
+			buildPhases = (
+				A6F514562C464D1B002053CA /* Sources */,
+				A6F514572C464D1B002053CA /* Frameworks */,
+				A6F514582C464D1B002053CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A6F5145C2C464D1B002053CA /* PBXTargetDependency */,
+			);
+			name = RemindPayUITests;
+			productName = RemindPayUITests;
+			productReference = A6F5145A2C464D1B002053CA /* RemindPayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A6F5142F2C464D1A002053CA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A6F514362C464D1A002053CA = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					A6F5144F2C464D1B002053CA = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = A6F514362C464D1A002053CA;
+					};
+					A6F514592C464D1B002053CA = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = A6F514362C464D1A002053CA;
+					};
+				};
+			};
+			buildConfigurationList = A6F514322C464D1A002053CA /* Build configuration list for PBXProject "RemindPay" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A6F5142E2C464D1A002053CA;
+			productRefGroup = A6F514382C464D1A002053CA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6F514362C464D1A002053CA /* RemindPay */,
+				A6F5144F2C464D1B002053CA /* RemindPayTests */,
+				A6F514592C464D1B002053CA /* RemindPayUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A6F514352C464D1A002053CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6F5144A2C464D1B002053CA /* LaunchScreen.storyboard in Resources */,
+				A6F514472C464D1B002053CA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6F5144E2C464D1B002053CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6F514582C464D1B002053CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A6F514332C464D1A002053CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6F5143F2C464D1A002053CA /* ViewController.swift in Sources */,
+				A6F5143B2C464D1A002053CA /* AppDelegate.swift in Sources */,
+				A6F5143D2C464D1A002053CA /* SceneDelegate.swift in Sources */,
+				A6F514702C4653B3002053CA /* Utility+View.swift in Sources */,
+				A6F514732C465B02002053CA /* GymViewController.swift in Sources */,
+				A6F514452C464D1A002053CA /* RemindPay.xcdatamodeld in Sources */,
+				A6F5146E2C46524A002053CA /* CardView.swift in Sources */,
+				A6F514752C465B2A002053CA /* GymHeaderView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6F5144C2C464D1B002053CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6F514552C464D1B002053CA /* RemindPayTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6F514562C464D1B002053CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6F514612C464D1B002053CA /* RemindPayUITestsLaunchTests.swift in Sources */,
+				A6F5145F2C464D1B002053CA /* RemindPayUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A6F514522C464D1B002053CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6F514362C464D1A002053CA /* RemindPay */;
+			targetProxy = A6F514512C464D1B002053CA /* PBXContainerItemProxy */;
+		};
+		A6F5145C2C464D1B002053CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6F514362C464D1A002053CA /* RemindPay */;
+			targetProxy = A6F5145B2C464D1B002053CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A6F514482C464D1B002053CA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6F514492C464D1B002053CA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A6F514622C464D1B002053CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A6F514632C464D1B002053CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A6F514652C464D1B002053CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8Y63TWT68W;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RemindPay/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = random.RemindPay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A6F514662C464D1B002053CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8Y63TWT68W;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RemindPay/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = random.RemindPay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A6F514682C464D1B002053CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8Y63TWT68W;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = random.RemindPayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RemindPay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RemindPay";
+			};
+			name = Debug;
+		};
+		A6F514692C464D1B002053CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8Y63TWT68W;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = random.RemindPayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RemindPay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RemindPay";
+			};
+			name = Release;
+		};
+		A6F5146B2C464D1B002053CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8Y63TWT68W;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = random.RemindPayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RemindPay;
+			};
+			name = Debug;
+		};
+		A6F5146C2C464D1B002053CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8Y63TWT68W;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = random.RemindPayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RemindPay;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A6F514322C464D1A002053CA /* Build configuration list for PBXProject "RemindPay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6F514622C464D1B002053CA /* Debug */,
+				A6F514632C464D1B002053CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6F514642C464D1B002053CA /* Build configuration list for PBXNativeTarget "RemindPay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6F514652C464D1B002053CA /* Debug */,
+				A6F514662C464D1B002053CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6F514672C464D1B002053CA /* Build configuration list for PBXNativeTarget "RemindPayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6F514682C464D1B002053CA /* Debug */,
+				A6F514692C464D1B002053CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6F5146A2C464D1B002053CA /* Build configuration list for PBXNativeTarget "RemindPayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6F5146B2C464D1B002053CA /* Debug */,
+				A6F5146C2C464D1B002053CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A6F514432C464D1A002053CA /* RemindPay.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A6F514442C464D1A002053CA /* RemindPay.xcdatamodel */,
+			);
+			currentVersion = A6F514442C464D1A002053CA /* RemindPay.xcdatamodel */;
+			path = RemindPay.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A6F5142F2C464D1A002053CA /* Project object */;
+}
