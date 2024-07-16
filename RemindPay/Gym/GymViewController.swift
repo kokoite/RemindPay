@@ -9,9 +9,9 @@ import UIKit
 final class GymViewController: UIViewController {
     
 
-    private var userCollectionView: UICollectionView? = nil
-    private var headerView: GymHeaderView? = nil
-    private var containerView: UIView? = nil
+    private var userCollectionView: UICollectionView!
+    private var headerView: GymHeaderView!
+    private var containerView: UIView!
 
 
     // MARK :- Lifecycle methods
@@ -35,6 +35,8 @@ final class GymViewController: UIViewController {
     }
 
     private func setupHeader() {
+        let header = GymHeaderView(frame: .zero)
+        containerView.addSubview(header)
 
     }
 
