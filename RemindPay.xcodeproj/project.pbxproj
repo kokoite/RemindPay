@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6969A282C46DEB5001EFAA4 /* GymModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A272C46DEB5001EFAA4 /* GymModel.swift */; };
+		A6969A2A2C46E0DF001EFAA4 /* GymRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A292C46E0DF001EFAA4 /* GymRouter.swift */; };
+		A6969A2C2C46E0F3001EFAA4 /* GymInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A2B2C46E0F3001EFAA4 /* GymInteractor.swift */; };
+		A6969A2E2C46E108001EFAA4 /* GymPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A2D2C46E108001EFAA4 /* GymPresenter.swift */; };
+		A6969A302C46E119001EFAA4 /* GymWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A2F2C46E119001EFAA4 /* GymWorker.swift */; };
 		A6F5143B2C464D1A002053CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5143A2C464D1A002053CA /* AppDelegate.swift */; };
 		A6F5143D2C464D1A002053CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5143C2C464D1A002053CA /* SceneDelegate.swift */; };
 		A6F5143F2C464D1A002053CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5143E2C464D1A002053CA /* ViewController.swift */; };
@@ -21,6 +26,7 @@
 		A6F514732C465B02002053CA /* GymViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514722C465B02002053CA /* GymViewController.swift */; };
 		A6F514752C465B2A002053CA /* GymHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514742C465B2A002053CA /* GymHeaderView.swift */; };
 		A6F514772C468035002053CA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514762C468035002053CA /* SearchView.swift */; };
+		A6F5147A2C46AAA3002053CA /* happyFace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6F514792C46AAA3002053CA /* happyFace.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A6969A272C46DEB5001EFAA4 /* GymModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymModel.swift; sourceTree = "<group>"; };
+		A6969A292C46E0DF001EFAA4 /* GymRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymRouter.swift; sourceTree = "<group>"; };
+		A6969A2B2C46E0F3001EFAA4 /* GymInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymInteractor.swift; sourceTree = "<group>"; };
+		A6969A2D2C46E108001EFAA4 /* GymPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymPresenter.swift; sourceTree = "<group>"; };
+		A6969A2F2C46E119001EFAA4 /* GymWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymWorker.swift; sourceTree = "<group>"; };
 		A6F514372C464D1A002053CA /* RemindPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemindPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F5143A2C464D1A002053CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6F5143C2C464D1A002053CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +70,7 @@
 		A6F514722C465B02002053CA /* GymViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymViewController.swift; sourceTree = "<group>"; };
 		A6F514742C465B2A002053CA /* GymHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymHeaderView.swift; sourceTree = "<group>"; };
 		A6F514762C468035002053CA /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		A6F514792C46AAA3002053CA /* happyFace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = happyFace.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +121,7 @@
 		A6F514392C464D1A002053CA /* RemindPay */ = {
 			isa = PBXGroup;
 			children = (
+				A6F514782C46A9F7002053CA /* BottomSheet */,
 				A6F5143A2C464D1A002053CA /* AppDelegate.swift */,
 				A6F5143C2C464D1A002053CA /* SceneDelegate.swift */,
 				A6F5143E2C464D1A002053CA /* ViewController.swift */,
@@ -118,6 +131,7 @@
 				A6F514482C464D1B002053CA /* LaunchScreen.storyboard */,
 				A6F5144B2C464D1B002053CA /* Info.plist */,
 				A6F514432C464D1A002053CA /* RemindPay.xcdatamodeld */,
+				A6F514792C46AAA3002053CA /* happyFace.jpg */,
 				A6F514762C468035002053CA /* SearchView.swift */,
 			);
 			path = RemindPay;
@@ -146,8 +160,20 @@
 				A6F5146D2C46524A002053CA /* GymCardView.swift */,
 				A6F514722C465B02002053CA /* GymViewController.swift */,
 				A6F514742C465B2A002053CA /* GymHeaderView.swift */,
+				A6969A272C46DEB5001EFAA4 /* GymModel.swift */,
+				A6969A292C46E0DF001EFAA4 /* GymRouter.swift */,
+				A6969A2B2C46E0F3001EFAA4 /* GymInteractor.swift */,
+				A6969A2D2C46E108001EFAA4 /* GymPresenter.swift */,
+				A6969A2F2C46E119001EFAA4 /* GymWorker.swift */,
 			);
 			path = Gym;
+			sourceTree = "<group>";
+		};
+		A6F514782C46A9F7002053CA /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BottomSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6F5144A2C464D1B002053CA /* LaunchScreen.storyboard in Resources */,
+				A6F5147A2C46AAA3002053CA /* happyFace.jpg in Resources */,
 				A6F514472C464D1B002053CA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,14 +307,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6969A2A2C46E0DF001EFAA4 /* GymRouter.swift in Sources */,
 				A6F5143F2C464D1A002053CA /* ViewController.swift in Sources */,
 				A6F514772C468035002053CA /* SearchView.swift in Sources */,
 				A6F5143B2C464D1A002053CA /* AppDelegate.swift in Sources */,
 				A6F5143D2C464D1A002053CA /* SceneDelegate.swift in Sources */,
+				A6969A302C46E119001EFAA4 /* GymWorker.swift in Sources */,
 				A6F514702C4653B3002053CA /* Utility+View.swift in Sources */,
 				A6F514732C465B02002053CA /* GymViewController.swift in Sources */,
 				A6F514452C464D1A002053CA /* RemindPay.xcdatamodeld in Sources */,
+				A6969A2E2C46E108001EFAA4 /* GymPresenter.swift in Sources */,
+				A6969A282C46DEB5001EFAA4 /* GymModel.swift in Sources */,
 				A6F5146E2C46524A002053CA /* GymCardView.swift in Sources */,
+				A6969A2C2C46E0F3001EFAA4 /* GymInteractor.swift in Sources */,
 				A6F514752C465B2A002053CA /* GymHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,12 +8,13 @@ import UIKit
 
 final class GymCardView: UICollectionViewCell {
 
-    private var containerView: UIView? = nil
-    private var imageView: UIImageView? = nil
-    private var titleView: UILabel? = nil
-    private var subtitleView: UILabel? = nil
-    private var startingDateView: UILabel? = nil
-    private var endingDateView: UILabel? = nil
+    private var containerView, userDetailContainer: UIView!
+    private var imageView: UIImageView!
+    private var titleView: UILabel!
+    private var subtitleView: UILabel!
+    private var joiningDateView: UILabel!
+    private var expiryDateView: UILabel!
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,10 +33,15 @@ final class GymCardView: UICollectionViewCell {
     private func setup() {
         setupContainer()
         setupImage()
+        setupName()
+        setupPhone()
+        setupJoining()
+        setupExpiry()
     }
 
     private func setupContainer() {
         let container = UIView()
+        container.backgroundColor = .yellow
         contentView.addSubview(container)
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12)
@@ -45,22 +51,83 @@ final class GymCardView: UICollectionViewCell {
         NSLayoutConstraint.activate([leading, trailing, top, bottom])
         container.backgroundColor = .cardBackground
         container.layer.cornerRadius = 20
-        self.containerView = container
+        containerView = container
+    }
+
+
+    private func setupName() {
+        let name = UILabel()
+        name.font = UIFont.systemFont(ofSize: 20)
+        name.text = "Pranjal Agarwal"
+        titleView = name
+        containerView.addSubview(name)
+        name.setTranslatesMask()
+        let leading = name.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 20)
+        let top = name.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 12)
+        let trailing = name.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        NSLayoutConstraint.activate([leading, trailing, top])
+
+    }
+
+    private func setupPhone() {
+        let phone = UILabel()
+        phone.text = "9212433690"
+        subtitleView = phone
+        containerView.addSubview(phone)
+        phone.setTranslatesMask()
+
+        let leading = phone.leadingAnchor.constraint(equalTo: titleView.leadingAnchor)
+        let top = phone.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 12)
+        let trailing = phone.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        NSLayoutConstraint.activate([leading, trailing, top])
+    }
+
+    private func setupJoining() {
+        let label = UILabel()
+        containerView.addSubview(label)
+        joiningDateView = label
+        label.text = "J.Date - 16-07-2024"
+        label.setTranslatesMask()
+        let leading = label.leadingAnchor.constraint(equalTo: titleView.leadingAnchor)
+        let top = label.topAnchor.constraint(equalTo: subtitleView.bottomAnchor, constant: 12)
+        let trailing = label.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        NSLayoutConstraint.activate([leading, top, trailing])
+    }
+
+    private func setupExpiry() {
+        let label = UILabel()
+        containerView.addSubview(label)
+        expiryDateView = label
+        label.text = "E.Date - 16-09-2024"
+        label.setTranslatesMask()
+        let leading = label.leadingAnchor.constraint(equalTo: titleView.leadingAnchor)
+        let top = label.topAnchor.constraint(equalTo: joiningDateView.bottomAnchor, constant: 12)
+        let trailing = label.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        NSLayoutConstraint.activate([leading, top, trailing])
     }
 
     private func setupImage() {
-        guard let container = containerView else { return }
         let image = UIImageView()
-        container.addSubview(image)
-        image.setTranslatesMask()
-        let height = image.heightAnchor.constraint(equalToConstant: 100)
-        let width = image.widthAnchor.constraint(equalToConstant: 100)
-        let leading = image.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20)
-        let centerY = image.centerYAnchor.constraint(equalTo: container.centerYAnchor)
-        NSLayoutConstraint.activate([height, width, leading, centerY])
-        image.layer.cornerRadius = 50
+        containerView.addSubview(image)
+        imageView = image
+        image.image = UIImage(named: "happyFace")
         image.clipsToBounds = true
-        image.layer.borderWidth = 1
-        image.layer.borderColor = UIColor.gray.cgColor
+        image.backgroundColor = .red
+        image.layer.cornerRadius = 30
+        image.contentMode = .scaleAspectFit
+        image.setTranslatesMask()
+        let centerY = image.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
+        let height = image.heightAnchor.constraint(equalToConstant: 150)
+        let width = image.widthAnchor.constraint(equalToConstant: 150)
+        let leading = image.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
+        NSLayoutConstraint.activate([centerY, height, width, leading])
     }
+
+    private func setupUserDetailContainer() {
+        let container = UIStackView()
+        container.backgroundColor = .yellow
+        containerView.addSubview(container)
+        userDetailContainer = container
+    }
+
 }
