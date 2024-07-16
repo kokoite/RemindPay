@@ -1,4 +1,5 @@
 Current UI for Gym Page for specific user
 
 
-<img width="396" alt="Screenshot 2024-07-16 at 10 45 49 PM" src="https://github.com/user-attachments/assets/37d829ed-c228-42a9-ba94-3d5d92669932">
+
+![simulator_screenshot_24E7E89C-5A81-4297-BF0E-02B8399D1D7C](https://github.com/user-attachments/assets/295c0cb0-744f-4865-a6dc-7063ac80c900)
