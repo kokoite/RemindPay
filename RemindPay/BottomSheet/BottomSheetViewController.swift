@@ -52,9 +52,9 @@ final class BottomSheetViewController: UIViewController {
         view.addSubview(container)
         container.setTranslatesMask()
         container.pinToSafeEdges(in: view)
-        view.backgroundColor = .yellow
         container.backgroundColor = .white
         container.layer.cornerRadius = 40
+        container.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 
     private func setupImageView() {
@@ -63,7 +63,6 @@ final class BottomSheetViewController: UIViewController {
         containerView.addSubview(image)
         image.image = UIImage(systemName: "lightbulb.min.badge.exclamationmark.fill")
         image.tintColor = .red
-//        image.backgroundColor = .black
         imageView.setTranslatesMask()
         let leading = imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
         let top = imageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20)
@@ -75,7 +74,6 @@ final class BottomSheetViewController: UIViewController {
     private func setupTitleView() {
         let label = UILabel()
         titleView = label
-//        label.backgroundColor = .systemPink
         label.text = "Something went wrong"
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.numberOfLines = 0
@@ -89,7 +87,6 @@ final class BottomSheetViewController: UIViewController {
 
     private func setupSubtitleView() {
         let label = UILabel()
-//        label.backgroundColor = .blue
         subtitleView = label
         label.text = "Something went wrong, Something went wrong, Something went wrong, Something went wrong, Something went wrong, Something went wrong, Something went wrong,  "
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -104,7 +101,6 @@ final class BottomSheetViewController: UIViewController {
 
     private func setupButtonContainer() {
         let container = UIStackView()
-//        container.backgroundColor = .green
         buttonContainer = container
         containerView.addSubview(container)
         container.isLayoutMarginsRelativeArrangement = true
@@ -139,6 +135,5 @@ final class BottomSheetViewController: UIViewController {
         buttonContainer.addArrangedSubview(button)
         button.setTitle("Secondary Button", for: .normal)
         button.tintColor = .systemBlue
-
     }
 }
