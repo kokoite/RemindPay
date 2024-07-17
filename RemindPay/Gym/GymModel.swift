@@ -7,7 +7,6 @@
 
 enum GymModel {
 
-
     enum Refresh {
         struct Request {
 
@@ -30,20 +29,20 @@ enum GymModel {
         }
     }
 
-    struct Request {
+    struct Request: Encodable {
         let id: String
     }
 
-    struct Response {
+    struct Response: Decodable {
         let owner: Owner
         let users: [User]
 
-        struct Owner {
+        struct Owner: Decodable {
             let name, profileUrl, ownerId: String
         }
 
-        struct User {
-            let name, userId, profileUrl, joiningDate, expiryDate, existingDisease, address: String
+        struct User: Decodable {
+            let name, userId, phone, profileUrl, joiningDate, expiryDate, existingDisease, address: String
             let payment: Int
             let profileCreated: String
             let isActive, paymentStatus: Bool
