@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A64C8CC12C490CA800AF9508 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC02C490CA800AF9508 /* UserDetailViewController.swift */; };
+		A64C8CC32C490CE600AF9508 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC22C490CE600AF9508 /* CarouselView.swift */; };
+		A64C8CC52C490E9100AF9508 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC42C490E9100AF9508 /* CarouselCell.swift */; };
 		A6794E0E2C47EB4A00080A38 /* BottomSheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6794E0D2C47EB4A00080A38 /* BottomSheetPresenter.swift */; };
 		A6794E102C47ECE200080A38 /* Extenstion+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */; };
 		A6969A282C46DEB5001EFAA4 /* GymModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A272C46DEB5001EFAA4 /* GymModel.swift */; };
@@ -53,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A64C8CC02C490CA800AF9508 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		A64C8CC22C490CE600AF9508 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		A64C8CC42C490E9100AF9508 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		A6794E0D2C47EB4A00080A38 /* BottomSheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetPresenter.swift; sourceTree = "<group>"; };
 		A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extenstion+ViewController.swift"; sourceTree = "<group>"; };
 		A6969A272C46DEB5001EFAA4 /* GymModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymModel.swift; sourceTree = "<group>"; };
@@ -110,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A64C8CBF2C490C8E00AF9508 /* UserDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A64C8CC02C490CA800AF9508 /* UserDetailViewController.swift */,
+			);
+			path = UserDetail;
+			sourceTree = "<group>";
+		};
 		A6983EB42C47995A00AA71FE /* Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +171,8 @@
 				A6F514432C464D1A002053CA /* RemindPay.xcdatamodeld */,
 				A6F514792C46AAA3002053CA /* happyFace.jpg */,
 				A6F514762C468035002053CA /* SearchView.swift */,
+				A64C8CC22C490CE600AF9508 /* CarouselView.swift */,
+				A64C8CC42C490E9100AF9508 /* CarouselCell.swift */,
 			);
 			path = RemindPay;
 			sourceTree = "<group>";
@@ -181,6 +197,7 @@
 		A6F514712C465AE0002053CA /* Gym */ = {
 			isa = PBXGroup;
 			children = (
+				A64C8CBF2C490C8E00AF9508 /* UserDetail */,
 				A6F5146D2C46524A002053CA /* GymCardView.swift */,
 				A6F514722C465B02002053CA /* GymViewController.swift */,
 				A6F514742C465B2A002053CA /* GymHeaderView.swift */,
@@ -347,11 +364,14 @@
 				A6F514702C4653B3002053CA /* Utility+View.swift in Sources */,
 				A6983EBA2C479ED500AA71FE /* ErrorViewModel.swift in Sources */,
 				A6F514732C465B02002053CA /* GymViewController.swift in Sources */,
+				A64C8CC12C490CA800AF9508 /* UserDetailViewController.swift in Sources */,
 				A6F514452C464D1A002053CA /* RemindPay.xcdatamodeld in Sources */,
 				A6969A2E2C46E108001EFAA4 /* GymPresenter.swift in Sources */,
+				A64C8CC32C490CE600AF9508 /* CarouselView.swift in Sources */,
 				A6969A282C46DEB5001EFAA4 /* GymModel.swift in Sources */,
 				A6F5146E2C46524A002053CA /* GymCardView.swift in Sources */,
 				A6969A2C2C46E0F3001EFAA4 /* GymInteractor.swift in Sources */,
+				A64C8CC52C490E9100AF9508 /* CarouselCell.swift in Sources */,
 				A6F514752C465B2A002053CA /* GymHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

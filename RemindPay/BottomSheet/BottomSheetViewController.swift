@@ -51,7 +51,7 @@ final class BottomSheetViewController: UIViewController {
         containerView = container
         view.addSubview(container)
         container.setTranslatesMask()
-        container.pinToSafeEdges(in: view)
+        container.pinToEdges(in: view)
         container.backgroundColor = .white
         container.layer.cornerRadius = 40
         container.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -111,7 +111,7 @@ final class BottomSheetViewController: UIViewController {
         let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
         let trailing = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         let top = container.topAnchor.constraint(equalTo: subtitleView.bottomAnchor, constant: 12)
-        let bottom = container.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        let bottom = container.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor)
         NSLayoutConstraint.activate([leading, trailing, top, bottom])
     }
 
