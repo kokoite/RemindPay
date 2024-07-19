@@ -10,7 +10,6 @@ import UIKit
 final class UserDetailViewController: UIViewController {
 
     private var containerScrollView: UIScrollView!
-    private var containerStackView: UIStackView!
     private var carouselView: CarouselView!
     private var pageControl: UIPageControl!
     private var containerView, separatorView: UIView!
@@ -22,9 +21,9 @@ final class UserDetailViewController: UIViewController {
         setup()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        print(containerScrollView.contentOffset)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(containerView.frame)
     }
 
     func configure() {
@@ -33,7 +32,6 @@ final class UserDetailViewController: UIViewController {
 
     private func setup() {
         setupScrollContainer()
-//        setupContainerStackView()
         setupContainer()
         setupCarousel()
         setupPageControl()
@@ -48,18 +46,9 @@ final class UserDetailViewController: UIViewController {
         view.addSubview(container)
         container.setTranslatesMask()
         container.pinToEdges(in: view)
-        print(view.bounds.width)
+        container.showsVerticalScrollIndicator = false
     }
 
-    private func setupContainerStackView() {
-        let stackView = UIStackView()
-        containerStackView = stackView
-        stackView.backgroundColor = .blue
-        containerScrollView.addSubview(stackView)
-        stackView.setTranslatesMask()
-        stackView.axis = .vertical
-        stackView.pinToEdges(in: containerScrollView)
-    }
 
     private func setupContainer() {
         let container = UIView()
@@ -67,7 +56,8 @@ final class UserDetailViewController: UIViewController {
         containerScrollView.addSubview(container)
         container.backgroundColor  = .white
         container.setTranslatesMask()
-        container.pinToSafeEdges(in: containerScrollView)
+        container.pinToEdges(in: containerScrollView)
+        container.widthAnchor.constraint(equalTo: containerScrollView.widthAnchor).isActive = true
     }
 
     private func setupCarousel() {
@@ -124,6 +114,8 @@ final class UserDetailViewController: UIViewController {
         setupPlanStarting()
         setupPlanExpiry()
         setupGymJoining()
+        setupPayment()
+        setupActiveStatus()
     }
 
 
@@ -133,11 +125,10 @@ final class UserDetailViewController: UIViewController {
         name.text = "Pranjal Agarwal"
         containerView.addSubview(name)
         name.setTranslatesMask()
-        let leading = name.leadingAnchor.constraint(equalTo: carouselView.leadingAnchor)
+        let leading = name.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
         let top = name.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 20)
-        let trailing = name.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12)
-        NSLayoutConstraint.activate([leading, top, trailing])
-
+        let trailing = name.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
+        NSLayoutConstraint.activate([leading, top])
     }
 
     private func setupPhone() {
@@ -148,7 +139,7 @@ final class UserDetailViewController: UIViewController {
         label.setTranslatesMask()
         let leading = label.leadingAnchor.constraint(equalTo: nameView.leadingAnchor)
         let top = label.topAnchor.constraint(equalTo: nameView.bottomAnchor, constant: 12)
-        let trailing = label.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12)
+        let trailing = label.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
         NSLayoutConstraint.activate([leading, top, trailing])
     }
 
@@ -182,8 +173,7 @@ final class UserDetailViewController: UIViewController {
         label.setTranslatesMask()
         let leading = label.leadingAnchor.constraint(equalTo: heightView.trailingAnchor, constant: 12)
         let top = label.topAnchor.constraint(equalTo: weightView.topAnchor)
-        let trailing = label.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12)
-        NSLayoutConstraint.activate([leading, top, trailing])
+        NSLayoutConstraint.activate([leading, top])
     }
 
     private func setupExistingDisease() {
@@ -195,7 +185,7 @@ final class UserDetailViewController: UIViewController {
         label.setTranslatesMask()
         let leading = label.leadingAnchor.constraint(equalTo: weightView.leadingAnchor)
         let top = label.topAnchor.constraint(equalTo: weightView.bottomAnchor, constant: 12)
-        let trailing = label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12)
+        let trailing = label.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
         NSLayoutConstraint.activate([leading, top, trailing])
     }
 
@@ -203,11 +193,11 @@ final class UserDetailViewController: UIViewController {
         let label = UILabel()
         addressView = label
         label.numberOfLines = 0
-        label.text = "Ajmer road"
+        label.text = "Ajmer road, "
         containerView.addSubview(label)
         label.setTranslatesMask()
         let leading = label.leadingAnchor.constraint(equalTo: diseaseView.leadingAnchor)
-        let trailing = label.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        let trailing = label.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
         let top = label.topAnchor.constraint(equalTo: diseaseView.bottomAnchor, constant: 12)
         NSLayoutConstraint.activate([leading, trailing, top])
     }
@@ -248,11 +238,27 @@ final class UserDetailViewController: UIViewController {
     }
 
     private func setupPayment() {
-
+        let label = UILabel()
+        paymentView = label
+        label.text = "Last payment => 2000"
+        containerView.addSubview(label)
+        label.setTranslatesMask()
+        let leading = label.leadingAnchor.constraint(equalTo: gymJoined.leadingAnchor)
+        let top = label.topAnchor.constraint(equalTo: gymJoined.bottomAnchor, constant: 12)
+        NSLayoutConstraint.activate([leading, top])
     }
 
     private func setupActiveStatus() {
-
+        let label = UILabel()
+        isActiveView = label
+        label.text = "Active"
+        containerView.addSubview(label)
+        label.setTranslatesMask()
+        let leading = label.leadingAnchor.constraint(equalTo: paymentView.leadingAnchor)
+        let top = label.topAnchor.constraint(equalTo: paymentView.bottomAnchor, constant: 12)
+        let trailing = label.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
+        let bottom = label.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -12)
+        NSLayoutConstraint.activate([leading, top, trailing, bottom])
     }
 }
 
