@@ -6,17 +6,25 @@
 //
 import UIKit
 
-final class GymViewController: UIViewController {
-    
+protocol GymDisplayLogic: AnyObject {
+
+}
+
+final class GymViewController: UIViewController, GymDisplayLogic {
+
     private var collectionContainerView: UIView!
     private var userCollectionView: UICollectionView!
     private var headerView: GymHeaderView!
     private var containerView: UIView!
+    private var interactor: GymInteractor?
+    private var router: GymRouter?
+    private var presenter: GymPresenter?
 
 
     // MARK :- Lifecycle methods
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setupInitializers()
     }
     
     required init?(coder: NSCoder) {
@@ -29,6 +37,20 @@ final class GymViewController: UIViewController {
     }
 
     // MARK :- Private functions
+
+    private func setupInitializers() {
+        let router = GymRouter()
+        let interactor = GymInteractor()
+        let presenter = GymPresenter()
+        router.dataStore = interactor
+        router.viewController = self
+        interactor.presenter = presenter
+        presenter.viewController = self
+        self.presenter = presenter
+        self.interactor = interactor
+        self.router = router
+    }
+
     private func setup() {
         view.backgroundColor = .cardBackground
         setupContainer()
@@ -96,7 +118,7 @@ extension GymViewController: UICollectionViewDelegate {
 
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("element is \(indexPath.row)")
+        router?.routeToGymUserDetailPage()
     }
 
 

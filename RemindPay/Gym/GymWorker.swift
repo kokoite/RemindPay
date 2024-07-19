@@ -6,5 +6,8 @@
 //
 
 final class GymWorker {
-     
+    static let instance = GymWorker()
+
+    private init() { }
+    
 }

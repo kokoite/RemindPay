@@ -127,7 +127,6 @@ final class UserDetailViewController: UIViewController {
         name.setTranslatesMask()
         let leading = name.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
         let top = name.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 20)
-        let trailing = name.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
         NSLayoutConstraint.activate([leading, top])
     }
 

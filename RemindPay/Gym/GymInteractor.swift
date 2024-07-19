@@ -5,6 +5,14 @@
 //  Created by Pranjal Agarwal on 16/07/24.
 //
 
-final class GymInteractor {
+protocol GymBusinessLogic: AnyObject {
 
+}
+
+protocol GymDataStore: AnyObject {
+
+}
+
+final class GymInteractor: GymDataStore, GymBusinessLogic {
+    var presenter: GymPresenter?
 }
