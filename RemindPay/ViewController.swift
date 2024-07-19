@@ -32,7 +32,7 @@ class ViewController: UIViewController {
 
     func presentBottomSheet() {
         let bottomSheetTransitioningDelegate = BottomSheetTransitionDelegate(of: .init(width: view.bounds.width, height: 300))
-        let bottomSheetVC = BottomSheetViewController()
+        let bottomSheetVC = ErrorBottomSheetViewController()
         bottomSheetVC.modalPresentationStyle = .custom
         bottomSheetVC.transitioningDelegate = bottomSheetTransitioningDelegate
         present(bottomSheetVC, animated: true)

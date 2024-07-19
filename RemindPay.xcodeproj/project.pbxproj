@@ -12,6 +12,7 @@
 		A64C8CC52C490E9100AF9508 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC42C490E9100AF9508 /* CarouselCell.swift */; };
 		A6794E0E2C47EB4A00080A38 /* BottomSheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6794E0D2C47EB4A00080A38 /* BottomSheetPresenter.swift */; };
 		A6794E102C47ECE200080A38 /* Extenstion+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */; };
+		A67AEE032C4A41ED008C9610 /* FilterBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67AEE022C4A41ED008C9610 /* FilterBottomSheetViewController.swift */; };
 		A6969A282C46DEB5001EFAA4 /* GymModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A272C46DEB5001EFAA4 /* GymModel.swift */; };
 		A6969A2A2C46E0DF001EFAA4 /* GymRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A292C46E0DF001EFAA4 /* GymRouter.swift */; };
 		A6969A2C2C46E0F3001EFAA4 /* GymInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A2B2C46E0F3001EFAA4 /* GymInteractor.swift */; };
@@ -20,7 +21,7 @@
 		A6983EB62C47996900AA71FE /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6983EB52C47996900AA71FE /* ErrorModel.swift */; };
 		A6983EB82C4799E300AA71FE /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6983EB72C4799E300AA71FE /* ErrorPresenter.swift */; };
 		A6983EBA2C479ED500AA71FE /* ErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6983EB92C479ED500AA71FE /* ErrorViewModel.swift */; };
-		A6983EBC2C47A77500AA71FE /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6983EBB2C47A77500AA71FE /* BottomSheetViewController.swift */; };
+		A6983EBC2C47A77500AA71FE /* ErrorBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6983EBB2C47A77500AA71FE /* ErrorBottomSheetViewController.swift */; };
 		A6F5143B2C464D1A002053CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5143A2C464D1A002053CA /* AppDelegate.swift */; };
 		A6F5143D2C464D1A002053CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5143C2C464D1A002053CA /* SceneDelegate.swift */; };
 		A6F5143F2C464D1A002053CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5143E2C464D1A002053CA /* ViewController.swift */; };
@@ -61,6 +62,7 @@
 		A64C8CC42C490E9100AF9508 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		A6794E0D2C47EB4A00080A38 /* BottomSheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetPresenter.swift; sourceTree = "<group>"; };
 		A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extenstion+ViewController.swift"; sourceTree = "<group>"; };
+		A67AEE022C4A41ED008C9610 /* FilterBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottomSheetViewController.swift; sourceTree = "<group>"; };
 		A6969A272C46DEB5001EFAA4 /* GymModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymModel.swift; sourceTree = "<group>"; };
 		A6969A292C46E0DF001EFAA4 /* GymRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymRouter.swift; sourceTree = "<group>"; };
 		A6969A2B2C46E0F3001EFAA4 /* GymInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymInteractor.swift; sourceTree = "<group>"; };
@@ -69,7 +71,7 @@
 		A6983EB52C47996900AA71FE /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A6983EB72C4799E300AA71FE /* ErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPresenter.swift; sourceTree = "<group>"; };
 		A6983EB92C479ED500AA71FE /* ErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewModel.swift; sourceTree = "<group>"; };
-		A6983EBB2C47A77500AA71FE /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		A6983EBB2C47A77500AA71FE /* ErrorBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBottomSheetViewController.swift; sourceTree = "<group>"; };
 		A6F514372C464D1A002053CA /* RemindPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemindPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F5143A2C464D1A002053CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6F5143C2C464D1A002053CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 				A64C8CC02C490CA800AF9508 /* UserDetailViewController.swift */,
 			);
 			path = UserDetail;
+			sourceTree = "<group>";
+		};
+		A67AEE012C4A41DD008C9610 /* FilterBottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				A67AEE022C4A41ED008C9610 /* FilterBottomSheetViewController.swift */,
+			);
+			path = FilterBottomSheet;
 			sourceTree = "<group>";
 		};
 		A6983EB42C47995A00AA71FE /* Error */ = {
@@ -213,7 +223,8 @@
 		A6F514782C46A9F7002053CA /* BottomSheet */ = {
 			isa = PBXGroup;
 			children = (
-				A6983EBB2C47A77500AA71FE /* BottomSheetViewController.swift */,
+				A67AEE012C4A41DD008C9610 /* FilterBottomSheet */,
+				A6983EBB2C47A77500AA71FE /* ErrorBottomSheetViewController.swift */,
 				A6794E0D2C47EB4A00080A38 /* BottomSheetPresenter.swift */,
 			);
 			path = BottomSheet;
@@ -352,7 +363,8 @@
 			files = (
 				A6983EB62C47996900AA71FE /* ErrorModel.swift in Sources */,
 				A6794E102C47ECE200080A38 /* Extenstion+ViewController.swift in Sources */,
-				A6983EBC2C47A77500AA71FE /* BottomSheetViewController.swift in Sources */,
+				A6983EBC2C47A77500AA71FE /* ErrorBottomSheetViewController.swift in Sources */,
+				A67AEE032C4A41ED008C9610 /* FilterBottomSheetViewController.swift in Sources */,
 				A6983EB82C4799E300AA71FE /* ErrorPresenter.swift in Sources */,
 				A6794E0E2C47EB4A00080A38 /* BottomSheetPresenter.swift in Sources */,
 				A6969A2A2C46E0DF001EFAA4 /* GymRouter.swift in Sources */,

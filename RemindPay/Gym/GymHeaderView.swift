@@ -13,6 +13,7 @@ final class GymHeaderView: UIView {
     private var titleView: UILabel!
     private var searchView: SearchView!
 
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -58,8 +59,8 @@ final class GymHeaderView: UIView {
         containerView = container
         addSubview(container)
         container.setTranslatesMask()
-        container.backgroundColor = .red
-        container.pinToEdges(in: self)
+        container.backgroundColor = .systemPink
+        container.pinToSafeEdges(in: self)
     }
 
     private func setupTitle() {

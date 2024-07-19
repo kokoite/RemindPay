@@ -8,7 +8,7 @@
 import UIKit
 
 
-final class BottomSheetViewController: UIViewController {
+final class ErrorBottomSheetViewController: UIViewController {
 
     private var containerView: UIView!
     private var primaryButton, secondaryButton: UIButton!
