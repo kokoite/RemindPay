@@ -185,7 +185,6 @@ final class FilterBottomSheetViewController: UIViewController {
         let top = button.topAnchor.constraint(equalTo: activeButton.topAnchor)
         let centerX = button.centerXAnchor.constraint(equalTo: expiryMonth.centerXAnchor)
         let width = button.widthAnchor.constraint(equalTo: expiryMonth.widthAnchor)
-        let trailing = button.trailingAnchor.constraint(equalTo: buttonContainer.trailingAnchor, constant: -20)
         NSLayoutConstraint.activate([top, centerX, width])
     }
 

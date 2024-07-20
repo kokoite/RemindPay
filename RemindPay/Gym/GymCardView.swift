@@ -41,7 +41,6 @@ final class GymCardView: UICollectionViewCell {
 
     private func setupContainer() {
         let container = UIView()
-        container.backgroundColor = .yellow
         contentView.addSubview(container)
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12)
@@ -54,9 +53,9 @@ final class GymCardView: UICollectionViewCell {
         containerView = container
     }
 
-
     private func setupName() {
         let name = UILabel()
+        name.textColor = .black
         name.font = UIFont.systemFont(ofSize: 20)
         name.text = "Pranjal Agarwal"
         titleView = name
@@ -71,6 +70,7 @@ final class GymCardView: UICollectionViewCell {
 
     private func setupPhone() {
         let phone = UILabel()
+        phone.textColor = .black
         phone.text = "9212433690"
         subtitleView = phone
         containerView.addSubview(phone)
@@ -84,6 +84,7 @@ final class GymCardView: UICollectionViewCell {
 
     private func setupJoining() {
         let label = UILabel()
+        label.textColor = .black
         containerView.addSubview(label)
         joiningDateView = label
         label.text = "J.Date - 16-07-2024"
@@ -96,6 +97,7 @@ final class GymCardView: UICollectionViewCell {
 
     private func setupExpiry() {
         let label = UILabel()
+        label.textColor = .black
         containerView.addSubview(label)
         expiryDateView = label
         label.text = "E.Date - 16-09-2024"
@@ -122,12 +124,4 @@ final class GymCardView: UICollectionViewCell {
         let leading = image.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
         NSLayoutConstraint.activate([centerY, height, width, leading])
     }
-
-    private func setupUserDetailContainer() {
-        let container = UIStackView()
-        container.backgroundColor = .yellow
-        containerView.addSubview(container)
-        userDetailContainer = container
-    }
-
 }

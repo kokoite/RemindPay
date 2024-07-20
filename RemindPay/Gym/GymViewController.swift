@@ -48,7 +48,6 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         }
     }
 
-
     // MARK :- Private functions
 
     private func setupInitializers() {
@@ -65,7 +64,7 @@ final class GymViewController: UIViewController, GymDisplayLogic {
     }
 
     private func setup() {
-        view.backgroundColor = .cardBackground
+        view.backgroundColor = .white
         setupContainer()
         setupHeader()
         setupUserCollectionView()
@@ -97,6 +96,7 @@ final class GymViewController: UIViewController, GymDisplayLogic {
     private func setupUserCollectionView() {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         userCollectionView = collection
+        collection.backgroundColor = .white
         containerView.addSubview(collection)
         collection.layer.cornerRadius = 30
         collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -105,6 +105,7 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         collection.showsVerticalScrollIndicator = false
         collection.register(GymCardView.self, forCellWithReuseIdentifier: "gymCell")
         collection.clipsToBounds = true
+        collection.keyboardDismissMode = .interactive 
         collection.setTranslatesMask()
         let leading = collection.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
         let trailing = collection.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
@@ -155,7 +156,6 @@ extension GymViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gymCell", for: indexPath) as? GymCardView ?? UICollectionViewCell()
         return cell
     }
-
 }
 
 extension GymViewController: UICollectionViewDelegateFlowLayout {
