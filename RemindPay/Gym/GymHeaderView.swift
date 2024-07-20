@@ -6,12 +6,23 @@
 //
 import UIKit
 
+protocol GymHeaderDelegate: AnyObject {
+
+    func didClickProfileImage()
+    func didClickOnSearchButton(text: String)
+    func didClickOnFilter()
+    func onSearchViewTextChange(text: String)
+}
+
+
+
 final class GymHeaderView: UIView {
 
     private var containerView: UIView!
     private var imageView: UIView!
     private var titleView: UILabel!
     private var searchView: SearchView!
+    var delegate: GymHeaderDelegate?
 
 
     override init(frame: CGRect) {
@@ -25,6 +36,10 @@ final class GymHeaderView: UIView {
 
     func configure() {
 
+    }
+
+    @objc func profileImageClicked() {
+        delegate?.didClickProfileImage()
     }
 
 
@@ -42,6 +57,9 @@ final class GymHeaderView: UIView {
     private func setupImage() {
         let image = UIImageView()
         imageView = image
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageClicked))
+        image.addGestureRecognizer(tapGesture)
+        image.isUserInteractionEnabled = true
         containerView.addSubview(image)
         image.setTranslatesMask()
         let leading = image.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
@@ -93,6 +111,7 @@ final class GymHeaderView: UIView {
 
     private func setupSearch() {
         let search = SearchView()
+        search.delegate = self
         searchView = search
         containerView.addSubview(search)
         search.setTranslatesMask()
@@ -101,5 +120,20 @@ final class GymHeaderView: UIView {
         let top = search.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20)
         let height = search.heightAnchor.constraint(equalToConstant: 45)
         NSLayoutConstraint.activate([leading, trailling, top, height])
+    }
+}
+
+extension GymHeaderView: SearchViewDelegate {
+
+    func didClickOnSearchIcon(text: String) {
+        delegate?.didClickOnSearchButton(text: text)
+    }
+
+    func didClickOnFilterIcon() {
+        delegate?.didClickOnFilter()
+    }
+
+    func onSearchViewTextChange(text: String) {
+        delegate?.onSearchViewTextChange(text: text)
     }
 }

@@ -13,6 +13,7 @@ protocol GymDisplayLogic: AnyObject {
 final class GymViewController: UIViewController, GymDisplayLogic {
     private var userCollectionView: UICollectionView!
     private var headerView: GymHeaderView!
+    private var createUserButton: UIImageView!
     private var containerView: UIView!
     private var interactor: GymInteractor?
     private var router: GymRouter?
@@ -38,6 +39,15 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         setup()
     }
 
+    @objc func createUserClicked() {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.createUserButton.tintColor = .gray
+        } completion: { [weak self] _ in
+            self?.router?.routeToCreateUserPage()
+            self?.createUserButton.tintColor = .black
+        }
+    }
+
 
     // MARK :- Private functions
 
@@ -59,10 +69,12 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         setupContainer()
         setupHeader()
         setupUserCollectionView()
+        setupCreateUserButton()
     }
 
     private func setupHeader() {
         let header = GymHeaderView()
+        header.delegate = self
         containerView.addSubview(header)
         header.setTranslatesMask()
         let leading = header.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
@@ -100,6 +112,27 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         let bottom = collection.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         NSLayoutConstraint.activate([leading, trailing, bottom, top])
     }
+
+    private func setupCreateUserButton() {
+        let image = UIImageView()
+        image.isUserInteractionEnabled = true
+        containerView.addSubview(image)
+        createUserButton = image
+        image.image = UIImage(systemName: "plus.circle.fill")
+        image.tintColor = .black
+        image.contentMode = .scaleAspectFill
+        image.setTranslatesMask()
+        let trailing = image.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
+        let bottom = image.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor, constant: -40)
+        let height = image.heightAnchor.constraint(equalToConstant: 60)
+        let width = image.widthAnchor.constraint(equalToConstant: 60)
+        NSLayoutConstraint.activate([trailing, bottom, height, width])
+        image.backgroundColor = .white
+        image.layer.cornerRadius = 30
+        image.clipsToBounds = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector((createUserClicked)))
+        image.addGestureRecognizer(gesture)
+    }
 }
 
 
@@ -125,7 +158,6 @@ extension GymViewController: UICollectionViewDataSource {
 
 }
 
-
 extension GymViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -133,3 +165,31 @@ extension GymViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension GymViewController: GymHeaderDelegate {
+
+    func didClickProfileImage() {
+        router?.routeToProfilePage()
+    }
+
+    func didClickOnFilter() {
+        router?.showFilterBottomSheet()
+    }
+
+    func didClickOnSearchButton(text: String) {
+        print(text)
+    }
+
+    func onSearchViewTextChange(text: String) {
+        print(text)
+    }
+}
+
+
+extension GymViewController: FilterBottomSheetDelegate {
+    func didClickOnButton(with action: FilterAction) {
+        print(action)
+    }
+    
+
+
+}
