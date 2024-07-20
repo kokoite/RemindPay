@@ -57,6 +57,7 @@ final class GymHeaderView: UIView {
     private func setupImage() {
         let image = UIImageView()
         imageView = image
+        image.image = UIImage(named: "happyFace")
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageClicked))
         image.addGestureRecognizer(tapGesture)
         image.isUserInteractionEnabled = true

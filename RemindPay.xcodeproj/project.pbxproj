@@ -187,7 +187,6 @@
 		A6F514392C464D1A002053CA /* RemindPay */ = {
 			isa = PBXGroup;
 			children = (
-				A62D2BA32C4B8D470066E2ED /* Profile */,
 				A6983EB42C47995A00AA71FE /* Error */,
 				A6F514782C46A9F7002053CA /* BottomSheet */,
 				A6F5143A2C464D1A002053CA /* AppDelegate.swift */,
@@ -228,6 +227,7 @@
 		A6F514712C465AE0002053CA /* Gym */ = {
 			isa = PBXGroup;
 			children = (
+				A62D2BA32C4B8D470066E2ED /* Profile */,
 				A64809062C4A791E0086D7A7 /* CreateUser */,
 				A64C8CBF2C490C8E00AF9508 /* UserDetail */,
 				A6F5146D2C46524A002053CA /* GymCardView.swift */,
