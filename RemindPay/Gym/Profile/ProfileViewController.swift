@@ -16,16 +16,41 @@ final class ProfileViewController: UIViewController {
     private var nameContainer, phoneContainer, gymNameContainer,
                 experienceContainer, membershipTypeContainer,
                 membershipContainer, gymAddressContainer, gymServiceContainer: UIStackView!
+    private var nameView, gymNameView, phoneView, experienceView, membershipTypeView, membershipExpiryView, gymAddressView, gymServiceView: PlaceholderTextView!
     private var editButton: UIButton!
+    private var buttonState: Bool = true
+    // true denote viewing state false denote editing state
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
 
-    @objc func editButtonClicked() {
-        print("Edit button clicked")
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+
     }
+
+    @objc func editButtonClicked() {
+        if(buttonState) {
+            // makeEditable
+            updateEditablity(isEditable: true)
+            // Todo :- update image of edit button
+        } else {
+            editButton.configuration?.image = UIImage(systemName: "pencil")
+            updateEditablity(isEditable: false)
+        }
+
+        buttonState = !buttonState
+    }
+
+    private func updateEditablity(isEditable: Bool) {
+        [nameView, phoneView, gymNameView, experienceView, gymAddressView, gymServiceView].forEach { elm in
+            elm?.isEditable = isEditable
+        }
+    }
+
 
     private func setup() {
         setupScrollView()
@@ -81,8 +106,18 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setupName() {
-        let container = getContainer(labelName: "Name", labelContent: "Pranjal")
+        let container = UIStackView()
+        container.axis = .vertical
+        container.spacing = 6
+        let label = getLabel(text: "Name")
+        container.addArrangedSubview(label)
+        let tv = getTextView(text: "Pranjal Agarwal", isSeparatorFullLength: true)
+        nameView = tv
+        container.addArrangedSubview(tv)
+        let separator = getSeparator()
+        container.addArrangedSubview(separator)
         nameContainer = container
+        containerView.addSubview(container)
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
         let top = container.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40)
@@ -90,7 +125,17 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setupGymName() {
-        let container = getContainer(labelName: "Gym Name", labelContent: "Fitness with Pranjal")
+        let container = UIStackView()
+        containerView.addSubview(container)
+        container.axis = .vertical
+        container.spacing = 6
+        let label = getLabel(text: "Gym Name")
+        container.addArrangedSubview(label)
+        let tv = getTextView(text: "Fitness with Pranjal", isSeparatorFullLength: true)
+        gymNameView = tv
+        container.addArrangedSubview(tv)
+        let separator = getSeparator()
+        container.addArrangedSubview(separator)
         gymNameContainer = container
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor)
@@ -99,7 +144,20 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setupPhone() {
-        let container = getContainer(labelName: "Phone", labelContent: "8291376455", isFullLengthSeparator: false)
+        let container = UIStackView()
+        containerView.addSubview(container)
+        container.axis = .vertical
+        container.spacing = 6
+        let label = getLabel(text: "Phone")
+        container.addArrangedSubview(label)
+
+        let tv = getTextView(text: "8209131934", isSeparatorFullLength: false)
+        phoneView = tv
+        container.addArrangedSubview(tv)
+
+        let separator = getSeparator(isFullLength: false)
+        container.addArrangedSubview(separator)
+
         phoneContainer = container
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: gymNameContainer.leadingAnchor)
@@ -108,7 +166,18 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setupExperience() {
-        let container = getContainer(labelName: "Gym Experience", labelContent: "5 years", isFullLengthSeparator: false)
+        let container = UIStackView()
+        container.axis = .vertical
+        container.spacing = 6
+        containerView.addSubview(container)
+        let label = getLabel(text: "Gym Experience")
+        container.addArrangedSubview(label)
+
+        let tv = getTextView(text: "5 years", isSeparatorFullLength: false)
+        experienceView = tv
+        container.addArrangedSubview(tv)
+        let separator = getSeparator(isFullLength: false)
+        container.addArrangedSubview(separator)
         experienceContainer = container
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: phoneContainer.trailingAnchor, constant: 20)
@@ -117,7 +186,19 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setupMembershipType() {
-        let container = getContainer(labelName: "Membership Type", labelContent: "Free", isFullLengthSeparator: false)
+        let container = UIStackView()
+        container.axis = .vertical
+        container.spacing = 6
+        containerView.addSubview(container)
+        let label = getLabel(text: "Membership Type")
+        container.addArrangedSubview(label)
+
+        let tv = getTextView(text: "Free", isSeparatorFullLength: false)
+        membershipTypeView = tv
+        container.addArrangedSubview(tv)
+
+        let separator = getSeparator(isFullLength: false)
+        container.addArrangedSubview(separator)
         membershipTypeContainer = container
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: phoneContainer.leadingAnchor)
@@ -126,7 +207,17 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setupMembershipExpiry() {
-        let container = getContainer(labelName: "Memebership Expiry", labelContent: "20-07-2024", isFullLengthSeparator: false)
+        let container = UIStackView()
+        container.axis = .vertical
+        container.spacing = 6
+        containerView.addSubview(container)
+        let label = getLabel(text: "Membership expiry")
+        container.addArrangedSubview(label)
+        let tv = getTextView(text: "20-07-204", isSeparatorFullLength: false)
+        membershipExpiryView = tv
+        container.addArrangedSubview(tv)
+        let separator = getSeparator(isFullLength: false)
+        container.addArrangedSubview(separator)
         membershipContainer = container
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: membershipTypeContainer.trailingAnchor, constant: 20)
@@ -140,10 +231,12 @@ final class ProfileViewController: UIViewController {
         config.image = UIImage(systemName: "pencil")
         let button = UIButton(configuration: config)
         button.clipsToBounds = true
+        button.contentMode = .scaleAspectFit
         editButton = button
         button.layer.cornerRadius = 30
         button.tintColor = .black
         button.backgroundColor = .white
+        button.addTarget(self, action: #selector(editButtonClicked), for: .touchUpInside)
         containerScrollView.addSubview(button)
         button.setTranslatesMask()
         let height = button.heightAnchor.constraint(equalToConstant: 60)
@@ -158,7 +251,19 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setupGymAddress() {
-        let container = getContainer(labelName: "Gym Address", labelContent: "Manas Hospital", isFullLengthSeparator: true)
+        let container = UIStackView()
+        container.axis = .vertical
+        container.spacing = 6
+        let label = getLabel(text: "Gym Address")
+        container.addArrangedSubview(label)
+
+        let tv = getTextView(text: "Manas hospital", isSeparatorFullLength: true)
+
+        gymAddressView = tv
+        container.addArrangedSubview(tv)
+        let separator = getSeparator()
+        container.addArrangedSubview(separator)
+        containerView.addSubview(container)
         gymAddressContainer = container
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: membershipTypeContainer.leadingAnchor)
@@ -167,7 +272,17 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setupGymServices() {
-        let container = getContainer(labelName: "Gym services", labelContent: "Weight Loss, Height Gain, Weight Gain, Strength training", isFullLengthSeparator: true)
+        let container = UIStackView()
+        container.axis = .vertical
+        container.spacing = 6
+        containerView.addSubview(container)
+        let label = getLabel(text: "Gym services")
+        container.addArrangedSubview(label)
+        let tv = getTextView(text: "Weight Loss, Height Gain, Weight Gain", isSeparatorFullLength: true)
+        gymServiceView = tv
+        container.addArrangedSubview(tv)
+        let separator = getSeparator()
+        container.addArrangedSubview(separator)
         gymServiceContainer = container
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: gymAddressContainer.leadingAnchor)
@@ -212,6 +327,22 @@ final class ProfileViewController: UIViewController {
         return label
     }
 
+    private func getTextView(text: String, isSeparatorFullLength: Bool) -> PlaceholderTextView {
+        let tv = PlaceholderTextView()
+        let wid = isSeparatorFullLength ? view.bounds.width*0.9: view.bounds.width * 0.4
+        tv.placeholderText = text
+        tv.isEditable = false
+        tv.delegate = self
+        tv.isScrollEnabled = false
+        tv.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 4, right: 8)
+        tv.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        tv.setTranslatesMask()
+        let width = tv.widthAnchor.constraint(equalToConstant: wid)
+        let height = tv.heightAnchor.constraint(greaterThanOrEqualToConstant: 25)
+        NSLayoutConstraint.activate([height, width])
+        return tv
+    }
+
     private func getSeparator(isFullLength: Bool = true) -> UIView {
         let separator = UIView()
         separator.backgroundColor = .lightGray
@@ -222,6 +353,16 @@ final class ProfileViewController: UIViewController {
         NSLayoutConstraint.activate([width, height])
         return separator
     }
+}
 
+extension ProfileViewController: UITextViewDelegate {
 
+    func textViewDidChange(_ textView: UITextView) {
+        guard let textView = textView as? PlaceholderTextView else { return }
+        if(textView.text.isEmpty) {
+            textView.showPlaceholder()
+        } else if(textView.text.count == 1) {
+            textView.hidePlaceholder()
+        }
+    }
 }

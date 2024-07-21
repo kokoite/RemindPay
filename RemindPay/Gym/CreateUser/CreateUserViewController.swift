@@ -15,6 +15,8 @@ class CreateUserViewController: UIViewController {
     private var nameContainer, phoneContainer, heightContainer, weightContainer, addressContainer, diseaseContainer, joiningContainer, expiryContainer, joinedContainer, paymentContainer: UIStackView!
     private var createButton: UIButton!
 
+    private var nameView, phoneView, weightView, heightView, joinedView, startingView, expiryView: PlaceholderTextView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -70,52 +72,49 @@ class CreateUserViewController: UIViewController {
         image.setTranslatesMask()
         let centerX = image.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
         let top = image.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: 10)
-        let height = image.heightAnchor.constraint(equalToConstant: 120)
-        let width = image.widthAnchor.constraint(equalToConstant: 120)
+        let height = image.heightAnchor.constraint(equalToConstant: 150)
+        let width = image.widthAnchor.constraint(equalToConstant: 150)
         NSLayoutConstraint.activate([centerX, top, height ,width])
-        image.layer.cornerRadius = 60
+        image.layer.cornerRadius = 75
         image.clipsToBounds = true
     }
 
     private func setupNameView() {
         let container = UIStackView()
-        nameContainer = container
         container.axis = .vertical
         container.spacing = 6
-        container.backgroundColor = .white
+        nameContainer = container
         containerView.addSubview(container)
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
-        let top = container.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20)
-        NSLayoutConstraint.activate([leading, top])
         let label = getLabel(text: "Name")
         container.addArrangedSubview(label)
-
-        let name = getTextField(text: "Pranjal Agarwal")
-        container.addArrangedSubview(name)
-
-        let separator = getSeparator()
+        let tf = getTextView(text: "Pranjal Agarwal", isSeparatorFullLength: true)
+        container.addArrangedSubview(tf)
+        let separator = getSeparator(isFullLength: true)
         container.addArrangedSubview(separator)
+        container.setTranslatesMask()
+        let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
+        let top = container.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40)
+        NSLayoutConstraint.activate([leading, top])
     }
 
     private func setupPhoneView() {
         let container = UIStackView()
-        phoneContainer = container
         container.axis = .vertical
         container.spacing = 6
-        let label = getLabel(text: "Phone Number")
-        container.addArrangedSubview(label)
-        let tf = getTextField(text: "8291374655")
-        container.addArrangedSubview(tf)
-        let separator = getSeparator()
-        container.addArrangedSubview(separator)
         containerView.addSubview(container)
+        phoneContainer = container
+        let label = getLabel(text: "Phone")
+        container.addArrangedSubview(label)
+        let tf = getTextView(text: "8291375546", isSeparatorFullLength: true)
+        container.addArrangedSubview(tf)
+        let separator = getSeparator(isFullLength: true)
+        container.addArrangedSubview(separator)
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor)
         let top = container.topAnchor.constraint(equalTo: nameContainer.bottomAnchor, constant: 40)
         NSLayoutConstraint.activate([leading, top])
     }
-
+//
     private func setupWeightView() {
         let container = UIStackView()
         weightContainer = container
@@ -123,14 +122,10 @@ class CreateUserViewController: UIViewController {
         container.spacing = 6
         let label = getLabel(text: "Weight")
         container.addArrangedSubview(label)
-        let tf = getTextField(text: "58 kgs")
+        let tf = getTextView(text: "58 kgs", isSeparatorFullLength: false)
         container.addArrangedSubview(tf)
-        let separator = UIView()
-        separator.backgroundColor = .lightGray
+        let separator = getSeparator(isFullLength: false)
         container.addArrangedSubview(separator)
-        separator.setTranslatesMask()
-        separator.widthAnchor.constraint(equalToConstant: view.bounds.width * 0.4).isActive = true
-        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
         containerView.addSubview(container)
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: phoneContainer.leadingAnchor)
@@ -146,14 +141,10 @@ class CreateUserViewController: UIViewController {
         container.spacing = 6
         let label = getLabel(text: "Height")
         container.addArrangedSubview(label)
-        let tf = getTextField(text: "180 cm")
+        let tf = getTextView(text: "180 cm", isSeparatorFullLength: false)
         container.addArrangedSubview(tf)
-        let separator = UIView()
-        separator.backgroundColor = .lightGray
+        let separator = getSeparator(isFullLength: false)
         container.addArrangedSubview(separator)
-        separator.setTranslatesMask()
-        separator.widthAnchor.constraint(equalToConstant: view.bounds.width * 0.4).isActive = true
-        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: weightContainer.trailingAnchor, constant: 20)
         let top = container.topAnchor.constraint(equalTo: weightContainer.topAnchor)
@@ -168,7 +159,7 @@ class CreateUserViewController: UIViewController {
         container.spacing = 6
         let label = getLabel(text: "Current Address")
         container.addArrangedSubview(label)
-        let tf = getTextField(text: "Manas hospital")
+        let tf = getTextView(text: "Manas hospital", isSeparatorFullLength: true)
         container.addArrangedSubview(tf)
         let separator = getSeparator()
         container.addArrangedSubview(separator)
@@ -186,7 +177,7 @@ class CreateUserViewController: UIViewController {
         container.spacing = 6
         let label = getLabel(text: "Existing disease")
         container.addArrangedSubview(label)
-        let tf = getTextField(text: "Fracture in left leg")
+        let tf = getTextView(text: "Fracture in left leg", isSeparatorFullLength: true)
         container.addArrangedSubview(tf)
         let separator = getSeparator()
         container.addArrangedSubview(separator)
@@ -204,7 +195,7 @@ class CreateUserViewController: UIViewController {
         container.spacing = 6
         let label = getLabel(text: "Plan Starting")
         container.addArrangedSubview(label)
-        let tf = getTextField(text: "20-07-2024")
+        let tf = getTextView(text: "20-07-2024", isSeparatorFullLength: false)
         container.addArrangedSubview(tf)
         let separator = UIView()
         separator.backgroundColor = .lightGray
@@ -226,7 +217,7 @@ class CreateUserViewController: UIViewController {
         container.spacing = 6
         let label = getLabel(text: "Plan Expiry")
         container.addArrangedSubview(label)
-        let tf = getTextField(text: "20-07-2024")
+        let tf = getTextView(text: "20-07-2024", isSeparatorFullLength: false)
         container.addArrangedSubview(tf)
         let separator = UIView()
         separator.backgroundColor = .lightGray
@@ -249,14 +240,10 @@ class CreateUserViewController: UIViewController {
         container.spacing = 6
         let label = getLabel(text: "Gym joined date")
         container.addArrangedSubview(label)
-        let tf = getTextField(text: "20-07-2024")
+        let tf = getTextView(text: "20-07-2024", isSeparatorFullLength: false)
         container.addArrangedSubview(tf)
-        let separator = UIView()
-        separator.backgroundColor = .lightGray
+        let separator = getSeparator(isFullLength: false)
         container.addArrangedSubview(separator)
-        separator.setTranslatesMask()
-        separator.widthAnchor.constraint(equalToConstant: view.bounds.width * 0.4).isActive = true
-        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
         containerView.addSubview(container)
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: joiningContainer.leadingAnchor)
@@ -271,7 +258,7 @@ class CreateUserViewController: UIViewController {
         container.spacing = 6
         let label = getLabel(text: "Payment amount")
         container.addArrangedSubview(label)
-        let tf = getTextField(text: "2000")
+        let tf = getTextView(text: "2000", isSeparatorFullLength: false)
         container.addArrangedSubview(tf)
         let separator = UIView()
         separator.backgroundColor = .lightGray
@@ -292,41 +279,61 @@ class CreateUserViewController: UIViewController {
         config.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12)
         let button = UIButton(configuration: config)
         createButton = button
+        button.tintColor = .black
         button.setTitle("Create User", for: .normal)
         containerView.addSubview(button)
         button.setTranslatesMask()
         let centerX = button.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
         let top = button.topAnchor.constraint(equalTo: joinedContainer.bottomAnchor, constant: 40)
-        let bottom = button.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor)
+        let bottom = button.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         let width = button.widthAnchor.constraint(equalToConstant: 150)
-        NSLayoutConstraint.activate([centerX, top, bottom, width])
-    }
-
-    private func getSeparator() -> UIView {
-        let separator = UIView()
-        separator.backgroundColor = .lightGray
-        separator.setTranslatesMask()
-        let width = separator.widthAnchor.constraint(equalToConstant: view.bounds.width * 0.9)
-        let height = separator.heightAnchor.constraint(equalToConstant: 1)
-        NSLayoutConstraint.activate([width, height])
-        return separator
+        NSLayoutConstraint.activate([centerX, bottom, width, top])
     }
 
     private func getLabel(text: String) -> UILabel {
         let label = UILabel()
         label.text = text
-        label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         return label
     }
 
-    private func getTextField(text: String) -> UITextField {
-        let name = UITextField()
-        name.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        name.textContentType = .name
-        name.placeholder = text
-        name.textAlignment = .left
-        name.textColor = .black
-        return name
+    private func getSeparator(isFullLength: Bool = true) -> UIView {
+        let separator = UIView()
+        separator.backgroundColor = .lightGray
+        separator.setTranslatesMask()
+        let separatorWidth = isFullLength ? view.bounds.width * 0.9 : view.bounds.width * 0.4
+        let width = separator.widthAnchor.constraint(equalToConstant: separatorWidth)
+        let height = separator.heightAnchor.constraint(equalToConstant: 1)
+        NSLayoutConstraint.activate([width, height])
+        return separator
+    }
+
+    private func getTextView(text: String, isSeparatorFullLength: Bool) -> PlaceholderTextView {
+        let tv = PlaceholderTextView()
+        let wid = isSeparatorFullLength ? view.bounds.width*0.9: view.bounds.width * 0.4
+        tv.placeholderText = text
+        tv.delegate = self
+        tv.isScrollEnabled = false
+        tv.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 4, right: 8)
+        tv.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        tv.setTranslatesMask()
+        let width = tv.widthAnchor.constraint(equalToConstant: wid)
+        let height = tv.heightAnchor.constraint(greaterThanOrEqualToConstant: 25)
+        NSLayoutConstraint.activate([height, width])
+        return tv
+    }
+}
+
+
+extension CreateUserViewController: UITextViewDelegate {
+
+    func textViewDidChange(_ textView: UITextView) {
+        guard let textView = textView as? PlaceholderTextView else { return }
+        if(textView.text.isEmpty) {
+            textView.showPlaceholder()
+        } else if (textView.text.count == 1) {
+            textView.hidePlaceholder()
+        }
     }
 }
