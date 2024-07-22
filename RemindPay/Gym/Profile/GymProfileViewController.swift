@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProfileViewController: UIViewController {
+final class GymProfileViewController: UIViewController {
 
     private var containerScrollView: UIScrollView!
     private var containerView: UIView!
@@ -355,7 +355,7 @@ final class ProfileViewController: UIViewController {
     }
 }
 
-extension ProfileViewController: UITextViewDelegate {
+extension GymProfileViewController: UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
         guard let textView = textView as? PlaceholderTextView else { return }

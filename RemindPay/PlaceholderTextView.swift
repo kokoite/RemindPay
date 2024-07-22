@@ -11,10 +11,10 @@ final class PlaceholderTextView: UITextView {
     private var placeholderLabel: UILabel?
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+        backgroundColor = .white
         guard let placeholderText, placeholderLabel == nil else {
             return
         }
-
         textContainer.lineFragmentPadding = 0
         textContainer.lineBreakMode = .byTruncatingTail
         textContainer.maximumNumberOfLines = 2

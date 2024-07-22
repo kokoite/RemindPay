@@ -38,7 +38,7 @@ final class GymRouter: GymRoutingLogic, GymDataPassing {
 
     func routeToProfilePage() {
         guard let navController = viewController?.navigationController else { return }
-        let controller = ProfileViewController()
+        let controller = GymProfileViewController()
         navController.pushViewController(controller, animated: true)
     }
 
