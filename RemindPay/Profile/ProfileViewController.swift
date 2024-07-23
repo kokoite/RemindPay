@@ -41,6 +41,7 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setup() {
+        view.backgroundColor = .white
         setupScrollView()
         setupContainer()
         setupUserDetailContainer()
@@ -67,8 +68,11 @@ final class ProfileViewController: UIViewController {
         containerScrollView = scrollView
         view.addSubview(scrollView)
         scrollView.setTranslatesMask()
-        scrollView.pinToEdges(in: view)
-        scrollView.showsVerticalScrollIndicator = false
+        let top = scrollView.topAnchor.constraint(equalTo: view.topAnchor)
+        let bottom = scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        let leading = scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let trailing = scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        NSLayoutConstraint.activate([top, bottom, leading, trailing])
     }
 
     private func setupContainer() {

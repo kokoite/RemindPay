@@ -11,7 +11,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "CardBackground")
+        view.backgroundColor = .white
         let button = PlaceholderTextView()
         button.placeholderText = "Enter your name"
         button.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 8)
