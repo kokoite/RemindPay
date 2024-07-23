@@ -11,7 +11,6 @@
 		A60DCA902C4ECD5000F8A4C2 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A60DCA8F2C4ECD5000F8A4C2 /* DGChartsDynamic */; };
 		A60DCA922C4ED37E00F8A4C2 /* GymBreakupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60DCA912C4ED37E00F8A4C2 /* GymBreakupView.swift */; };
 		A62D2BA52C4B8D5B0066E2ED /* GymProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62D2BA42C4B8D5B0066E2ED /* GymProfileViewController.swift */; };
-		A63391F42C4F814C0095B21B /* dump.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391F32C4F814C0095B21B /* dump.swift */; };
 		A63391F72C4F92AF0095B21B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391F62C4F92AF0095B21B /* HomeViewController.swift */; };
 		A63391FA2C4F94A70095B21B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391F92C4F94A70095B21B /* HeaderView.swift */; };
 		A63391FD2C4FA00E0095B21B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391FC2C4FA00E0095B21B /* TabBarController.swift */; };
@@ -75,7 +74,6 @@
 /* Begin PBXFileReference section */
 		A60DCA912C4ED37E00F8A4C2 /* GymBreakupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymBreakupView.swift; sourceTree = "<group>"; };
 		A62D2BA42C4B8D5B0066E2ED /* GymProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymProfileViewController.swift; sourceTree = "<group>"; };
-		A63391F32C4F814C0095B21B /* dump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dump.swift; sourceTree = "<group>"; };
 		A63391F62C4F92AF0095B21B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A63391F92C4F94A70095B21B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		A63391FC2C4FA00E0095B21B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 			children = (
 				A6D84DEA2C4E80D1002137BE /* DashboardViewController.swift */,
 				A60DCA912C4ED37E00F8A4C2 /* GymBreakupView.swift */,
-				A63391F32C4F814C0095B21B /* dump.swift */,
 				A6D84DEC2C4E8639002137BE /* DashboardHeaderView.swift */,
 			);
 			path = Dashboard;
@@ -505,7 +502,6 @@
 				A6F5146E2C46524A002053CA /* GymCardView.swift in Sources */,
 				A63391FD2C4FA00E0095B21B /* TabBarController.swift in Sources */,
 				A6969A2C2C46E0F3001EFAA4 /* GymInteractor.swift in Sources */,
-				A63391F42C4F814C0095B21B /* dump.swift in Sources */,
 				A64C8CC52C490E9100AF9508 /* CarouselCell.swift in Sources */,
 				A6F514752C465B2A002053CA /* GymHeaderView.swift in Sources */,
 			);
