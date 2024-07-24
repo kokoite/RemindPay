@@ -8,12 +8,12 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
-    private var containerScrollView: UIScrollView!
-    private var containerView: UIView!
-    private var headerView: UIView!
-    private var serviceContainer, subscribedContainer: UIStackView!
-    private var serviceLabel, subscribedLabel: UILabel!
-    private var serviceCollection, subscribedCollection: UICollectionView!
+    private weak var containerScrollView: UIScrollView!
+    private weak var containerView: UIView!
+    private weak var headerView: UIView!
+    private weak var serviceContainer, subscribedContainer: UIStackView!
+    private weak var serviceLabel, subscribedLabel: UILabel!
+    private weak var serviceCollection, subscribedCollection: UICollectionView!
 
     private var membershipData: [MembershipCellData] = [
         .init(backgroundColor: .systemOrange, imageName: "dumbbell.fill"),
@@ -41,8 +41,6 @@ final class HomeViewController: UIViewController {
         setupScrollView()
         setupContainer()
         setupHeader()
-
-
         setupServiceContainer()
         setupServiceLabel()
         setupServiceCollection()
@@ -179,6 +177,10 @@ final class HomeViewController: UIViewController {
         let height = container.heightAnchor.constraint(equalToConstant: 250)
         NSLayoutConstraint.activate([height])
     }
+
+    deinit {
+        print("Deinit called")
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -197,5 +199,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         .init(width: view.bounds.width*0.35, height: view.bounds.width*0.3)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = GymViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

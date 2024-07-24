@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A60DCA8E2C4ECD5000F8A4C2 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = A60DCA8D2C4ECD5000F8A4C2 /* DGCharts */; };
-		A60DCA902C4ECD5000F8A4C2 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A60DCA8F2C4ECD5000F8A4C2 /* DGChartsDynamic */; };
 		A60DCA922C4ED37E00F8A4C2 /* GymBreakupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60DCA912C4ED37E00F8A4C2 /* GymBreakupView.swift */; };
 		A62D2BA52C4B8D5B0066E2ED /* GymProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62D2BA42C4B8D5B0066E2ED /* GymProfileViewController.swift */; };
 		A63391F72C4F92AF0095B21B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391F62C4F92AF0095B21B /* HomeViewController.swift */; };
 		A63391FA2C4F94A70095B21B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391F92C4F94A70095B21B /* HeaderView.swift */; };
 		A63391FD2C4FA00E0095B21B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391FC2C4FA00E0095B21B /* TabBarController.swift */; };
-		A63391FF2C4FA5430095B21B /* GymTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391FE2C4FA5430095B21B /* GymTabBar.swift */; };
+		A63391FF2C4FA5430095B21B /* GymTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391FE2C4FA5430095B21B /* GymTabBarView.swift */; };
 		A64809082C4A793D0086D7A7 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64809072C4A793D0086D7A7 /* CreateUserViewController.swift */; };
 		A64C8CC12C490CA800AF9508 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC02C490CA800AF9508 /* UserDetailViewController.swift */; };
 		A64C8CC32C490CE600AF9508 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC22C490CE600AF9508 /* CarouselView.swift */; };
@@ -23,6 +21,11 @@
 		A6794E102C47ECE200080A38 /* Extenstion+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */; };
 		A67AEE032C4A41ED008C9610 /* FilterBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67AEE022C4A41ED008C9610 /* FilterBottomSheetViewController.swift */; };
 		A694B41F2C4CBEC600B2311F /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694B41E2C4CBEC600B2311F /* PlaceholderTextView.swift */; };
+		A69693D22C4FC50300980EA7 /* GymTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69693D12C4FC50300980EA7 /* GymTabBarController.swift */; };
+		A69693D42C4FC78A00980EA7 /* GymTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69693D32C4FC78A00980EA7 /* GymTabBarItemView.swift */; };
+		A69693D82C4FE1BB00980EA7 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = A69693D72C4FE1BB00980EA7 /* DGCharts */; };
+		A69693DA2C4FE2B900980EA7 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A69693D92C4FE2B900980EA7 /* DGChartsDynamic */; };
+		A69693DB2C4FE36500980EA7 /* DGChartsDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = A69693D92C4FE2B900980EA7 /* DGChartsDynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		A6969A282C46DEB5001EFAA4 /* GymModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A272C46DEB5001EFAA4 /* GymModel.swift */; };
 		A6969A2A2C46E0DF001EFAA4 /* GymRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A292C46E0DF001EFAA4 /* GymRouter.swift */; };
 		A6969A2C2C46E0F3001EFAA4 /* GymInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A2B2C46E0F3001EFAA4 /* GymInteractor.swift */; };
@@ -71,13 +74,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A69693D62C4FDBFD00980EA7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A69693DB2C4FE36500980EA7 /* DGChartsDynamic in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A60DCA912C4ED37E00F8A4C2 /* GymBreakupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymBreakupView.swift; sourceTree = "<group>"; };
 		A62D2BA42C4B8D5B0066E2ED /* GymProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymProfileViewController.swift; sourceTree = "<group>"; };
 		A63391F62C4F92AF0095B21B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A63391F92C4F94A70095B21B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		A63391FC2C4FA00E0095B21B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		A63391FE2C4FA5430095B21B /* GymTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymTabBar.swift; sourceTree = "<group>"; };
+		A63391FE2C4FA5430095B21B /* GymTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymTabBarView.swift; sourceTree = "<group>"; };
 		A64809072C4A793D0086D7A7 /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		A64C8CC02C490CA800AF9508 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		A64C8CC22C490CE600AF9508 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
@@ -86,6 +103,8 @@
 		A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extenstion+ViewController.swift"; sourceTree = "<group>"; };
 		A67AEE022C4A41ED008C9610 /* FilterBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottomSheetViewController.swift; sourceTree = "<group>"; };
 		A694B41E2C4CBEC600B2311F /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
+		A69693D12C4FC50300980EA7 /* GymTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymTabBarController.swift; sourceTree = "<group>"; };
+		A69693D32C4FC78A00980EA7 /* GymTabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymTabBarItemView.swift; sourceTree = "<group>"; };
 		A6969A272C46DEB5001EFAA4 /* GymModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymModel.swift; sourceTree = "<group>"; };
 		A6969A292C46E0DF001EFAA4 /* GymRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymRouter.swift; sourceTree = "<group>"; };
 		A6969A2B2C46E0F3001EFAA4 /* GymInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymInteractor.swift; sourceTree = "<group>"; };
@@ -126,8 +145,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A60DCA902C4ECD5000F8A4C2 /* DGChartsDynamic in Frameworks */,
-				A60DCA8E2C4ECD5000F8A4C2 /* DGCharts in Frameworks */,
+				A69693DA2C4FE2B900980EA7 /* DGChartsDynamic in Frameworks */,
+				A69693D82C4FE1BB00980EA7 /* DGCharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +195,9 @@
 			isa = PBXGroup;
 			children = (
 				A63391FC2C4FA00E0095B21B /* TabBarController.swift */,
-				A63391FE2C4FA5430095B21B /* GymTabBar.swift */,
+				A63391FE2C4FA5430095B21B /* GymTabBarView.swift */,
+				A69693D32C4FC78A00980EA7 /* GymTabBarItemView.swift */,
+				A69693D12C4FC50300980EA7 /* GymTabBarController.swift */,
 			);
 			path = TabBarController;
 			sourceTree = "<group>";
@@ -339,6 +360,7 @@
 				A6F514332C464D1A002053CA /* Sources */,
 				A6F514342C464D1A002053CA /* Frameworks */,
 				A6F514352C464D1A002053CA /* Resources */,
+				A69693D62C4FDBFD00980EA7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -346,8 +368,8 @@
 			);
 			name = RemindPay;
 			packageProductDependencies = (
-				A60DCA8D2C4ECD5000F8A4C2 /* DGCharts */,
-				A60DCA8F2C4ECD5000F8A4C2 /* DGChartsDynamic */,
+				A69693D72C4FE1BB00980EA7 /* DGCharts */,
+				A69693D92C4FE2B900980EA7 /* DGChartsDynamic */,
 			);
 			productName = RemindPay;
 			productReference = A6F514372C464D1A002053CA /* RemindPay.app */;
@@ -484,7 +506,9 @@
 				A6F5143B2C464D1A002053CA /* AppDelegate.swift in Sources */,
 				A62D2BA52C4B8D5B0066E2ED /* GymProfileViewController.swift in Sources */,
 				A6F5143D2C464D1A002053CA /* SceneDelegate.swift in Sources */,
+				A69693D22C4FC50300980EA7 /* GymTabBarController.swift in Sources */,
 				A64809082C4A793D0086D7A7 /* CreateUserViewController.swift in Sources */,
+				A69693D42C4FC78A00980EA7 /* GymTabBarItemView.swift in Sources */,
 				A6969A302C46E119001EFAA4 /* GymWorker.swift in Sources */,
 				A63391FA2C4F94A70095B21B /* HeaderView.swift in Sources */,
 				A6F514702C4653B3002053CA /* Utility+View.swift in Sources */,
@@ -496,7 +520,7 @@
 				A6F514452C464D1A002053CA /* RemindPay.xcdatamodeld in Sources */,
 				A6969A2E2C46E108001EFAA4 /* GymPresenter.swift in Sources */,
 				A64C8CC32C490CE600AF9508 /* CarouselView.swift in Sources */,
-				A63391FF2C4FA5430095B21B /* GymTabBar.swift in Sources */,
+				A63391FF2C4FA5430095B21B /* GymTabBarView.swift in Sources */,
 				A6D84DEB2C4E80D1002137BE /* DashboardViewController.swift in Sources */,
 				A6969A282C46DEB5001EFAA4 /* GymModel.swift in Sources */,
 				A6F5146E2C46524A002053CA /* GymCardView.swift in Sources */,
@@ -680,6 +704,8 @@
 				DEVELOPMENT_TEAM = 8Y63TWT68W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RemindPay/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Gym Pay";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -707,6 +733,8 @@
 				DEVELOPMENT_TEAM = 8Y63TWT68W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RemindPay/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Gym Pay";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -847,18 +875,18 @@
 			repositoryURL = "https://github.com/ChartsOrg/Charts";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A60DCA8D2C4ECD5000F8A4C2 /* DGCharts */ = {
+		A69693D72C4FE1BB00980EA7 /* DGCharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A60DCA8C2C4ECD5000F8A4C2 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = DGCharts;
 		};
-		A60DCA8F2C4ECD5000F8A4C2 /* DGChartsDynamic */ = {
+		A69693D92C4FE2B900980EA7 /* DGChartsDynamic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A60DCA8C2C4ECD5000F8A4C2 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = DGChartsDynamic;

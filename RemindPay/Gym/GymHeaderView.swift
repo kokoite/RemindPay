@@ -22,8 +22,7 @@ final class GymHeaderView: UIView {
     private var imageView: UIView!
     private var titleView: UILabel!
     private var searchView: SearchView!
-    var delegate: GymHeaderDelegate?
-
+    weak var delegate: GymHeaderDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)

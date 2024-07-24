@@ -13,10 +13,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
-        let rootViewController = UINavigationController(rootViewController: TabBarController())
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        appearance.shadowColor = .white
+        let rootViewController = UINavigationController(rootViewController: GymTabBarController())
+        rootViewController.navigationBar.standardAppearance = appearance
+        rootViewController.navigationBar.scrollEdgeAppearance = appearance
+        rootViewController.navigationBar.compactScrollEdgeAppearance = appearance
+        rootViewController.navigationBar.tintColor = .black
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
         self.window = window

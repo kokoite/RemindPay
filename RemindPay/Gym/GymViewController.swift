@@ -18,9 +18,6 @@ final class GymViewController: UIViewController, GymDisplayLogic {
     private var interactor: GymInteractor?
     private var router: GymRouter?
     private var presenter: GymPresenter?
-    private var userCollectionTopConstraint: NSLayoutConstraint?
-    private var userCollectionSuperTopConstraint: NSLayoutConstraint?
-    private var headerHeightConstraint: NSLayoutConstraint?
     private var shouldUpdateInset = true
 
 
@@ -39,6 +36,7 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         setup()
     }
 
+
     @objc func createUserClicked() {
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.createUserButton.tintColor = .gray
@@ -46,6 +44,34 @@ final class GymViewController: UIViewController, GymDisplayLogic {
             self?.router?.routeToCreateUserPage()
             self?.createUserButton.tintColor = .black
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        router?.viewController = self
+        presenter?.viewController = self
+        setupNavBar()
+        print("view controller will appear")
+    }
+
+    private func setupNavBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemPink
+        appearance.shadowColor = .systemPink
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.tintColor = .white
+
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        router?.viewController = nil
+        presenter?.viewController = nil
+        print("view controller will disappear")
     }
 
     // MARK :- Private functions
@@ -134,11 +160,18 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         let gesture = UITapGestureRecognizer(target: self, action: #selector((createUserClicked)))
         image.addGestureRecognizer(gesture)
     }
+
+
+    deinit {
+        interactor = nil
+        router = nil
+        presenter = nil
+        print("deinit called \(self)")
+    }
 }
 
 
 extension GymViewController: UICollectionViewDelegate {
-
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         router?.routeToGymUserDetailPage()
