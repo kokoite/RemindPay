@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene)
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .white
+        appearance.backgroundColor = .cardBackground
         appearance.shadowColor = .white
         let rootViewController = UINavigationController(rootViewController: GymTabBarController())
         rootViewController.navigationBar.standardAppearance = appearance

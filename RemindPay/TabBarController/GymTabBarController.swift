@@ -70,12 +70,12 @@ final class GymTabBarController: UIViewController {
     private func setupTabBarView() {
         let container = GymTabBarView()
         container.layer.shadowColor = UIColor.black.cgColor
-        container.layer.shadowOffset = .init(width: view.bounds.width, height: 100)
+        container.layer.shadowOffset = .init(width: 4, height: 4)
         container.layer.shadowOpacity = 1
         container.layer.shadowRadius = 20
         tabBar = container
         container.delegate = self
-        container.backgroundColor = .green
+        container.backgroundColor = .white
         view.addSubview(container)
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: view.leadingAnchor)
