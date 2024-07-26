@@ -23,9 +23,6 @@
 		A694B41F2C4CBEC600B2311F /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694B41E2C4CBEC600B2311F /* PlaceholderTextView.swift */; };
 		A69693D22C4FC50300980EA7 /* GymTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69693D12C4FC50300980EA7 /* GymTabBarController.swift */; };
 		A69693D42C4FC78A00980EA7 /* GymTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69693D32C4FC78A00980EA7 /* GymTabBarItemView.swift */; };
-		A69693D82C4FE1BB00980EA7 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = A69693D72C4FE1BB00980EA7 /* DGCharts */; };
-		A69693DA2C4FE2B900980EA7 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A69693D92C4FE2B900980EA7 /* DGChartsDynamic */; };
-		A69693DB2C4FE36500980EA7 /* DGChartsDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = A69693D92C4FE2B900980EA7 /* DGChartsDynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		A6969A282C46DEB5001EFAA4 /* GymModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A272C46DEB5001EFAA4 /* GymModel.swift */; };
 		A6969A2A2C46E0DF001EFAA4 /* GymRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A292C46E0DF001EFAA4 /* GymRouter.swift */; };
 		A6969A2C2C46E0F3001EFAA4 /* GymInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6969A2B2C46E0F3001EFAA4 /* GymInteractor.swift */; };
@@ -35,6 +32,11 @@
 		A6983EB82C4799E300AA71FE /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6983EB72C4799E300AA71FE /* ErrorPresenter.swift */; };
 		A6983EBA2C479ED500AA71FE /* ErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6983EB92C479ED500AA71FE /* ErrorViewModel.swift */; };
 		A6983EBC2C47A77500AA71FE /* ErrorBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6983EBB2C47A77500AA71FE /* ErrorBottomSheetViewController.swift */; };
+		A6C7634C2C5384F90086AD51 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C7634B2C5384F90086AD51 /* SearchViewController.swift */; };
+		A6C7634F2C5388290086AD51 /* DotLottie in Frameworks */ = {isa = PBXBuildFile; productRef = A6C7634E2C5388290086AD51 /* DotLottie */; };
+		A6C763542C5391F60086AD51 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C763532C5391F60086AD51 /* BarChart.swift */; };
+		A6C763B42C53CC540086AD51 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C763B32C53CC540086AD51 /* PieChart.swift */; };
+		A6C763B62C53E6250086AD51 /* DashboardViewController + Gym.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C763B52C53E6250086AD51 /* DashboardViewController + Gym.swift */; };
 		A6D84DE42C4E30A2002137BE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D84DE32C4E30A2002137BE /* ProfileViewController.swift */; };
 		A6D84DE62C4E46D2002137BE /* PendingActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D84DE52C4E46D2002137BE /* PendingActionTableViewCell.swift */; };
 		A6D84DE82C4E55B1002137BE /* MembershipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D84DE72C4E55B1002137BE /* MembershipCollectionViewCell.swift */; };
@@ -81,7 +83,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A69693DB2C4FE36500980EA7 /* DGChartsDynamic in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +115,10 @@
 		A6983EB72C4799E300AA71FE /* ErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPresenter.swift; sourceTree = "<group>"; };
 		A6983EB92C479ED500AA71FE /* ErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewModel.swift; sourceTree = "<group>"; };
 		A6983EBB2C47A77500AA71FE /* ErrorBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBottomSheetViewController.swift; sourceTree = "<group>"; };
+		A6C7634B2C5384F90086AD51 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A6C763532C5391F60086AD51 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
+		A6C763B32C53CC540086AD51 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		A6C763B52C53E6250086AD51 /* DashboardViewController + Gym.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController + Gym.swift"; sourceTree = "<group>"; };
 		A6D84DE32C4E30A2002137BE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A6D84DE52C4E46D2002137BE /* PendingActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingActionTableViewCell.swift; sourceTree = "<group>"; };
 		A6D84DE72C4E55B1002137BE /* MembershipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -145,8 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69693DA2C4FE2B900980EA7 /* DGChartsDynamic in Frameworks */,
-				A69693D82C4FE1BB00980EA7 /* DGCharts in Frameworks */,
+				A6C7634F2C5388290086AD51 /* DotLottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +240,22 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		A6C7634A2C5384DD0086AD51 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A6C7634B2C5384F90086AD51 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		A6C763502C5391440086AD51 /* Gym */ = {
+			isa = PBXGroup;
+			children = (
+				A60DCA912C4ED37E00F8A4C2 /* GymBreakupView.swift */,
+			);
+			path = Gym;
+			sourceTree = "<group>";
+		};
 		A6D84DE22C4E3068002137BE /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,9 +269,12 @@
 		A6D84DE92C4E80AE002137BE /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				A6C763502C5391440086AD51 /* Gym */,
 				A6D84DEA2C4E80D1002137BE /* DashboardViewController.swift */,
-				A60DCA912C4ED37E00F8A4C2 /* GymBreakupView.swift */,
+				A6C763B52C53E6250086AD51 /* DashboardViewController + Gym.swift */,
 				A6D84DEC2C4E8639002137BE /* DashboardHeaderView.swift */,
+				A6C763532C5391F60086AD51 /* BarChart.swift */,
+				A6C763B32C53CC540086AD51 /* PieChart.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -279,6 +302,7 @@
 		A6F514392C464D1A002053CA /* RemindPay */ = {
 			isa = PBXGroup;
 			children = (
+				A6C7634A2C5384DD0086AD51 /* Search */,
 				A63391FB2C4F9FE80095B21B /* TabBarController */,
 				A63391F82C4F94970095B21B /* Header */,
 				A63391F52C4F92A40095B21B /* Home */,
@@ -368,8 +392,7 @@
 			);
 			name = RemindPay;
 			packageProductDependencies = (
-				A69693D72C4FE1BB00980EA7 /* DGCharts */,
-				A69693D92C4FE2B900980EA7 /* DGChartsDynamic */,
+				A6C7634E2C5388290086AD51 /* DotLottie */,
 			);
 			productName = RemindPay;
 			productReference = A6F514372C464D1A002053CA /* RemindPay.app */;
@@ -445,6 +468,7 @@
 			mainGroup = A6F5142E2C464D1A002053CA;
 			packageReferences = (
 				A60DCA8C2C4ECD5000F8A4C2 /* XCRemoteSwiftPackageReference "Charts" */,
+				A6C7634D2C5388290086AD51 /* XCRemoteSwiftPackageReference "dotlottie-ios" */,
 			);
 			productRefGroup = A6F514382C464D1A002053CA /* Products */;
 			projectDirPath = "";
@@ -492,13 +516,16 @@
 				A6D84DED2C4E8639002137BE /* DashboardHeaderView.swift in Sources */,
 				A6983EB62C47996900AA71FE /* ErrorModel.swift in Sources */,
 				A6794E102C47ECE200080A38 /* Extenstion+ViewController.swift in Sources */,
+				A6C763542C5391F60086AD51 /* BarChart.swift in Sources */,
 				A6983EBC2C47A77500AA71FE /* ErrorBottomSheetViewController.swift in Sources */,
+				A6C763B42C53CC540086AD51 /* PieChart.swift in Sources */,
 				A60DCA922C4ED37E00F8A4C2 /* GymBreakupView.swift in Sources */,
 				A63391F72C4F92AF0095B21B /* HomeViewController.swift in Sources */,
 				A694B41F2C4CBEC600B2311F /* PlaceholderTextView.swift in Sources */,
 				A67AEE032C4A41ED008C9610 /* FilterBottomSheetViewController.swift in Sources */,
 				A6983EB82C4799E300AA71FE /* ErrorPresenter.swift in Sources */,
 				A6D84DE82C4E55B1002137BE /* MembershipCollectionViewCell.swift in Sources */,
+				A6C7634C2C5384F90086AD51 /* SearchViewController.swift in Sources */,
 				A6794E0E2C47EB4A00080A38 /* BottomSheetPresenter.swift in Sources */,
 				A6969A2A2C46E0DF001EFAA4 /* GymRouter.swift in Sources */,
 				A6F5143F2C464D1A002053CA /* ViewController.swift in Sources */,
@@ -521,6 +548,7 @@
 				A6969A2E2C46E108001EFAA4 /* GymPresenter.swift in Sources */,
 				A64C8CC32C490CE600AF9508 /* CarouselView.swift in Sources */,
 				A63391FF2C4FA5430095B21B /* GymTabBarView.swift in Sources */,
+				A6C763B62C53E6250086AD51 /* DashboardViewController + Gym.swift in Sources */,
 				A6D84DEB2C4E80D1002137BE /* DashboardViewController.swift in Sources */,
 				A6969A282C46DEB5001EFAA4 /* GymModel.swift in Sources */,
 				A6F5146E2C46524A002053CA /* GymCardView.swift in Sources */,
@@ -878,18 +906,21 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		A6C7634D2C5388290086AD51 /* XCRemoteSwiftPackageReference "dotlottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LottieFiles/dotlottie-ios";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A69693D72C4FE1BB00980EA7 /* DGCharts */ = {
+		A6C7634E2C5388290086AD51 /* DotLottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A60DCA8C2C4ECD5000F8A4C2 /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGCharts;
-		};
-		A69693D92C4FE2B900980EA7 /* DGChartsDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A60DCA8C2C4ECD5000F8A4C2 /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGChartsDynamic;
+			package = A6C7634D2C5388290086AD51 /* XCRemoteSwiftPackageReference "dotlottie-ios" */;
+			productName = DotLottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 

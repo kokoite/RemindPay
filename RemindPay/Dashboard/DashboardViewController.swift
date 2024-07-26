@@ -6,13 +6,14 @@
 //
 
 import UIKit
-import DGCharts
+import SwiftUI
 
 final class DashboardViewController: UIViewController {
     private var containerScrollView: UIScrollView!
-    private var containerView: UIView!
+    fileprivate var containerView: UIView!
     private var header: HeaderView!
     private var monthContainer, yearlyContainer, totalContainer: UIStackView!
+    fileprivate var dashboardContainer, gymContainer, gymMonthlyContainer, gymYearlyContainer, gymTotalContainer: UIStackView!
 
     private var monthContainerHeaderLabel, yearContainerHeaderLabel, totalContainerHeaderLabel: UILabel!
 
@@ -22,30 +23,34 @@ final class DashboardViewController: UIViewController {
     }
 
     private func setup() {
-        view.backgroundColor = .white
+        view.backgroundColor = .cardBackground
         setupScrollView()
         setupContainer()
         setupHeader()
-        // monthly container
-        setupMonthlyContainer()
-        setupMonthContainerHeader()
-        setupMonthChartContainer()
-        setupMonthlyGymBreakup()
+        setupDashboardContainer()
+
+
+        // gym
+        setupGymContainer()
+        setupGymMonthlyContainer()
+        setupGymMonthlyTitle()
+        setupGymMonthlyChartView()
+        setupGymMonthlyBreakup()
+
+        setupGymYearlyView()
+        setupGymYearlyTitle()
+        setupGymYearlyChartView()
+        setupGymYearlyBreakupView()
+
+
+        // yearly
+        setupGymTotalContainer()
+        setupGymTotalTitle()
+        setupGymTotalChartView()
+        setupGymTotalBreakupView()
 
 
 
-        // yearly container
-        setupYearlyContainer()
-        setupYearContainerHeader()
-        setupYearChartContainer()
-        setupYearlyGymBreakup()
-
-
-        // total container
-        setupTotalContainer()
-        setupTotalContainerHeader()
-        setupTotalChartContainer()
-        setupTotalGymBreakup()
     }
 
     private func setupScrollView() {
@@ -86,144 +91,144 @@ final class DashboardViewController: UIViewController {
         NSLayoutConstraint.activate([leading, top, trailng, height])
     }
 
-    // Monthly container
-    private func setupMonthlyContainer() {
+    private func setupDashboardContainer() {
         let container = UIStackView()
         container.axis = .vertical
-        container.isLayoutMarginsRelativeArrangement = true
-        container.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        container.backgroundColor = .white
-        container.layer.cornerRadius = 20
-        container.clipsToBounds = true
-        monthContainer = container
+        dashboardContainer = container
         containerView.addSubview(container)
+        container.backgroundColor = .cardBackground
+        container.isLayoutMarginsRelativeArrangement = true
+        container.layoutMargins = .init(top: 0, left: 20, bottom: 0, right: 20)
+        container.layer.cornerRadius = 12
+        container.clipsToBounds = true
         container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
-        let trailng = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
-        let top = container.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 40)
-        NSLayoutConstraint.activate([leading, top, trailng])
+        let top = container.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20)
+        let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
+        let trailng = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        NSLayoutConstraint.activate([top, leading, trailng])
     }
+}
 
-    private func setupMonthContainerHeader() {
-        let label = UILabel()
-        monthContainerHeaderLabel = label
-        label.text = "Monthly revenue"
-        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        label.textColor = .lightGray
-        monthContainer.addArrangedSubview(label)
-    }
+// Gym View
+extension DashboardViewController {
 
-    private func setupMonthChartContainer() {
-
-        let chartView = PieChartView()
-        chartView.rotationEnabled = false
-        chartView.backgroundColor = .white
-        let entries = [PieChartDataEntry(value: 1000, label: "Plan renewed"), PieChartDataEntry(value: 2000, label: "New joiners")]
-        let dataset = PieChartDataSet(entries: entries)
-        dataset.colors = [.systemBlue, .systemPink]
-        dataset.highlightColor = .black
-        dataset.entryLabelFont = UIFont.systemFont(ofSize: 16, weight: .bold)
-        dataset.entryLabelColor = UIColor.black.withAlphaComponent(0.8)
-        dataset.sliceSpace = 8
-        dataset.xValuePosition = .insideSlice
-        let data = PieChartData(dataSet: dataset)
-        chartView.data = data
-        let centerTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .bold), .foregroundColor: UIColor.black]
-        let centerText = "Monthly revenue"
-        chartView.centerAttributedText = NSAttributedString(string: centerText, attributes: centerTextAttributes)
-        chartView.legend.enabled = false
-        monthContainer.addArrangedSubview(chartView)
-        chartView.setTranslatesMask()
-        let height = chartView.heightAnchor.constraint(equalToConstant: 250)
-
-        NSLayoutConstraint.activate([height])
-    }
-
-    private func setupMonthlyGymBreakup() {
-        let gymView = GymBreakupView()
-        monthContainer.addArrangedSubview(gymView)
-        gymView.setTranslatesMask()
-        let height = gymView.heightAnchor.constraint(equalToConstant: 180)
-        NSLayoutConstraint.activate([height])
-    }
-
-    // Yearly Container
-    private func setupYearlyContainer() {
+    fileprivate func setupGymContainer() {
         let container = UIStackView()
+        gymContainer = container
         container.axis = .vertical
-        container.isLayoutMarginsRelativeArrangement = true
-        container.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        container.backgroundColor = .white
-        container.layer.cornerRadius = 20
+        container.spacing = 40
         container.clipsToBounds = true
-        yearlyContainer = container
-        containerView.addSubview(container)
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
-        let trailng = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
-        let top = container.topAnchor.constraint(equalTo: monthContainer.bottomAnchor, constant: 40)
-        let bottom = container.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor, constant: -20)
-        NSLayoutConstraint.activate([leading, top, trailng, bottom])
+        container.layer.cornerRadius = 12
+        container.backgroundColor = .cardBackground
+        dashboardContainer.addArrangedSubview(container)
     }
 
-    private func setupYearContainerHeader() {
+    fileprivate func setupGymMonthlyContainer() {
+        let container = UIStackView()
+        gymMonthlyContainer = container
+        container.backgroundColor = .white
+        gymContainer.addArrangedSubview(container)
+        container.axis = .vertical
+        container.spacing = 20
+        container.layer.cornerRadius = 12
+        container.clipsToBounds = true
+        container.isLayoutMarginsRelativeArrangement = true
+        container.layoutMargins = .init(top: 12, left: 12, bottom: 12, right: 12)
+    }
+
+    fileprivate func setupGymMonthlyTitle() {
         let label = UILabel()
-        yearContainerHeaderLabel = label
-        label.text = "Yearly revenue"
+        label.text = "Gym monthly revenue"
         label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        label.textColor = .lightGray
-        yearlyContainer.addArrangedSubview(label)
+        label.textColor = .gray
+        gymMonthlyContainer.addArrangedSubview(label)
     }
 
-    private func setupYearChartContainer() {
+    fileprivate func setupGymMonthlyChartView() {
+        let chart = PieChart()
+        let controller = UIHostingController(rootView: chart)
+        addChild(controller)
+        controller.view.setTranslatesMask()
+        gymMonthlyContainer.addArrangedSubview(controller.view)
+        controller.didMove(toParent: self)
+    }
 
-        let chartView = PieChartView()
-        chartView.rotationEnabled = false
-        chartView.backgroundColor = .white
-        let entries = [PieChartDataEntry(value: 1000, label: "Plan renewed"), PieChartDataEntry(value: 2000, label: "New joiners")]
-        let dataset = PieChartDataSet(entries: entries)
-        dataset.colors = [.systemBlue, .systemCyan]
-        dataset.highlightColor = .black
-        dataset.entryLabelFont = UIFont.systemFont(ofSize: 16, weight: .bold)
-        dataset.entryLabelColor = UIColor.black.withAlphaComponent(0.8)
-        dataset.sliceSpace = 8
-        dataset.xValuePosition = .insideSlice
-        let data = PieChartData(dataSet: dataset)
-        chartView.data = data
-        let centerTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .bold), .foregroundColor: UIColor.black]
-        let centerText = "Monthly revenue"
-        chartView.centerAttributedText = NSAttributedString(string: centerText, attributes: centerTextAttributes)
-        chartView.legend.enabled = false
-        yearlyContainer.addArrangedSubview(chartView)
-        chartView.setTranslatesMask()
-        let height = chartView.heightAnchor.constraint(equalToConstant: 250)
+    fileprivate func setupGymMonthlyBreakup() {
+        let container = GymBreakupView()
+        gymMonthlyContainer.addArrangedSubview(container)
+        container.setTranslatesMask()
+        container.bottomAnchor.constraint(equalTo: gymMonthlyContainer.bottomAnchor, constant: -12).isActive = true
+    }
 
-        NSLayoutConstraint.activate([height])
+    fileprivate func setupGymYearlyView() {
+        let container = UIStackView()
+        gymYearlyContainer = container
+        container.backgroundColor = .white
+        container.axis = .vertical
+        container.spacing = 12
+        container.layer.cornerRadius = 12
+        container.clipsToBounds = true
+        container.isLayoutMarginsRelativeArrangement = true
+        container.layoutMargins = .init(top: 12, left: 12, bottom: 12, right: 12)
+        gymContainer.addArrangedSubview(container)
+    }
+
+    fileprivate func setupGymYearlyTitle() {
+        let label = UILabel()
+        label.text = "Gym yearly revenue"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.textColor = .gray
+        gymYearlyContainer.addArrangedSubview(label)
+    }
+
+    fileprivate func setupGymYearlyChartView() {
+        let barChart = BarChart()
+        let controller = UIHostingController(rootView: barChart)
+        addChild(controller)
+        controller.didMove(toParent: self)
+        gymYearlyContainer.addArrangedSubview(controller.view)
+    }
+
+    fileprivate func setupGymYearlyBreakupView() {
+        let container = GymBreakupView()
+        gymYearlyContainer.addArrangedSubview(container)
+        container.setTranslatesMask()
+        container.bottomAnchor.constraint(equalTo: gymYearlyContainer.bottomAnchor, constant: -12).isActive = true
     }
 
 
-    private func setupYearlyGymBreakup() {
-        let gymView = GymBreakupView()
-        yearlyContainer.addArrangedSubview(gymView)
-        gymView.setTranslatesMask()
-        let height = gymView.heightAnchor.constraint(equalToConstant: 180)
-        NSLayoutConstraint.activate([height])
+    fileprivate func setupGymTotalContainer() {
+        let container = UIStackView()
+        container.backgroundColor = .white
+        gymTotalContainer = container
+        gymContainer.addArrangedSubview(container)
+        container.axis = .vertical
+        container.spacing = 20
+        container.isLayoutMarginsRelativeArrangement = true
+        container.layoutMargins = .init(top: 12, left: 12, bottom: 12, right: 12)
     }
 
-
-    // Total 
-    private func setupTotalContainer() {
-
+    fileprivate func setupGymTotalTitle() {
+        let label = UILabel()
+        label.text = "Gym revenue till today"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.textColor = .gray
+        gymTotalContainer.addArrangedSubview(label)
     }
 
-    private func setupTotalContainerHeader() {
-
+    fileprivate func setupGymTotalChartView() {
+        let chart = BarChart()
+        let controller = UIHostingController(rootView: chart)
+        addChild(controller)
+        controller.view.setTranslatesMask()
+        gymTotalContainer.addArrangedSubview(controller.view)
+        controller.didMove(toParent: self)
     }
 
-    private func setupTotalChartContainer() {
-
-    }
-    private func setupTotalGymBreakup() {
-
+    fileprivate func setupGymTotalBreakupView() {
+        let container = GymBreakupView()
+        gymTotalContainer.addArrangedSubview(container)
+        container.setTranslatesMask()
+        container.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20).isActive = true
     }
 }

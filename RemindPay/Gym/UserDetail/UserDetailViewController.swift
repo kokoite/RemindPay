@@ -21,6 +21,12 @@ final class UserDetailViewController: UIViewController {
         setup()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.backButtonTitle = "No back"
+        navigationController?.navigationBar.tintColor = .black
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print(containerView.frame)
@@ -54,7 +60,7 @@ final class UserDetailViewController: UIViewController {
         let container = UIView()
         containerView = container
         containerScrollView.addSubview(container)
-        container.backgroundColor  = .white
+        container.backgroundColor  = .cardBackground
         container.setTranslatesMask()
         container.pinToEdges(in: containerScrollView)
         container.widthAnchor.constraint(equalTo: containerScrollView.widthAnchor).isActive = true
