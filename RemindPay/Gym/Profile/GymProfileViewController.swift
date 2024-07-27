@@ -291,39 +291,11 @@ final class GymProfileViewController: UIViewController {
         NSLayoutConstraint.activate([leading, top, bottom])
     }
 
-    //
-
-    private func getContainer(labelName: String, labelContent: String, isFullLengthSeparator: Bool = true) -> UIStackView {
-        let container = UIStackView()
-        containerView.addSubview(container)
-        container.axis = .vertical
-        container.spacing = 6
-        let label = getLabel(text: labelName)
-        container.addArrangedSubview(label)
-
-        let labelContent = getLabelContent(text: labelContent)
-        container.addArrangedSubview(labelContent)
-
-        let separator = getSeparator(isFullLength: isFullLengthSeparator)
-        container.addArrangedSubview(separator)
-        return container
-    }
-
-
     private func getLabel(text: String) -> UILabel {
         let label = UILabel()
         label.text = text
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        return label
-    }
-
-    private func getLabelContent(text: String) -> UILabel {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.text = text
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return label
     }
 

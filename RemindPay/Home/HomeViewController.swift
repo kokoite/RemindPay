@@ -16,10 +16,10 @@ final class HomeViewController: UIViewController {
     private weak var serviceCollection, subscribedCollection: UICollectionView!
 
     private var membershipData: [MembershipCellData] = [
-        .init(backgroundColor: .systemOrange, imageName: "dumbbell.fill"),
-        .init(backgroundColor: .systemPink, imageName: "house.fill"),
-        .init(backgroundColor: .systemGreen, imageName: "house.fill"),
-        .init(backgroundColor: .systemBlue, imageName: "house.fill"),
+        .init(backgroundColor: .systemOrange, imageName: "house.fill"),
+        .init(backgroundColor: .systemPink, imageName: "cart.fill"),
+        .init(backgroundColor: .systemGreen, imageName: "dumbbell.fill"),
+        .init(backgroundColor: .systemBlue, imageName: "book.fill"),
         .init(backgroundColor: .systemYellow, imageName: "house.fill"),
         .init(backgroundColor: .systemRed, imageName: "house.fill"),
         .init(backgroundColor: .systemOrange, imageName: "dumbbell.fill"),
@@ -28,7 +28,6 @@ final class HomeViewController: UIViewController {
         .init(backgroundColor: .systemBlue, imageName: "house.fill"),
         .init(backgroundColor: .systemYellow, imageName: "house.fill"),
         .init(backgroundColor: .systemRed, imageName: "house.fill"),
-
     ]
 
     override func viewDidLoad() {
@@ -186,7 +185,7 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        4
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

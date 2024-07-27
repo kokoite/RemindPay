@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .cardBackground
         appearance.shadowColor = .white
-        let rootViewController = UINavigationController(rootViewController: GymTabBarController())
+        let rootViewController = UINavigationController(rootViewController: UserDetailViewController())
         rootViewController.navigationBar.standardAppearance = appearance
         rootViewController.navigationBar.scrollEdgeAppearance = appearance
         rootViewController.navigationBar.compactScrollEdgeAppearance = appearance

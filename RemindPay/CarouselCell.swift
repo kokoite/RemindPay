@@ -37,7 +37,7 @@ final class CarouselCell: UICollectionViewCell {
         container.setTranslatesMask()
         container.layer.cornerRadius = 20
         container.clipsToBounds = true
-        container.pinToSafeEdges(in: contentView)
+        container.pinToEdges(in: contentView)
     }
 
     private func setupImageView() {
@@ -47,7 +47,8 @@ final class CarouselCell: UICollectionViewCell {
         image.setTranslatesMask()
         image.pinToEdges(in: containerView)
         image.layer.cornerRadius = 20
-        imageView.image = UIImage(named: "happyFace")
         image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
+        imageView.image = UIImage(named: "happyFace")
     }
 }

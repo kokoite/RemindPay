@@ -22,6 +22,17 @@ final class DashboardViewController: UIViewController {
         setup()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print(containerScrollView.contentOffset)
+        containerScrollView.contentOffset = .zero
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(containerScrollView.contentOffset)
+    }
+
     private func setup() {
         view.backgroundColor = .cardBackground
         setupScrollView()
@@ -48,9 +59,6 @@ final class DashboardViewController: UIViewController {
         setupGymTotalTitle()
         setupGymTotalChartView()
         setupGymTotalBreakupView()
-
-
-
     }
 
     private func setupScrollView() {
@@ -59,7 +67,7 @@ final class DashboardViewController: UIViewController {
         containerScrollView = scrollView
         view.addSubview(scrollView)
         scrollView.setTranslatesMask()
-        let top = scrollView.topAnchor.constraint(equalTo: view.topAnchor)
+        let top = scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         let bottom = scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         let leading = scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         let trailing = scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
@@ -106,6 +114,10 @@ final class DashboardViewController: UIViewController {
         let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
         let trailng = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         NSLayoutConstraint.activate([top, leading, trailng])
+    }
+
+    deinit {
+        print("Dashboard deinit")
     }
 }
 

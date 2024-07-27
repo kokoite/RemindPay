@@ -17,6 +17,7 @@ protocol CarouselViewDelegate: AnyObject {
 final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     private var collectionView: UICollectionView!
     private var containerView: UIView!
+    private var pageControlView: UIPageControl!
     weak var delegate: CarouselViewDelegate?
 
     override init(frame: CGRect) {
@@ -47,7 +48,7 @@ final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return frame.size
+        return .init(width: frame.width, height: frame.height - 24)
     }
 
     func configure() {
@@ -57,12 +58,14 @@ final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDe
     private func setup() {
         setupContainer()
         setupCollectionView()
+        setupPageControlView()
     }
 
 
     private func setupContainer() {
         let container = UIView()
         containerView = container
+        container.backgroundColor = .white
         addSubview(container)
         container.setTranslatesMask()
         container.pinToEdges(in: self)
@@ -81,7 +84,26 @@ final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDe
         collection.setTranslatesMask()
         collection.dataSource = self
         collection.delegate = self
-        collection.pinToEdges(in: containerView)
+        collection.backgroundColor = .white
+        let top = collection.topAnchor.constraint(equalTo: containerView.topAnchor)
+        let leading = collection.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
+        let trailing = collection.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        NSLayoutConstraint.activate([leading, top, trailing])
         collection.register(CarouselCell.self, forCellWithReuseIdentifier: "carouselCell")
+    }
+
+    private func setupPageControlView() {
+        let pageControl = UIPageControl()
+        pageControlView = pageControl
+        containerView.addSubview(pageControl)
+        pageControl.setTranslatesMask()
+        let centerX = pageControl.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor)
+        let top = pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 12)
+        let height = pageControl.heightAnchor.constraint(equalToConstant: 12)
+        let bottom = pageControl.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        NSLayoutConstraint.activate([centerX, top, bottom, height])
+        pageControl.numberOfPages = 10
+        pageControl.currentPageIndicatorTintColor = .systemPink
+        pageControl.pageIndicatorTintColor = .systemGray
     }
 }

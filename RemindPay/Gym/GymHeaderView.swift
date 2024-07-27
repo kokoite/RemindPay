@@ -86,6 +86,7 @@ final class GymHeaderView: UIView {
         titleView = title
         title.text = "Heyy, Pranjal"
         title.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+        title.textColor = .white
         containerView.addSubview(title)
         title.setTranslatesMask()
         let leading = title.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 20)
@@ -104,7 +105,7 @@ final class GymHeaderView: UIView {
         let width = imageView.widthAnchor.constraint(equalToConstant: 40)
         NSLayoutConstraint.activate([leading, centerY, trailing, height, width])
         imageView.clipsToBounds = true
-        imageView.tintColor = .black
+        imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(systemName: "dumbbell")
     }
