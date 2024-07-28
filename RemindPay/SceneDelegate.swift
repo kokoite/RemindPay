@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let coreDataStack = CoreDataStack.instance
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,12 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .cardBackground
-        appearance.shadowColor = .white
-        let rootViewController = UINavigationController(rootViewController: UserDetailViewController())
+        appearance.shadowColor = .cardBackground
+        let rootViewController = UINavigationController(rootViewController: GymTabBarController())
         rootViewController.navigationBar.standardAppearance = appearance
         rootViewController.navigationBar.scrollEdgeAppearance = appearance
         rootViewController.navigationBar.compactScrollEdgeAppearance = appearance
-        rootViewController.navigationBar.tintColor = .black
+        rootViewController.navigationBar.tintColor = .white
+        rootViewController.navigationBar.barTintColor = .white
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
         self.window = window
@@ -46,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        coreDataStack.saveContext()
     }
 }
 

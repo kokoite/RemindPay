@@ -54,6 +54,7 @@ final class HomeViewController: UIViewController {
         scrollView.backgroundColor = .cardBackground
         containerScrollView = scrollView
         view.addSubview(scrollView)
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.setTranslatesMask()
         let top = scrollView.topAnchor.constraint(equalTo: view.topAnchor)
         let bottom = scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -73,7 +74,7 @@ final class HomeViewController: UIViewController {
     }
 
     private func setupHeader() {
-        let header = HeaderView()
+        let header = SimpleHeaderView()
         headerView = header
         header.layer.cornerRadius = 20
         header.clipsToBounds = true
@@ -201,7 +202,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = GymViewController()
-        navigationController?.pushViewController(controller, animated: true)
+        if(collectionView == serviceCollection) {
+            var item =  indexPath.row
+            
+            if(item == 0) {
+                let controller = RentViewController()
+                navigationController?.pushViewController(controller, animated: true)
+            } else if(item == 2) {
+                let controller = GymViewController()
+                navigationController?.pushViewController(controller, animated: true)
+            }
+        }
+
     }
 }

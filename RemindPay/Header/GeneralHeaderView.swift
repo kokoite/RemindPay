@@ -1,12 +1,12 @@
 //
-//  GymHeaderView.swift
+//  SearchHeaderView.swift
 //  RemindPay
 //
 //  Created by Pranjal Agarwal on 16/07/24.
 //
 import UIKit
 
-protocol GymHeaderDelegate: AnyObject {
+protocol GeneralHeaderDelegate: AnyObject {
 
     func didClickProfileImage()
     func didClickOnSearchButton(text: String)
@@ -14,15 +14,13 @@ protocol GymHeaderDelegate: AnyObject {
     func onSearchViewTextChange(text: String)
 }
 
-
-
-final class GymHeaderView: UIView {
+final class GeneralHeaderView: UIView {
 
     private var containerView: UIView!
     private var imageView: UIView!
     private var titleView: UILabel!
     private var searchView: SearchView!
-    weak var delegate: GymHeaderDelegate?
+    weak var delegate: GeneralHeaderDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -124,7 +122,7 @@ final class GymHeaderView: UIView {
     }
 }
 
-extension GymHeaderView: SearchViewDelegate {
+extension GeneralHeaderView: SearchViewDelegate {
 
     func didClickOnSearchIcon(text: String) {
         delegate?.didClickOnSearchButton(text: text)

@@ -1,12 +1,13 @@
 //
-//  DashboardHeaderView.swift
+//  SimpleHeaderView.swift
 //  RemindPay
 //
 //  Created by Pranjal Agarwal on 22/07/24.
 //
 
 import UIKit
-final class HeaderView: UIView {
+
+final class SimpleHeaderView: UIView {
 
     private var containerView: UIView!
     private var imageView: UIImageView!

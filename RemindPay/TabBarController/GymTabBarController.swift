@@ -42,12 +42,12 @@ final class GymTabBarController: UIViewController {
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        children.first?.preferredStatusBarStyle ?? .lightContent
+        .lightContent
     }
-
-    override var childForStatusBarStyle: UIViewController? {
-        children.first
-    }
+//
+//    override var childForStatusBarStyle: UIViewController? {
+//        children.first
+//    }
 
     private func setup() {
         setupTabBarView()

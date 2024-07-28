@@ -12,7 +12,7 @@ protocol GymDisplayLogic: AnyObject {
 
 final class GymViewController: UIViewController, GymDisplayLogic {
     private var userCollectionView: UICollectionView!
-    private var headerView: GymHeaderView!
+    private var headerView: GeneralHeaderView!
     private var createUserButton: UIImageView!
     private var containerView: UIView!
     private var interactor: GymInteractor?
@@ -61,10 +61,8 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         appearance.shadowColor = .systemPink
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.tintColor = .white
-
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,7 +96,7 @@ final class GymViewController: UIViewController, GymDisplayLogic {
     }
 
     private func setupHeader() {
-        let header = GymHeaderView()
+        let header = GeneralHeaderView()
         header.delegate = self
         containerView.addSubview(header)
         header.setTranslatesMask()
@@ -198,7 +196,7 @@ extension GymViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension GymViewController: GymHeaderDelegate {
+extension GymViewController: GeneralHeaderDelegate {
 
     func didClickProfileImage() {
         router?.routeToProfilePage()

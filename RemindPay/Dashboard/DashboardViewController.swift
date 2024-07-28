@@ -11,7 +11,7 @@ import SwiftUI
 final class DashboardViewController: UIViewController {
     private var containerScrollView: UIScrollView!
     fileprivate var containerView: UIView!
-    private var header: HeaderView!
+    private var header: SimpleHeaderView!
     private var monthContainer, yearlyContainer, totalContainer: UIStackView!
     fileprivate var dashboardContainer, gymContainer, gymMonthlyContainer, gymYearlyContainer, gymTotalContainer: UIStackView!
 
@@ -20,6 +20,10 @@ final class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -31,6 +35,7 @@ final class DashboardViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print(containerScrollView.contentOffset)
+        navigationController?.navigationBar.barTintColor = .white
     }
 
     private func setup() {
@@ -86,7 +91,7 @@ final class DashboardViewController: UIViewController {
 
     // Header
     private func setupHeader() {
-        let header = HeaderView()
+        let header = SimpleHeaderView()
         self.header = header
         header.layer.cornerRadius = 20
         header.clipsToBounds = true

@@ -1,4 +1,11 @@
 //
+//  TenantDetailViewController.swift
+//  RemindPay
+//
+//  Created by Pranjal Agarwal on 28/07/24.
+//
+
+//
 //  UserDetailViewController.swift
 //  RemindPay
 //
@@ -8,7 +15,7 @@
 import UIKit
 import SwiftUI
 
-final class UserDetailViewController: UIViewController {
+final class TenantDetailViewController: UIViewController {
 
     fileprivate var containerScrollView: UIScrollView!
     fileprivate var carouselView: CarouselView!
@@ -38,7 +45,7 @@ final class UserDetailViewController: UIViewController {
     }
 
     @objc func editButtonClicked() {
-        print("Edit button clicked \(self)")
+        print("Edit button clicked")
     }
 
     private func setup() {
@@ -48,17 +55,14 @@ final class UserDetailViewController: UIViewController {
         setupCarousel()
         setupUserDetailContainer()
         setupUserDetails()
-
-        setupUserChartContainer()
-        setupWeightChart()
-        setupHeightChart()
-
         setupEditButton()
     }
 
     private func setupScrollContainer() {
         let container = UIScrollView()
         container.backgroundColor = .cardBackground
+        container.layer.cornerRadius = 20
+        container.clipsToBounds = true
         containerScrollView = container
         view.addSubview(container)
         container.setTranslatesMask()
@@ -70,6 +74,8 @@ final class UserDetailViewController: UIViewController {
     private func setupContainer() {
         let container = UIView()
         containerView = container
+        container.layer.cornerRadius = 20
+        container.clipsToBounds = true
         containerScrollView.addSubview(container)
         container.backgroundColor  = .cardBackground
         container.setTranslatesMask()
@@ -105,41 +111,6 @@ final class UserDetailViewController: UIViewController {
         NSLayoutConstraint.activate([centerX, top, height, width, bottom])
     }
 
-    private func setupUserChartContainer() {
-        let container = UIStackView()
-        container.backgroundColor = .white
-        container.axis = .vertical
-        container.spacing = 40
-        container.isLayoutMarginsRelativeArrangement = true
-        container.layoutMargins = .init(top: 0, left: 12, bottom: 20, right: 12)
-        chartContainer = container
-        containerView.addSubview(container)
-        container.clipsToBounds = true
-        container.layer.cornerRadius = 20
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
-        let trailing = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
-        let top = container.topAnchor.constraint(equalTo: userDetailContainerView.bottomAnchor, constant: 40)
-        let bottom = container.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20)
-        NSLayoutConstraint.activate([leading, trailing, top, bottom])
-    }
-
-    private func setupWeightChart() {
-        let chart = LineChart()
-        let controller = UIHostingController(rootView: chart)
-        addChild(controller)
-        controller.didMove(toParent: self)
-        chartContainer.addArrangedSubview(controller.view)
-    }
-
-    private func setupHeightChart() {
-        let chart = LineChart()
-        let controller = UIHostingController(rootView: chart)
-        addChild(controller)
-        controller.didMove(toParent: self)
-        chartContainer.addArrangedSubview(controller.view)
-    }
-
     private func setupEditButton() {
         var config = UIButton.Configuration.filled()
         config.cornerStyle = .capsule
@@ -160,24 +131,24 @@ final class UserDetailViewController: UIViewController {
         let bottom = button.bottomAnchor.constraint(equalTo: containerScrollView.safeAreaLayoutGuide.bottomAnchor, constant: -40)
         NSLayoutConstraint.activate([height, width, trailng, bottom])
     }
+
 }
 
-extension UserDetailViewController: CarouselViewDelegate {
+extension TenantDetailViewController: CarouselViewDelegate {
     func didSelectItemAtIndexPath(indexPath: IndexPath) {
         print("item selected at index path \(indexPath)")
     }
-    
+
     func didScrollToItemAtIndexPath(indexPath: IndexPath) {
     }
-    
+
     func numberOfItemsInCarousel() -> Int {
         return 10
     }
 }
 
-
-// User Detail Container
-extension UserDetailViewController {
+// Tenant Detail Container
+extension TenantDetailViewController {
 
     fileprivate func setupUserDetailContainer() {
         let container = UIView()
@@ -190,14 +161,14 @@ extension UserDetailViewController {
         let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
         let trailing = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
         let top = container.topAnchor.constraint(equalTo: carouselContainer.bottomAnchor, constant: 20)
-        NSLayoutConstraint.activate([leading, trailing, top])
+        let bottom = container.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20)
+        NSLayoutConstraint.activate([leading, trailing, top, bottom])
     }
 
     fileprivate func setupUserDetails() {
         setupNameContainer()
         setupPhoneContainer()
-        setupWeightAndHeightContainer()
-        setupDisease()
+        setupAdvanceAndSecurityContainer()
         setupAddress()
         setupJoinedAndActive()
         setupPlanStartAndExpiry()
@@ -248,7 +219,7 @@ extension UserDetailViewController {
         container.addArrangedSubview(view)
     }
 
-    private func setupWeightAndHeightContainer() {
+    private func setupAdvanceAndSecurityContainer() {
         let container = UIStackView()
         hwContainer = container
         container.spacing = 20
@@ -264,8 +235,8 @@ extension UserDetailViewController {
         weight.spacing = 0
         weight.axis = .vertical
         container.addArrangedSubview(weight)
-        let weightLabel = getLabel(text: "Weight")
-        let weightText = getLabelContentView(text: "80 kg")
+        let weightLabel = getLabel(text: "Advance amount paid ")
+        let weightText = getLabelContentView(text: "₹20000")
 
         weight.addArrangedSubview(weightLabel)
         weight.addArrangedSubview(weightText)
@@ -274,31 +245,11 @@ extension UserDetailViewController {
         height.spacing = 0
         height.axis = .vertical
         container.addArrangedSubview(height)
-        let heightLabel = getLabel(text: "Height")
-        let heightText = getLabelContentView(text: "180 cms")
+        let heightLabel = getLabel(text: "Security amount paid")
+        let heightText = getLabelContentView(text: "₹18000")
 
         height.addArrangedSubview(heightLabel)
         height.addArrangedSubview(heightText)
-    }
-
-    private func setupDisease() {
-        let container = UIStackView()
-        container.axis = .vertical
-        container.spacing = 0
-        container.isLayoutMarginsRelativeArrangement = true
-        container.layoutMargins = .init(top: 18, left: 12, bottom: 0, right: 12)
-        diseaseContainer = container
-        userDetailContainerView.addSubview(container)
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: userDetailContainerView.leadingAnchor)
-        let trailing = container.trailingAnchor.constraint(equalTo: userDetailContainerView.trailingAnchor)
-        let top = container.topAnchor.constraint(equalTo: hwContainer.bottomAnchor)
-        NSLayoutConstraint.activate([leading, trailing, top])
-        let label = getLabel(text: "Existing disease")
-        let text = getLabelContentView(text: "Nothing")
-
-        container.addArrangedSubview(label)
-        container.addArrangedSubview(text)
     }
 
     private func setupAddress() {
@@ -312,7 +263,7 @@ extension UserDetailViewController {
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: userDetailContainerView.leadingAnchor)
         let trailing = container.trailingAnchor.constraint(equalTo: userDetailContainerView.trailingAnchor)
-        let top = container.topAnchor.constraint(equalTo: diseaseContainer.bottomAnchor)
+        let top = container.topAnchor.constraint(equalTo: hwContainer.bottomAnchor)
 
         NSLayoutConstraint.activate([leading, trailing, top])
         let label = getLabel(text: "Current Address")
@@ -339,7 +290,7 @@ extension UserDetailViewController {
         joined.spacing = 0
         joined.axis = .vertical
         container.addArrangedSubview(joined)
-        let joinedLabel = getLabel(text: "Joined on")
+        let joinedLabel = getLabel(text: "Started living from")
         let joinedText = getLabelContentView(text: "20-07-2024")
 
         joined.addArrangedSubview(joinedLabel)
@@ -349,7 +300,7 @@ extension UserDetailViewController {
         active.spacing = 0
         active.axis = .vertical
         container.addArrangedSubview(active)
-        let activeLabel = getLabel(text: "Current Status")
+        let activeLabel = getLabel(text: "Current status")
         let activeText = getLabelContentView(text: "Active")
 
         active.addArrangedSubview(activeLabel)
@@ -372,7 +323,7 @@ extension UserDetailViewController {
         joined.spacing = 0
         joined.axis = .vertical
         container.addArrangedSubview(joined)
-        let joinedLabel = getLabel(text: "Plan started date")
+        let joinedLabel = getLabel(text: "Rent started date")
         let joinedText = getLabelContentView(text: "20-07-2024")
         joined.addArrangedSubview(joinedLabel)
         joined.addArrangedSubview(joinedText)
@@ -380,13 +331,12 @@ extension UserDetailViewController {
         active.spacing = 0
         active.axis = .vertical
         container.addArrangedSubview(active)
-        let activeLabel = getLabel(text: "Plan expiry Date")
+        let activeLabel = getLabel(text: "Rent expiry Date")
         let activeText = getLabelContentView(text: "20-12-2024")
 
         active.addArrangedSubview(activeLabel)
         active.addArrangedSubview(activeText)
     }
-
 
     private func setupPaymentDateAndAmount() {
         let container = UIStackView()
@@ -405,7 +355,7 @@ extension UserDetailViewController {
         joined.spacing = 0
         joined.axis = .vertical
         container.addArrangedSubview(joined)
-        let joinedLabel = getLabel(text: "Payment Date")
+        let joinedLabel = getLabel(text: "Last Payment Date")
         let joinedText = getLabelContentView(text: "20-07-2024")
 
         joined.addArrangedSubview(joinedLabel)

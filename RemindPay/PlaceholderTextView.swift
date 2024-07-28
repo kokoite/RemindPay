@@ -7,9 +7,10 @@ final class PlaceholderTextView: UITextView {
             setNeedsDisplay()
         }
     }
-    var placeholderColor: UIColor  = .gray
+
 
     private var placeholderLabel: UILabel?
+
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         backgroundColor = .white
@@ -23,10 +24,9 @@ final class PlaceholderTextView: UITextView {
         let label = UILabel()
         placeholderLabel = label
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
-                          NSAttributedString.Key.foregroundColor: UIColor.black]
+                          NSAttributedString.Key.foregroundColor: UIColor.gray]
         let size = placeholderText.size(withAttributes: attributes)
         label.attributedText = NSAttributedString(string: placeholderText, attributes: attributes)
-        label.textColor = .black
         label.frame = .init(x: textContainerInset.left , y: textContainerInset.top, width: size.width, height: size.height)
         addSubview(label)
     }
