@@ -18,9 +18,18 @@ final class MembershipCollectionViewCell: UICollectionViewCell {
     private var imageView: UIImageView!
     private var containerView: UIView!
 
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if let gradientLayer = contentView.layer.sublayers?.first as? CAGradientLayer {
+            gradientLayer.frame = contentView.frame
+        }
+
     }
 
     required init?(coder: NSCoder) {
@@ -29,8 +38,17 @@ final class MembershipCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(using data: MembershipCellData) {
-        containerView.backgroundColor = data.backgroundColor
+        addGradient(color: data.backgroundColor)
+        containerView.backgroundColor = .clear
         imageView.image = UIImage(systemName: data.imageName)
+    }
+
+    private func addGradient(color: UIColor) {
+        let gradient = CAGradientLayer()
+        gradient.colors = [color.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0.0, 0.95]
+        gradient.frame = frame
+        contentView.layer.insertSublayer(gradient, at: 0)
     }
 
     private func setup() {

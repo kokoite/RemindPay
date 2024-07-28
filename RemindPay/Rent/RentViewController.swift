@@ -49,8 +49,6 @@ final class RentViewController: UIViewController {
         setupCreateUserButton()
     }
 
-
-
     private func setupContainer() {
         let container = UIView()
         containerView = container
