@@ -61,6 +61,7 @@
 		A6F514752C465B2A002053CA /* GeneralHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514742C465B2A002053CA /* GeneralHeaderView.swift */; };
 		A6F514772C468035002053CA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F514762C468035002053CA /* SearchView.swift */; };
 		A6F5147A2C46AAA3002053CA /* happyFace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6F514792C46AAA3002053CA /* happyFace.jpg */; };
+		A6FAC9862C56B6710018BE8D /* CreateTenantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC9852C56B6710018BE8D /* CreateTenantViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,7 @@
 		A6F514742C465B2A002053CA /* GeneralHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHeaderView.swift; sourceTree = "<group>"; };
 		A6F514762C468035002053CA /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		A6F514792C46AAA3002053CA /* happyFace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = happyFace.jpg; sourceTree = "<group>"; };
+		A6FAC9852C56B6710018BE8D /* CreateTenantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTenantViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				A6A5AF762C561EC70051272A /* RentViewController.swift */,
+				A6FAC9852C56B6710018BE8D /* CreateTenantViewController.swift */,
 				A60F1C572C562C88001C2954 /* RentCollectionViewCell.swift */,
 				A60F1C592C563A20001C2954 /* TenantDetailViewController.swift */,
 			);
@@ -573,6 +576,7 @@
 				A6D84DE62C4E46D2002137BE /* PendingActionTableViewCell.swift in Sources */,
 				A6983EBA2C479ED500AA71FE /* ErrorViewModel.swift in Sources */,
 				A6F514732C465B02002053CA /* GymViewController.swift in Sources */,
+				A6FAC9862C56B6710018BE8D /* CreateTenantViewController.swift in Sources */,
 				A6D84DE42C4E30A2002137BE /* ProfileViewController.swift in Sources */,
 				A64C8CC12C490CA800AF9508 /* UserDetailViewController.swift in Sources */,
 				A6F514452C464D1A002053CA /* RemindPay.xcdatamodeld in Sources */,

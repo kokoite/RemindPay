@@ -38,7 +38,8 @@ final class RentViewController: UIViewController {
     }
 
     @objc func createUserClicked() {
-        print("Create tenant clicked")
+        let controller = CreateTenantViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     private func setup() {
@@ -75,6 +76,7 @@ final class RentViewController: UIViewController {
         let container = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
+        container.showsVerticalScrollIndicator = false
         userCollection = container
         container.clipsToBounds = true
         container.layer.cornerRadius = 20

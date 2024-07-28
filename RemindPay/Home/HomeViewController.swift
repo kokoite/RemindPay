@@ -202,9 +202,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(collectionView == serviceCollection) {
-            var item =  indexPath.row
-            
+        if(collectionView == subscribedCollection) {
+            let item =  indexPath.row
             if(item == 0) {
                 let controller = RentViewController()
                 navigationController?.pushViewController(controller, animated: true)
@@ -213,6 +212,5 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 navigationController?.pushViewController(controller, animated: true)
             }
         }
-
     }
 }
