@@ -61,14 +61,14 @@ final class RentViewController: UIViewController {
 
     private func setupHeader() {
         let header = GeneralHeaderView()
-        headerView = header
+//        header.delegate = self
         containerView.addSubview(header)
         header.setTranslatesMask()
         let leading = header.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
-        let trailing = header.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         let top = header.topAnchor.constraint(equalTo: containerView.topAnchor)
-        let height = header.heightAnchor.constraint(equalToConstant: 220)
-        NSLayoutConstraint.activate([leading ,trailing, top, height])
+        let trailing = header.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        NSLayoutConstraint.activate([leading, top, trailing])
+        headerView = header
     }
 
     private func setupCollectionView() {
@@ -86,7 +86,7 @@ final class RentViewController: UIViewController {
         container.register(RentCollectionViewCell.self, forCellWithReuseIdentifier: "rentCell")
         containerView.addSubview(container)
         container.setTranslatesMask()
-        let top = container.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20)
+        let top = container.topAnchor.constraint(equalTo: headerView.bottomAnchor)
         let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
         let trailing = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         let bottom = container.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)

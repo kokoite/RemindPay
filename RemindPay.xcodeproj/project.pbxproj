@@ -37,11 +37,14 @@
 		A6983EB82C4799E300AA71FE /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6983EB72C4799E300AA71FE /* ErrorPresenter.swift */; };
 		A6983EBA2C479ED500AA71FE /* ErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6983EB92C479ED500AA71FE /* ErrorViewModel.swift */; };
 		A6983EBC2C47A77500AA71FE /* ErrorBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6983EBB2C47A77500AA71FE /* ErrorBottomSheetViewController.swift */; };
+		A6A3A8B92C57966600F43D3D /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3A8B82C57966600F43D3D /* LibraryViewController.swift */; };
 		A6A5AF772C561EC70051272A /* RentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A5AF762C561EC70051272A /* RentViewController.swift */; };
 		A6C7634C2C5384F90086AD51 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C7634B2C5384F90086AD51 /* SearchViewController.swift */; };
 		A6C763542C5391F60086AD51 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C763532C5391F60086AD51 /* BarChart.swift */; };
 		A6C763B42C53CC540086AD51 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C763B32C53CC540086AD51 /* PieChart.swift */; };
 		A6C763B62C53E6250086AD51 /* DashboardViewController + Gym.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C763B52C53E6250086AD51 /* DashboardViewController + Gym.swift */; };
+		A6D614DA2C57C0910056BBC6 /* LibraryUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D614D92C57C0910056BBC6 /* LibraryUserCollectionViewCell.swift */; };
+		A6D614DC2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D614DB2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift */; };
 		A6D84DE42C4E30A2002137BE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D84DE32C4E30A2002137BE /* ProfileViewController.swift */; };
 		A6D84DE62C4E46D2002137BE /* PendingActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D84DE52C4E46D2002137BE /* PendingActionTableViewCell.swift */; };
 		A6D84DE82C4E55B1002137BE /* MembershipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D84DE72C4E55B1002137BE /* MembershipCollectionViewCell.swift */; };
@@ -124,11 +127,14 @@
 		A6983EB72C4799E300AA71FE /* ErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPresenter.swift; sourceTree = "<group>"; };
 		A6983EB92C479ED500AA71FE /* ErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewModel.swift; sourceTree = "<group>"; };
 		A6983EBB2C47A77500AA71FE /* ErrorBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBottomSheetViewController.swift; sourceTree = "<group>"; };
+		A6A3A8B82C57966600F43D3D /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		A6A5AF762C561EC70051272A /* RentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentViewController.swift; sourceTree = "<group>"; };
 		A6C7634B2C5384F90086AD51 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A6C763532C5391F60086AD51 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		A6C763B32C53CC540086AD51 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		A6C763B52C53E6250086AD51 /* DashboardViewController + Gym.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController + Gym.swift"; sourceTree = "<group>"; };
+		A6D614D92C57C0910056BBC6 /* LibraryUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryUserCollectionViewCell.swift; sourceTree = "<group>"; };
+		A6D614DB2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryUserDetailViewController.swift; sourceTree = "<group>"; };
 		A6D84DE32C4E30A2002137BE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A6D84DE52C4E46D2002137BE /* PendingActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingActionTableViewCell.swift; sourceTree = "<group>"; };
 		A6D84DE72C4E55B1002137BE /* MembershipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -193,6 +199,12 @@
 			isa = PBXGroup;
 			children = (
 				A63391F62C4F92AF0095B21B /* HomeViewController.swift */,
+				A6A3A8B62C5794F600F43D3D /* ServiceConsumer */,
+				A6A3A8B52C57949800F43D3D /* ServiceDetail */,
+				A6A3A8B42C57948300F43D3D /* ServiceProvider */,
+				A6F514712C465AE0002053CA /* Gym */,
+				A6A5AF752C561EBB0051272A /* Rent */,
+				A6A3A8B72C57964300F43D3D /* Library */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -257,6 +269,37 @@
 				A6983EB92C479ED500AA71FE /* ErrorViewModel.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		A6A3A8B42C57948300F43D3D /* ServiceProvider */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ServiceProvider;
+			sourceTree = "<group>";
+		};
+		A6A3A8B52C57949800F43D3D /* ServiceDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ServiceDetail;
+			sourceTree = "<group>";
+		};
+		A6A3A8B62C5794F600F43D3D /* ServiceConsumer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ServiceConsumer;
+			sourceTree = "<group>";
+		};
+		A6A3A8B72C57964300F43D3D /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				A6A3A8B82C57966600F43D3D /* LibraryViewController.swift */,
+				A6D614D92C57C0910056BBC6 /* LibraryUserCollectionViewCell.swift */,
+				A6D614DB2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		A6A5AF752C561EBB0051272A /* Rent */ = {
@@ -332,7 +375,6 @@
 		A6F514392C464D1A002053CA /* RemindPay */ = {
 			isa = PBXGroup;
 			children = (
-				A6A5AF752C561EBB0051272A /* Rent */,
 				A66D305C2C560B290016B974 /* CoreDataStack */,
 				A6C7634A2C5384DD0086AD51 /* Search */,
 				A63391FB2C4F9FE80095B21B /* TabBarController */,
@@ -345,7 +387,6 @@
 				A6F5143A2C464D1A002053CA /* AppDelegate.swift */,
 				A6F5143C2C464D1A002053CA /* SceneDelegate.swift */,
 				A6F5143E2C464D1A002053CA /* ViewController.swift */,
-				A6F514712C465AE0002053CA /* Gym */,
 				A6F5146F2C4653B3002053CA /* Utility+View.swift */,
 				A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */,
 				A6F514462C464D1B002053CA /* Assets.xcassets */,
@@ -562,6 +603,7 @@
 				A6C7634C2C5384F90086AD51 /* SearchViewController.swift in Sources */,
 				A6794E0E2C47EB4A00080A38 /* BottomSheetPresenter.swift in Sources */,
 				A6969A2A2C46E0DF001EFAA4 /* GymRouter.swift in Sources */,
+				A6A3A8B92C57966600F43D3D /* LibraryViewController.swift in Sources */,
 				A6F5143F2C464D1A002053CA /* ViewController.swift in Sources */,
 				A6F514772C468035002053CA /* SearchView.swift in Sources */,
 				A6F5143B2C464D1A002053CA /* AppDelegate.swift in Sources */,
@@ -584,6 +626,8 @@
 				A64C8CC32C490CE600AF9508 /* CarouselView.swift in Sources */,
 				A63391FF2C4FA5430095B21B /* GymTabBarView.swift in Sources */,
 				A6C763B62C53E6250086AD51 /* DashboardViewController + Gym.swift in Sources */,
+				A6D614DC2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift in Sources */,
+				A6D614DA2C57C0910056BBC6 /* LibraryUserCollectionViewCell.swift in Sources */,
 				A6D84DEB2C4E80D1002137BE /* DashboardViewController.swift in Sources */,
 				A6969A282C46DEB5001EFAA4 /* GymModel.swift in Sources */,
 				A6525C722C54CC4700342F2C /* LineChart.swift in Sources */,

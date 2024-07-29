@@ -51,21 +51,22 @@ final class SearchViewController: UIViewController {
 
     private func setupAnimationView() {
         Task {
-            let vm = DotLottieAnimation(webURL: "https://lottie.host/45c80518-a731-4ffd-a8c5-0e26e5982dc1/TiQknrqAh5.json", config: .init(autoplay: true, loop: true))
-
-            let container: DotLottieAnimationView = vm.view()
-            DispatchQueue.main.async { [weak self] in
-                guard let self else { return }
-                self.animationView = container
-                container.backgroundColor = .white
-                self.containerView.addSubview(container)
-                container.setTranslatesMask()
-                let centerX = container.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
-                let centerY = container.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-                let width = container.widthAnchor.constraint(equalToConstant: self.view.bounds.width * 0.9)
-                let height = container.heightAnchor.constraint(equalToConstant: 400)
-                NSLayoutConstraint.activate([centerX, centerY, height, width])
-                setupTitle()
+            do {
+                let vm = DotLottieAnimation(webURL: "https://lottie.host/45c80518-a731-4ffd-a8c5-0e26e5982dc1/TiQknrqAh5.json", config: .init(autoplay: true, loop: true))
+                let container: DotLottieAnimationView = vm.view()
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    self.animationView = container
+                    container.backgroundColor = .white
+                    self.containerView.addSubview(container)
+                    container.setTranslatesMask()
+                    let centerX = container.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
+                    let centerY = container.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+                    let width = container.widthAnchor.constraint(equalToConstant: self.view.bounds.width * 0.9)
+                    let height = container.heightAnchor.constraint(equalToConstant: 400)
+                    NSLayoutConstraint.activate([centerX, centerY, height, width])
+                    setupTitle()
+                }
             }
         }
     }

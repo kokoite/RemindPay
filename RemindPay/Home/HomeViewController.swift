@@ -17,7 +17,7 @@ final class HomeViewController: UIViewController {
 
     private var membershipData: [MembershipCellData] = [
         .init(backgroundColor: .systemOrange, imageName: "house.fill"),
-        .init(backgroundColor: .systemPink, imageName: "cart.fill"),
+        .init(backgroundColor: .systemPink, imageName: "graduationcap.fill"),
         .init(backgroundColor: .systemGreen, imageName: "dumbbell.fill"),
         .init(backgroundColor: .systemBlue, imageName: "book.fill"),
         .init(backgroundColor: .systemYellow, imageName: "house.fill"),
@@ -209,6 +209,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 navigationController?.pushViewController(controller, animated: true)
             } else if(item == 2) {
                 let controller = GymViewController()
+                navigationController?.pushViewController(controller, animated: true)
+            } else if(item == 3) {
+                let controller = LibraryViewController()
                 navigationController?.pushViewController(controller, animated: true)
             }
         }

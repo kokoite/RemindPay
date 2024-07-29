@@ -66,12 +66,11 @@ final class SearchView: UIView {
         let leading = container.leadingAnchor.constraint(equalTo: leadingAnchor)
         let trailing = container.trailingAnchor.constraint(equalTo: trailingAnchor)
         let top = container.topAnchor.constraint(equalTo: topAnchor)
-        NSLayoutConstraint.activate([leading, trailing, top])
+        let bottom = container.bottomAnchor.constraint(equalTo: bottomAnchor)
+        NSLayoutConstraint.activate([leading, trailing, top, bottom])
         container.backgroundColor = .white
         container.clipsToBounds = true
-        container.layer.borderWidth = 1
-        container.layer.borderColor = UIColor.gray.cgColor
-        container.layer.cornerRadius = 15
+        container.layer.cornerRadius = 8
         container.spacing = 12
         container.isLayoutMarginsRelativeArrangement = true
         container.layoutMargins = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
@@ -88,9 +87,8 @@ final class SearchView: UIView {
         image.tintColor = .gray
         image.contentMode = .center
         image.setTranslatesMask()
-        let height = image.heightAnchor.constraint(equalToConstant: 40)
         let width = image.widthAnchor.constraint(equalToConstant: 40)
-        NSLayoutConstraint.activate([height, width])
+        NSLayoutConstraint.activate([ width])
     }
 
     private func setupFilterIcon() {
@@ -102,16 +100,18 @@ final class SearchView: UIView {
         containerView.addArrangedSubview(image)
         image.image = UIImage(systemName: "line.3.horizontal.decrease.circle")
         image.tintColor = .gray
+        image.backgroundColor = .white
         image.contentMode = .center
         image.setTranslatesMask()
-        let height = image.heightAnchor.constraint(equalToConstant: 40)
         let width = image.widthAnchor.constraint(equalToConstant: 40)
-        NSLayoutConstraint.activate([height, width])
+        NSLayoutConstraint.activate([width])
     }
 
     private func setupTextView() {
         let text = UITextField()
         textView = text
+        text.setTranslatesMask()
+        text.heightAnchor.constraint(equalToConstant: 40).isActive = true
         text.font = UIFont.systemFont(ofSize: 20)
         text.placeholder = "Search for users"
         text.autocapitalizationType = .sentences

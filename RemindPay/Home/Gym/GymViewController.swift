@@ -103,8 +103,7 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         let leading = header.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
         let top = header.topAnchor.constraint(equalTo: containerView.topAnchor)
         let trailing = header.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
-        let bottom = header.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: 150)
-        NSLayoutConstraint.activate([leading, top, trailing, bottom])
+        NSLayoutConstraint.activate([leading, top, trailing])
         headerView = header
     }
 

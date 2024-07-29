@@ -117,8 +117,8 @@ final class GeneralHeaderView: UIView {
         let leading = search.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10)
         let trailling = search.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
         let top = search.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20)
-        let height = search.heightAnchor.constraint(equalToConstant: 45)
-        NSLayoutConstraint.activate([leading, trailling, top, height])
+        let bottom = search.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -15)
+        NSLayoutConstraint.activate([leading, trailling, top, bottom])
     }
 }
 
