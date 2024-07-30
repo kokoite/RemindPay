@@ -16,6 +16,18 @@ final class RentViewController: UIViewController {
     private var createUserButton: UIImageView!
 
 
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        let grd = CAGradientLayer()
+        grd.colors = [ UIColor.orange.cgColor, UIColor.systemPink.cgColor]
+        grd.locations = [0, 1]
+        grd.startPoint = .init(x: 0, y: 0.5)
+        grd.endPoint = .init(x: 1, y: 0)
+        grd.frame = view.bounds
+        view.layer.insertSublayer(grd, at: 0)
+    }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -23,27 +35,20 @@ final class RentViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavBar()
+        navigationController?.navigationBar.isHidden = true
     }
 
-    private func setupNavBar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .systemPink
-        appearance.shadowColor = .systemPink
-        navigationItem.standardAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.tintColor = .white
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
-
+    
     @objc func createUserClicked() {
         let controller = CreateTenantViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
 
     private func setup() {
-        view.backgroundColor = .orange
         setupContainer()
         setupHeader()
         setupCollectionView()
@@ -53,7 +58,7 @@ final class RentViewController: UIViewController {
     private func setupContainer() {
         let container = UIView()
         containerView = container
-        container.backgroundColor = .systemPink
+
         view.addSubview(container)
         container.setTranslatesMask()
         container.pinToEdges(in: view)
@@ -61,7 +66,7 @@ final class RentViewController: UIViewController {
 
     private func setupHeader() {
         let header = GeneralHeaderView()
-//        header.delegate = self
+        header.delegate = self
         containerView.addSubview(header)
         header.setTranslatesMask()
         let leading = header.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
@@ -69,21 +74,24 @@ final class RentViewController: UIViewController {
         let trailing = header.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         NSLayoutConstraint.activate([leading, top, trailing])
         headerView = header
+        header.configure(with: .init(iconImage: .system(name: "house"), background: nil, title: "Heyy Pranjal"))
+//        header.configure(color1: .orange, color2: .black)
     }
 
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         let container = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 12
         layout.minimumInteritemSpacing = 0
         container.showsVerticalScrollIndicator = false
+        container.contentInset = .init(top: 12, left: 12, bottom: 12, right: 12)
         userCollection = container
         container.clipsToBounds = true
         container.layer.cornerRadius = 20
-        container.backgroundColor = .white
+//        container.backgroundColor = .white
         container.dataSource = self
         container.delegate = self
-        container.register(RentCollectionViewCell.self, forCellWithReuseIdentifier: "rentCell")
+        container.register(UserCollectionViewCell.self, forCellWithReuseIdentifier: "rentCell")
         containerView.addSubview(container)
         container.setTranslatesMask()
         let top = container.topAnchor.constraint(equalTo: headerView.bottomAnchor)
@@ -124,7 +132,7 @@ final class RentViewController: UIViewController {
 extension RentViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rentCell", for: indexPath) as? RentCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rentCell", for: indexPath) as? UserCollectionViewCell else {
             return UICollectionViewCell()
         }
         return cell
@@ -135,11 +143,36 @@ extension RentViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: view.bounds.width , height: 200)
+        .init(width: view.bounds.width , height: 160)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = TenantDetailViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
+}
+
+
+extension RentViewController: GeneralHeaderDelegate {
+    func didClickProfileImage() {
+
+    }
+    
+    func didClickOnSearchButton(text: String) {
+
+    }
+    
+    func didClickOnFilter() {
+
+    }
+    
+    func onSearchViewTextChange(text: String) {
+
+    }
+    
+    func didClickOnBackButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+
 }

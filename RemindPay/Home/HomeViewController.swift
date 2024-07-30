@@ -16,18 +16,10 @@ final class HomeViewController: UIViewController {
     private weak var serviceCollection, subscribedCollection: UICollectionView!
 
     private var membershipData: [MembershipCellData] = [
-        .init(backgroundColor: .systemOrange, imageName: "house.fill"),
-        .init(backgroundColor: .systemPink, imageName: "graduationcap.fill"),
-        .init(backgroundColor: .systemGreen, imageName: "dumbbell.fill"),
-        .init(backgroundColor: .systemBlue, imageName: "book.fill"),
         .init(backgroundColor: .systemYellow, imageName: "house.fill"),
-        .init(backgroundColor: .systemRed, imageName: "house.fill"),
-        .init(backgroundColor: .systemOrange, imageName: "dumbbell.fill"),
-        .init(backgroundColor: .systemPink, imageName: "house.fill"),
-        .init(backgroundColor: .systemGreen, imageName: "house.fill"),
-        .init(backgroundColor: .systemBlue, imageName: "house.fill"),
-        .init(backgroundColor: .systemYellow, imageName: "house.fill"),
-        .init(backgroundColor: .systemRed, imageName: "house.fill"),
+        .init(backgroundColor: .systemGreen, imageName: "graduationcap.fill"),
+        .init(backgroundColor: .systemPink, imageName: "dumbbell.fill"),
+        .init(backgroundColor: .systemBlue, imageName: "book.fill")
     ]
 
     override func viewDidLoad() {

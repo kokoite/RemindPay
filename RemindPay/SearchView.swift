@@ -61,6 +61,7 @@ final class SearchView: UIView {
     private func setupContainer() {
         let container = UIStackView()
         containerView = container
+        container.backgroundColor = .white
         addSubview(container)
         container.setTranslatesMask()
         let leading = container.leadingAnchor.constraint(equalTo: leadingAnchor)
@@ -68,7 +69,6 @@ final class SearchView: UIView {
         let top = container.topAnchor.constraint(equalTo: topAnchor)
         let bottom = container.bottomAnchor.constraint(equalTo: bottomAnchor)
         NSLayoutConstraint.activate([leading, trailing, top, bottom])
-        container.backgroundColor = .white
         container.clipsToBounds = true
         container.layer.cornerRadius = 8
         container.spacing = 12
@@ -100,7 +100,6 @@ final class SearchView: UIView {
         containerView.addArrangedSubview(image)
         image.image = UIImage(systemName: "line.3.horizontal.decrease.circle")
         image.tintColor = .gray
-        image.backgroundColor = .white
         image.contentMode = .center
         image.setTranslatesMask()
         let width = image.widthAnchor.constraint(equalToConstant: 40)

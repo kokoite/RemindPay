@@ -35,6 +35,16 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         super.viewDidLoad()
         setup()
     }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        let grd = CAGradientLayer()
+        grd.colors = [ UIColor.systemPink.cgColor, UIColor.black.cgColor]
+        grd.locations = [0, 1]
+        grd.startPoint = .init(x: 0, y: 0.5)
+        grd.endPoint = .init(x: 1, y: 0)
+        grd.frame = view.bounds
+        view.layer.insertSublayer(grd, at: 0)
+    }
 
 
     @objc func createUserClicked() {
@@ -50,26 +60,22 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         super.viewWillAppear(animated)
         router?.viewController = self
         presenter?.viewController = self
-        setupNavBar()
+        navigationController?.navigationBar.isHidden = true
         print("view controller will appear")
     }
 
-    private func setupNavBar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .systemPink
-        appearance.shadowColor = .systemPink
-        navigationItem.standardAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.tintColor = .white
-    }
+
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         router?.viewController = nil
         presenter?.viewController = nil
         print("view controller will disappear")
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
 
     // MARK :- Private functions
@@ -104,6 +110,7 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         let top = header.topAnchor.constraint(equalTo: containerView.topAnchor)
         let trailing = header.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         NSLayoutConstraint.activate([leading, top, trailing])
+        header.configure(with: .init(iconImage: .system(name: "dumbbell"), background: nil, title: "Heyy Pranjal"))
         headerView = header
     }
 
@@ -112,23 +119,26 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         view.addSubview(container)
         container.setTranslatesMask()
         container.pinToEdges(in: view)
-        container.backgroundColor = .systemPink
+//        container.backgroundColor = .systemPink
         containerView = container
     }
 
     private func setupUserCollectionView() {
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = UICollectionViewFlowLayout()
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.minimumLineSpacing = 12
         userCollectionView = collection
         collection.backgroundColor = .white
         containerView.addSubview(collection)
         collection.layer.cornerRadius = 30
+        collection.contentInset = .init(top: 12, left: 12, bottom: 12, right: 12)
         collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+
         collection.dataSource = self
         collection.delegate = self
         collection.showsVerticalScrollIndicator = false
-        collection.register(GymCardView.self, forCellWithReuseIdentifier: "gymCell")
+        collection.register(UserCollectionViewCell.self, forCellWithReuseIdentifier: "gymCell")
         collection.clipsToBounds = true
-        collection.keyboardDismissMode = .interactive 
         collection.setTranslatesMask()
         let leading = collection.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
         let trailing = collection.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
@@ -183,7 +193,7 @@ extension GymViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gymCell", for: indexPath) as? GymCardView ?? UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gymCell", for: indexPath) as? UserCollectionViewCell ?? UICollectionViewCell()
         return cell
     }
 }
@@ -191,11 +201,16 @@ extension GymViewController: UICollectionViewDataSource {
 extension GymViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: view.bounds.width, height: 200)
+        .init(width: view.bounds.width, height: 160)
     }
 }
 
 extension GymViewController: GeneralHeaderDelegate {
+    
+    func didClickOnBackButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    
 
     func didClickProfileImage() {
         router?.routeToProfilePage()

@@ -12,12 +12,21 @@ protocol GeneralHeaderDelegate: AnyObject {
     func didClickOnSearchButton(text: String)
     func didClickOnFilter()
     func onSearchViewTextChange(text: String)
+    func didClickOnBackButton()
+}
+
+struct GeneralHeaderViewModel {
+//    let userImage: ImageType
+    let iconImage: ImageType
+    let background: BackgroundType?
+    let title: String
 }
 
 final class GeneralHeaderView: UIView {
 
     private var containerView: UIView!
-    private var imageView: UIView!
+    private var backButton: UIImageView!
+    private var imageView, iconView: UIImageView!
     private var titleView: UILabel!
     private var searchView: SearchView!
     weak var delegate: GeneralHeaderDelegate?
@@ -31,12 +40,32 @@ final class GeneralHeaderView: UIView {
         super.init(coder: coder)
     }
 
-    func configure() {
-
+    func configure(with viewModel: GeneralHeaderViewModel) {
+        switch viewModel.iconImage {
+        case .system(let name):
+            iconView.image = UIImage(systemName: name)
+        case .resource(let name):
+            iconView.image = UIImage(named: name)
+        }
+        titleView.text = viewModel.title
     }
+
 
     @objc func profileImageClicked() {
         delegate?.didClickProfileImage()
+    }
+
+    @objc func backButtonClicked() {
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            guard let self else { return }
+            self.backButton.tintColor = .lightGray
+        } completion: { _ in
+            UIView.animate(withDuration: 0.1) { [weak self] in
+                guard let self else { return }
+                self.backButton.tintColor = .white
+                self.delegate?.didClickOnBackButton()
+            }
+        }
     }
 
 
@@ -45,10 +74,40 @@ final class GeneralHeaderView: UIView {
 
     private func setup() {
         setupContainer()
+        setupBackButton()
         setupImage()
         setupTitle()
         setupIcon()
         setupSearch()
+    }
+
+
+
+    private func setupContainer() {
+        let container = UIView()
+        containerView = container
+        addSubview(container)
+        container.setTranslatesMask()
+        container.pinToEdges(in: self)
+    }
+
+    private func setupBackButton() {
+        let image = UIImageView()
+        imageView = image
+        image.isUserInteractionEnabled = true
+        backButton = image
+        containerView.addSubview(image)
+        image.image = UIImage(systemName: "arrowshape.backward.fill")
+        image.tintColor = .white
+        image.contentMode = .scaleAspectFill
+        image.setTranslatesMask()
+        let height = image.heightAnchor.constraint(equalToConstant: 25)
+        let width = image.widthAnchor.constraint(equalToConstant: 35)
+        let leading = image.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
+        let top = image.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: 12)
+        NSLayoutConstraint.activate([leading, top, height, width])
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(backButtonClicked))
+        image.addGestureRecognizer(gesture)
     }
 
     private func setupImage() {
@@ -61,22 +120,13 @@ final class GeneralHeaderView: UIView {
         containerView.addSubview(image)
         image.setTranslatesMask()
         let leading = image.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
-        let top = image.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor)
+        let top = image.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 20)
         let height = image.heightAnchor.constraint(equalToConstant: 60)
         let width = image.widthAnchor.constraint(equalToConstant: 60)
         image.layer.cornerRadius = 30
         image.layer.masksToBounds = true
         image.backgroundColor = .cardBackground
         NSLayoutConstraint.activate([leading, top, height, width])
-    }
-
-    private func setupContainer() {
-        let container = UIView()
-        containerView = container
-        addSubview(container)
-        container.setTranslatesMask()
-        container.backgroundColor = .systemPink
-        container.pinToSafeEdges(in: self)
     }
 
     private func setupTitle() {
@@ -94,6 +144,7 @@ final class GeneralHeaderView: UIView {
 
     private func setupIcon() {
         let imageView = UIImageView()
+        iconView = imageView
         containerView.addSubview(imageView)
         imageView.setTranslatesMask()
         let leading = imageView.leadingAnchor.constraint(lessThanOrEqualTo: titleView.trailingAnchor, constant: 12)

@@ -26,7 +26,17 @@ class CreateUserViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavBar()
+        navigationController?.navigationBar.isHidden = false
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        appearance.shadowColor = .white
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactAppearance = appearance
+        navigationItem.compactScrollEdgeAppearance = appearance
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.barTintColor = .white
     }
 
     private func setupNavBar() {

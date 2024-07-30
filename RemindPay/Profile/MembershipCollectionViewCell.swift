@@ -46,7 +46,7 @@ final class MembershipCollectionViewCell: UICollectionViewCell {
     private func addGradient(color: UIColor) {
         let gradient = CAGradientLayer()
         gradient.colors = [color.cgColor, UIColor.black.cgColor]
-        gradient.locations = [0.0, 0.95]
+        gradient.locations = [0.0, 1.0]
         gradient.frame = frame
         contentView.layer.insertSublayer(gradient, at: 0)
     }

@@ -28,7 +28,7 @@ final class TenantDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.backButtonTitle = "No back"
+        navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.tintColor = .black
     }
 

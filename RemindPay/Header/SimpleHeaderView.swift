@@ -7,18 +7,6 @@
 
 import UIKit
 
-struct SimpleHeaderViewModel {
-    let backgroundType: BackgroundType
-    let title: String
-    let image: String
-
-    enum BackgroundType {
-        case gradient(color: [UIColor])
-        case linear(color: UIColor)
-    }
-}
-
-
 final class SimpleHeaderView: UIView {
 
     private var containerView: UIView!
