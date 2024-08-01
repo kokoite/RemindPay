@@ -9,17 +9,30 @@
 /* Begin PBXBuildFile section */
 		A60DCA922C4ED37E00F8A4C2 /* GymBreakupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60DCA912C4ED37E00F8A4C2 /* GymBreakupView.swift */; };
 		A60F1C5A2C563A20001C2954 /* TenantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F1C592C563A20001C2954 /* TenantDetailViewController.swift */; };
+		A614618E2C5A1D86004BB308 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A614618D2C5A1D86004BB308 /* DatePickerController.swift */; };
+		A61461B02C5A4379004BB308 /* CreateGymUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461AF2C5A4379004BB308 /* CreateGymUserInteractor.swift */; };
+		A61461B22C5A4FC1004BB308 /* CreateOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461B12C5A4FC1004BB308 /* CreateOwnerViewController.swift */; };
+		A61461B42C5A56C0004BB308 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461B32C5A56BF004BB308 /* DropDownView.swift */; };
+		A61461B72C5A65C4004BB308 /* OwnerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461B62C5A65C4004BB308 /* OwnerInteractor.swift */; };
+		A61461B92C5A6652004BB308 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461B82C5A6652004BB308 /* Owner.swift */; };
+		A61461BB2C5A7C7B004BB308 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461BA2C5A7C7B004BB308 /* AuthenticationViewController.swift */; };
+		A61461BE2C5A8023004BB308 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461BD2C5A8023004BB308 /* Authentication.swift */; };
+		A61461CD2C5AB349004BB308 /* CDUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461CB2C5AB349004BB308 /* CDUser+CoreDataClass.swift */; };
+		A61461CE2C5AB349004BB308 /* CDUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461CC2C5AB349004BB308 /* CDUser+CoreDataProperties.swift */; };
+		A61461D02C5AB889004BB308 /* AuthenticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461CF2C5AB889004BB308 /* AuthenticationInteractor.swift */; };
+		A61461D22C5AB8DE004BB308 /* AuthenticationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461D12C5AB8DE004BB308 /* AuthenticationWorker.swift */; };
 		A624251F2C5625B7002FDACB /* DotLottie in Frameworks */ = {isa = PBXBuildFile; productRef = A624251E2C5625B7002FDACB /* DotLottie */; };
 		A62D2BA52C4B8D5B0066E2ED /* GymProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62D2BA42C4B8D5B0066E2ED /* GymProfileViewController.swift */; };
 		A63391F72C4F92AF0095B21B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391F62C4F92AF0095B21B /* HomeViewController.swift */; };
 		A63391FA2C4F94A70095B21B /* SimpleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391F92C4F94A70095B21B /* SimpleHeaderView.swift */; };
 		A63391FD2C4FA00E0095B21B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391FC2C4FA00E0095B21B /* TabBarController.swift */; };
 		A63391FF2C4FA5430095B21B /* GymTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391FE2C4FA5430095B21B /* GymTabBarView.swift */; };
-		A64809082C4A793D0086D7A7 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64809072C4A793D0086D7A7 /* CreateUserViewController.swift */; };
+		A64809082C4A793D0086D7A7 /* CreateGymUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64809072C4A793D0086D7A7 /* CreateGymUserViewController.swift */; };
 		A64C8CC12C490CA800AF9508 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC02C490CA800AF9508 /* UserDetailViewController.swift */; };
 		A64C8CC32C490CE600AF9508 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC22C490CE600AF9508 /* CarouselView.swift */; };
 		A64C8CC52C490E9100AF9508 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC42C490E9100AF9508 /* CarouselCell.swift */; };
 		A6525C722C54CC4700342F2C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6525C712C54CC4700342F2C /* LineChart.swift */; };
+		A65CA23B2C5A12320037AE53 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65CA23A2C5A12320037AE53 /* Utility.swift */; };
 		A66D305E2C560B420016B974 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66D305D2C560B410016B974 /* CoreDataStack.swift */; };
 		A6794E0E2C47EB4A00080A38 /* BottomSheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6794E0D2C47EB4A00080A38 /* BottomSheetPresenter.swift */; };
 		A6794E102C47ECE200080A38 /* Extenstion+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */; };
@@ -44,6 +57,7 @@
 		A6C763B42C53CC540086AD51 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C763B32C53CC540086AD51 /* PieChart.swift */; };
 		A6C763B62C53E6250086AD51 /* DashboardViewController + Gym.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C763B52C53E6250086AD51 /* DashboardViewController + Gym.swift */; };
 		A6D614DC2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D614DB2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift */; };
+		A6D6869B2C5B6954002C7653 /* ApplicationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D6869A2C5B6954002C7653 /* ApplicationWorker.swift */; };
 		A6D84DE42C4E30A2002137BE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D84DE32C4E30A2002137BE /* ProfileViewController.swift */; };
 		A6D84DE62C4E46D2002137BE /* PendingActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D84DE52C4E46D2002137BE /* PendingActionTableViewCell.swift */; };
 		A6D84DE82C4E55B1002137BE /* MembershipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D84DE72C4E55B1002137BE /* MembershipCollectionViewCell.swift */; };
@@ -99,16 +113,29 @@
 /* Begin PBXFileReference section */
 		A60DCA912C4ED37E00F8A4C2 /* GymBreakupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymBreakupView.swift; sourceTree = "<group>"; };
 		A60F1C592C563A20001C2954 /* TenantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantDetailViewController.swift; sourceTree = "<group>"; };
+		A614618D2C5A1D86004BB308 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
+		A61461AF2C5A4379004BB308 /* CreateGymUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGymUserInteractor.swift; sourceTree = "<group>"; };
+		A61461B12C5A4FC1004BB308 /* CreateOwnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOwnerViewController.swift; sourceTree = "<group>"; };
+		A61461B32C5A56BF004BB308 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
+		A61461B62C5A65C4004BB308 /* OwnerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerInteractor.swift; sourceTree = "<group>"; };
+		A61461B82C5A6652004BB308 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		A61461BA2C5A7C7B004BB308 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		A61461BD2C5A8023004BB308 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		A61461CB2C5AB349004BB308 /* CDUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A61461CC2C5AB349004BB308 /* CDUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A61461CF2C5AB889004BB308 /* AuthenticationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationInteractor.swift; sourceTree = "<group>"; };
+		A61461D12C5AB8DE004BB308 /* AuthenticationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationWorker.swift; sourceTree = "<group>"; };
 		A62D2BA42C4B8D5B0066E2ED /* GymProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymProfileViewController.swift; sourceTree = "<group>"; };
 		A63391F62C4F92AF0095B21B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A63391F92C4F94A70095B21B /* SimpleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHeaderView.swift; sourceTree = "<group>"; };
 		A63391FC2C4FA00E0095B21B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A63391FE2C4FA5430095B21B /* GymTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymTabBarView.swift; sourceTree = "<group>"; };
-		A64809072C4A793D0086D7A7 /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
+		A64809072C4A793D0086D7A7 /* CreateGymUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGymUserViewController.swift; sourceTree = "<group>"; };
 		A64C8CC02C490CA800AF9508 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		A64C8CC22C490CE600AF9508 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		A64C8CC42C490E9100AF9508 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		A6525C712C54CC4700342F2C /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		A65CA23A2C5A12320037AE53 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		A66D305D2C560B410016B974 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A6794E0D2C47EB4A00080A38 /* BottomSheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetPresenter.swift; sourceTree = "<group>"; };
 		A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extenstion+ViewController.swift"; sourceTree = "<group>"; };
@@ -133,6 +160,7 @@
 		A6C763B32C53CC540086AD51 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		A6C763B52C53E6250086AD51 /* DashboardViewController + Gym.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController + Gym.swift"; sourceTree = "<group>"; };
 		A6D614DB2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryUserDetailViewController.swift; sourceTree = "<group>"; };
+		A6D6869A2C5B6954002C7653 /* ApplicationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationWorker.swift; sourceTree = "<group>"; };
 		A6D84DE32C4E30A2002137BE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A6D84DE52C4E46D2002137BE /* PendingActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingActionTableViewCell.swift; sourceTree = "<group>"; };
 		A6D84DE72C4E55B1002137BE /* MembershipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -185,6 +213,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A61461B52C5A6566004BB308 /* Owner */ = {
+			isa = PBXGroup;
+			children = (
+				A61461B12C5A4FC1004BB308 /* CreateOwnerViewController.swift */,
+				A61461B62C5A65C4004BB308 /* OwnerInteractor.swift */,
+				A61461B82C5A6652004BB308 /* Owner.swift */,
+			);
+			path = Owner;
+			sourceTree = "<group>";
+		};
+		A61461BC2C5A7C85004BB308 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A61461BA2C5A7C7B004BB308 /* AuthenticationViewController.swift */,
+				A61461CF2C5AB889004BB308 /* AuthenticationInteractor.swift */,
+				A61461D12C5AB8DE004BB308 /* AuthenticationWorker.swift */,
+				A61461BD2C5A8023004BB308 /* Authentication.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		A62D2BA32C4B8D470066E2ED /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,7 +280,8 @@
 		A64809062C4A791E0086D7A7 /* CreateUser */ = {
 			isa = PBXGroup;
 			children = (
-				A64809072C4A793D0086D7A7 /* CreateUserViewController.swift */,
+				A64809072C4A793D0086D7A7 /* CreateGymUserViewController.swift */,
+				A61461AF2C5A4379004BB308 /* CreateGymUserInteractor.swift */,
 			);
 			path = CreateUser;
 			sourceTree = "<group>";
@@ -248,6 +298,8 @@
 			isa = PBXGroup;
 			children = (
 				A66D305D2C560B410016B974 /* CoreDataStack.swift */,
+				A61461CB2C5AB349004BB308 /* CDUser+CoreDataClass.swift */,
+				A61461CC2C5AB349004BB308 /* CDUser+CoreDataProperties.swift */,
 			);
 			path = CoreDataStack;
 			sourceTree = "<group>";
@@ -352,6 +404,7 @@
 		A6F5142E2C464D1A002053CA = {
 			isa = PBXGroup;
 			children = (
+				A614618D2C5A1D86004BB308 /* DatePickerController.swift */,
 				A6F514392C464D1A002053CA /* RemindPay */,
 				A6F514532C464D1B002053CA /* RemindPayTests */,
 				A6F5145D2C464D1B002053CA /* RemindPayUITests */,
@@ -372,6 +425,8 @@
 		A6F514392C464D1A002053CA /* RemindPay */ = {
 			isa = PBXGroup;
 			children = (
+				A61461BC2C5A7C85004BB308 /* Authentication */,
+				A61461B52C5A6566004BB308 /* Owner */,
 				A66D305C2C560B290016B974 /* CoreDataStack */,
 				A6C7634A2C5384DD0086AD51 /* Search */,
 				A63391FB2C4F9FE80095B21B /* TabBarController */,
@@ -396,6 +451,9 @@
 				A64C8CC42C490E9100AF9508 /* CarouselCell.swift */,
 				A694B41E2C4CBEC600B2311F /* PlaceholderTextView.swift */,
 				A6BC081A2C5913A200AF7170 /* GlobalDataStruct.swift */,
+				A65CA23A2C5A12320037AE53 /* Utility.swift */,
+				A61461B32C5A56BF004BB308 /* DropDownView.swift */,
+				A6D6869A2C5B6954002C7653 /* ApplicationWorker.swift */,
 			);
 			path = RemindPay;
 			sourceTree = "<group>";
@@ -587,51 +645,65 @@
 				A6983EB62C47996900AA71FE /* ErrorModel.swift in Sources */,
 				A6794E102C47ECE200080A38 /* Extenstion+ViewController.swift in Sources */,
 				A6C763542C5391F60086AD51 /* BarChart.swift in Sources */,
+				A61461B02C5A4379004BB308 /* CreateGymUserInteractor.swift in Sources */,
 				A66D305E2C560B420016B974 /* CoreDataStack.swift in Sources */,
 				A6983EBC2C47A77500AA71FE /* ErrorBottomSheetViewController.swift in Sources */,
 				A6C763B42C53CC540086AD51 /* PieChart.swift in Sources */,
 				A60DCA922C4ED37E00F8A4C2 /* GymBreakupView.swift in Sources */,
 				A63391F72C4F92AF0095B21B /* HomeViewController.swift in Sources */,
+				A61461B42C5A56C0004BB308 /* DropDownView.swift in Sources */,
 				A694B41F2C4CBEC600B2311F /* PlaceholderTextView.swift in Sources */,
 				A67AEE032C4A41ED008C9610 /* FilterBottomSheetViewController.swift in Sources */,
 				A6983EB82C4799E300AA71FE /* ErrorPresenter.swift in Sources */,
 				A6D84DE82C4E55B1002137BE /* MembershipCollectionViewCell.swift in Sources */,
+				A6D6869B2C5B6954002C7653 /* ApplicationWorker.swift in Sources */,
 				A6C7634C2C5384F90086AD51 /* SearchViewController.swift in Sources */,
+				A61461D22C5AB8DE004BB308 /* AuthenticationWorker.swift in Sources */,
 				A6794E0E2C47EB4A00080A38 /* BottomSheetPresenter.swift in Sources */,
 				A6969A2A2C46E0DF001EFAA4 /* GymRouter.swift in Sources */,
+				A61461B92C5A6652004BB308 /* Owner.swift in Sources */,
 				A6A3A8B92C57966600F43D3D /* LibraryViewController.swift in Sources */,
 				A6F5143F2C464D1A002053CA /* ViewController.swift in Sources */,
 				A6BC081B2C5913A200AF7170 /* GlobalDataStruct.swift in Sources */,
 				A6F514772C468035002053CA /* SearchView.swift in Sources */,
 				A6F5143B2C464D1A002053CA /* AppDelegate.swift in Sources */,
+				A61461BE2C5A8023004BB308 /* Authentication.swift in Sources */,
 				A62D2BA52C4B8D5B0066E2ED /* GymProfileViewController.swift in Sources */,
+				A61461D02C5AB889004BB308 /* AuthenticationInteractor.swift in Sources */,
 				A6F5143D2C464D1A002053CA /* SceneDelegate.swift in Sources */,
 				A69693D22C4FC50300980EA7 /* GymTabBarController.swift in Sources */,
-				A64809082C4A793D0086D7A7 /* CreateUserViewController.swift in Sources */,
+				A64809082C4A793D0086D7A7 /* CreateGymUserViewController.swift in Sources */,
 				A69693D42C4FC78A00980EA7 /* GymTabBarItemView.swift in Sources */,
 				A6969A302C46E119001EFAA4 /* GymWorker.swift in Sources */,
 				A63391FA2C4F94A70095B21B /* SimpleHeaderView.swift in Sources */,
 				A6F514702C4653B3002053CA /* Utility+View.swift in Sources */,
 				A6D84DE62C4E46D2002137BE /* PendingActionTableViewCell.swift in Sources */,
+				A61461BB2C5A7C7B004BB308 /* AuthenticationViewController.swift in Sources */,
 				A6983EBA2C479ED500AA71FE /* ErrorViewModel.swift in Sources */,
 				A6F514732C465B02002053CA /* GymViewController.swift in Sources */,
 				A6FAC9862C56B6710018BE8D /* CreateTenantViewController.swift in Sources */,
 				A6D84DE42C4E30A2002137BE /* ProfileViewController.swift in Sources */,
 				A64C8CC12C490CA800AF9508 /* UserDetailViewController.swift in Sources */,
+				A61461B72C5A65C4004BB308 /* OwnerInteractor.swift in Sources */,
 				A6F514452C464D1A002053CA /* RemindPay.xcdatamodeld in Sources */,
+				A614618E2C5A1D86004BB308 /* DatePickerController.swift in Sources */,
 				A6969A2E2C46E108001EFAA4 /* GymPresenter.swift in Sources */,
 				A64C8CC32C490CE600AF9508 /* CarouselView.swift in Sources */,
 				A63391FF2C4FA5430095B21B /* GymTabBarView.swift in Sources */,
+				A61461CD2C5AB349004BB308 /* CDUser+CoreDataClass.swift in Sources */,
 				A6C763B62C53E6250086AD51 /* DashboardViewController + Gym.swift in Sources */,
 				A6D614DC2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift in Sources */,
 				A6D84DEB2C4E80D1002137BE /* DashboardViewController.swift in Sources */,
+				A61461B22C5A4FC1004BB308 /* CreateOwnerViewController.swift in Sources */,
 				A6969A282C46DEB5001EFAA4 /* GymModel.swift in Sources */,
 				A6525C722C54CC4700342F2C /* LineChart.swift in Sources */,
+				A61461CE2C5AB349004BB308 /* CDUser+CoreDataProperties.swift in Sources */,
 				A6F5146E2C46524A002053CA /* UserCollectionViewCell.swift in Sources */,
 				A63391FD2C4FA00E0095B21B /* TabBarController.swift in Sources */,
 				A6969A2C2C46E0F3001EFAA4 /* GymInteractor.swift in Sources */,
 				A64C8CC52C490E9100AF9508 /* CarouselCell.swift in Sources */,
 				A6F514752C465B2A002053CA /* GeneralHeaderView.swift in Sources */,
+				A65CA23B2C5A12320037AE53 /* Utility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,6 +882,8 @@
 				INFOPLIST_FILE = RemindPay/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Gym Pay";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access Camera so you can click pictures";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need to access your library so you can upload images";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -839,6 +913,8 @@
 				INFOPLIST_FILE = RemindPay/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Gym Pay";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access Camera so you can click pictures";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need to access your library so you can upload images";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

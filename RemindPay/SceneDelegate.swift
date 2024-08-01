@@ -11,6 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     let coreDataStack = CoreDataStack.instance
+    let worker = ApplicationWorker.instance
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -20,7 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .cardBackground
         appearance.shadowColor = .cardBackground
-        let rootViewController = LightStatusNavigationController(rootViewController: GymTabBarController())
+        let hasJoined = worker.hasUserAlreadyJoined()
+        let controller = hasJoined ? GymTabBarController(): AuthenticationViewController()
+        let rootViewController = LightStatusNavigationController(rootViewController: controller)
         rootViewController.navigationBar.standardAppearance = appearance
         rootViewController.navigationBar.scrollEdgeAppearance = appearance
         rootViewController.navigationBar.compactScrollEdgeAppearance = appearance

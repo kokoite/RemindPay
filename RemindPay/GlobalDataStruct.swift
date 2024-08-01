@@ -23,3 +23,10 @@ enum GradientType {
     case horizontal
     case diagonal
 }
+
+enum ServiceType {
+    case gym
+    case rent
+    case library
+    case coaching
+}

@@ -63,9 +63,7 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         navigationController?.navigationBar.isHidden = true
         print("view controller will appear")
     }
-
-
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         router?.viewController = nil
@@ -168,7 +166,6 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         image.addGestureRecognizer(gesture)
     }
 
-
     deinit {
         interactor = nil
         router = nil
@@ -234,7 +231,4 @@ extension GymViewController: FilterBottomSheetDelegate {
     func didClickOnButton(with action: FilterAction) {
         print(action)
     }
-    
-
-
 }

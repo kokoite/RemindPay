@@ -32,7 +32,7 @@ final class GymRouter: GymRoutingLogic, GymDataPassing {
 
     func routeToCreateUserPage() {
         guard let navController = viewController?.navigationController else { return }
-        let controller = CreateUserViewController()
+        let controller = CreateGymUserViewController()
         navController.pushViewController(controller, animated: true)
     }
 
