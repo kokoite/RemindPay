@@ -7,6 +7,11 @@
 
 import UIKit
 
+struct SimpleHeaderViewModel {
+    let name: String
+    let profileImage: UIImage
+}
+
 final class SimpleHeaderView: UIView {
 
     private var containerView: UIView!
@@ -23,29 +28,12 @@ final class SimpleHeaderView: UIView {
         setup()
     }
 
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if let gradientLayer = containerView.layer.sublayers?.first as? CAGradientLayer {
-            gradientLayer.frame = bounds
-        }
-    }
-
-    func configure(color: UIColor) {
-        titleView.textColor = .white
-        imageView.backgroundColor = .white
-        addGradient(color)
-    }
-
-    private func addGradient(_ color: UIColor) {
-        let grd = CAGradientLayer()
-        grd.colors = [color.cgColor, UIColor.black.cgColor]
-        grd.locations = [0.5, 0.9]
-        containerView.layer.insertSublayer(grd, at: 0)
+    func configure(using vm: SimpleHeaderViewModel) {
+        titleView.text = "Welcome back,\(vm.name)"
+        imageView.image = vm.profileImage
     }
 
     private func setup() {
-//        backgroundColor = .yellow
         setupContainer()
         setupImageView()
         setupTitle()
@@ -78,6 +66,7 @@ final class SimpleHeaderView: UIView {
     private func setupTitle() {
         let label = UILabel()
         titleView = label
+        label.numberOfLines = 0
         label.text = "Welcome back, Pranjal"
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = .black

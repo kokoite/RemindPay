@@ -11,14 +11,16 @@ struct User: Codable {
     let id: UUID
     let name, phone, email, profileImageUrl: String
     let membership: MembershipType
+    let subscribedServices: [ServiceType]
 
-    init(id: UUID, name: String, phone: String, email: String, profileImageUrl: String, membership: MembershipType) {
+    init(id: UUID, name: String, phone: String, email: String, profileImageUrl: String, membership: MembershipType, subscribedServices: [ServiceType]) {
         self.id = id
         self.name = name
         self.phone = phone
         self.email = email
         self.profileImageUrl = profileImageUrl
         self.membership = membership
+        self.subscribedServices = subscribedServices
     }
 
     init(from decoder: Decoder) throws {
@@ -29,6 +31,7 @@ struct User: Codable {
         self.email = try container.decode(String.self, forKey: .email)
         self.profileImageUrl = try container.decode(String.self, forKey: .profileImageUrl)
         self.membership = try container.decode(MembershipType.self, forKey: .membership)
+        self.subscribedServices = try container.decode([ServiceType].self, forKey: .subscribedServices)
     }
 }
 

@@ -67,24 +67,27 @@ final class AuthenticationViewController: UIViewController {
 
     @objc func createUserClicked() {
         let url = saveImageToDocuments()
-        let user = User(id: UUID(), name: nameView.text, phone: phoneView.text, email: emailView.text, profileImageUrl: url , membership: .free)
-        print("user \(user)")
+        selectedImageUrl = url
+        let user = User(id: UUID(), name: nameView.text, phone: phoneView.text, email: emailView.text, profileImageUrl: url , membership: .free, subscribedServices: [])
         interactor?.createUser(user: user)
     }
 
     private func saveImageToDocuments() -> String {
         guard let selectedImage else { return ""}
         guard let jpeg = selectedImage.jpegData(compressionQuality: 0.7) else { return ""}
-        let documentUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let documentUrl = getDocumentDirectory()
         let fileName = UUID().uuidString + ".jpg"
         let fileUrl = documentUrl.appending(path: fileName)
         do {
-            try jpeg.write(to: fileUrl, options: .atomic)
-        } catch {
-            print("unable to write in specific folder")
+            try jpeg.write(to: fileUrl)
+            return fileName
+        } catch(let error) {
+            print("Error \(error.localizedDescription)")
         }
-        return fileUrl.path()
+        return ""
     }
+
+
 
     private func initialize() {
         let viewController = self
@@ -273,7 +276,6 @@ final class AuthenticationViewController: UIViewController {
         tv.placeholderText = text
         tv.delegate = self
         tv.isScrollEnabled = false
-        //        tv.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 4, right: 8)
         tv.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         tv.setTranslatesMask()
         let height = tv.heightAnchor.constraint(greaterThanOrEqualToConstant: 25)
@@ -310,9 +312,6 @@ extension AuthenticationViewController: PHPickerViewControllerDelegate {
             }
         }
     }
-
-
-
 }
 
 
@@ -331,7 +330,16 @@ extension AuthenticationViewController: UITextViewDelegate {
 extension AuthenticationViewController: AuthenticationDisplayLogic {
     
     func displayCreateUser(response: Authentication.Create.Response) {
-        print(response)
+        guard let selectedImageUrl else { return }
+
+        switch response.state {
+            case .error(let error):
+                print("error \(error)")
+                deleteImage(filename: selectedImageUrl)
+            case .success:
+                navigationController?.setViewControllers([GymTabBarController()], animated: true)
+        }
+
     }
     
     func displayFetchUser() {

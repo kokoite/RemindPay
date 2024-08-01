@@ -7,13 +7,20 @@
 
 import UIKit
 
+
+protocol HomeDisplayLogic: AnyObject {
+    func displayFetchUserHeader(using vm: SimpleHeaderViewModel)
+}
+
 final class HomeViewController: UIViewController {
     private weak var containerScrollView: UIScrollView!
     private weak var containerView: UIView!
-    private weak var headerView: UIView!
+    fileprivate weak var headerView: SimpleHeaderView!
     private weak var serviceContainer, subscribedContainer: UIStackView!
     private weak var serviceLabel, subscribedLabel: UILabel!
     private weak var serviceCollection, subscribedCollection: UICollectionView!
+    private var interactor: HomeBusinessLogic?
+    private var presenter: HomePresentingLogic?
 
     private var membershipData: [MembershipCellData] = [
         .init(backgroundColor: .systemYellow, imageName: "house.fill"),
@@ -21,6 +28,36 @@ final class HomeViewController: UIViewController {
         .init(backgroundColor: .systemPink, imageName: "dumbbell.fill"),
         .init(backgroundColor: .systemBlue, imageName: "book.fill")
     ]
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        initialize()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func initialize() {
+        let viewController = self
+        let interactor = HomeInteractor()
+        let presenter = HomePresenter()
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        self.presenter = presenter
+        self.interactor = interactor
+        checkImage()
+    }
+
+    private func checkImage() {
+        guard let url = URL(string: "") else { return }
+        do {
+            let data = try Data(contentsOf: url)
+            print("image")
+        } catch {
+            print("error \(error.localizedDescription)")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +76,8 @@ final class HomeViewController: UIViewController {
         setupSubscribedContainer()
         setupSubscribedLabel()
         setupSubscribedCollection()
+
+        interactor?.fetchUserDetails()
     }
 
     private func setupScrollView() {
@@ -207,5 +246,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 navigationController?.pushViewController(controller, animated: true)
             }
         }
+    }
+}
+
+
+extension HomeViewController: HomeDisplayLogic {
+
+    func displayFetchUserHeader(using vm: SimpleHeaderViewModel) {
+        headerView.configure(using: vm)
     }
 }

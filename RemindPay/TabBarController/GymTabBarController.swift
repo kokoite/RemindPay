@@ -44,6 +44,11 @@ final class GymTabBarController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // remove that controller
+    }
 //
 //    override var childForStatusBarStyle: UIViewController? {
 //        children.first

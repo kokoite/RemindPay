@@ -16,8 +16,7 @@ final class ApplicationWorker {
         let decoder = JSONDecoder()
         guard let data = UserDefaults.standard.data(forKey: "user") else { return false }
         do {
-            let user = try decoder.decode(User.self, from: data)
-            print("user from user defaults is \(user)")
+            let _ = try decoder.decode(User.self, from: data)
             return true
         } catch(let error) {
             print("Unable to fetch user from user defaults\(error.localizedDescription)")

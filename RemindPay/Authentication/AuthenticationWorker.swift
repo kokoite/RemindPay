@@ -15,12 +15,16 @@ final class AuthenticationWorker {
     func saveUserToCoreData(user: User) throws {
         Task {
             let cdUser = CDUser(context: context)
+            let services = user.subscribedServices.compactMap { service in
+                service.rawValue
+            }
             cdUser.name = user.name
             cdUser.id = user.id
             cdUser.email = user.email
             cdUser.membershipType = "free"
             cdUser.phone = user.phone
             cdUser.profileImageUrl = user.profileImageUrl
+            cdUser.subscribedServices = services
             do {
                 try context.save()
             } catch(let error) {

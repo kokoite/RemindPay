@@ -24,9 +24,9 @@ enum GradientType {
     case diagonal
 }
 
-enum ServiceType {
-    case gym
-    case rent
-    case library
-    case coaching
+enum ServiceType: String, Codable {
+    case gym = "Gym"
+    case rent = "Rent"
+    case library = "Library"
+    case coaching = "Coaching"
 }
