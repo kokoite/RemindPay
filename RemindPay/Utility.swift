@@ -49,3 +49,10 @@ func getImageFrom(fileName: String) throws -> UIImage? {
         throw error
     }
 }
+
+func calculateHeightForText(txt: String, attributes: [NSAttributedString.Key: Any], width: CGFloat) -> Int {
+
+    let text = NSString(string: txt)
+    let rect = text.boundingRect(with: .init(width: width, height: .greatestFiniteMagnitude), options: [.usesFontLeading, .usesLineFragmentOrigin], attributes: attributes, context: nil)
+    return Int(rect.height + 1)/1
+}

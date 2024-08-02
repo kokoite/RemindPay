@@ -31,9 +31,7 @@ struct ErrorModel: Error {
 
 
 struct BottomSheetButton {
-    let text: NSAttributedString
-    let background: String?
-    let borderColor: String?
+    let text: String
     let action: (()->Void)?
 }
 

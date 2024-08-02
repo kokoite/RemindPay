@@ -25,6 +25,7 @@ final class HomePresenter: HomePresentingLogic {
                     guard let self, let image else { return }
                     self.viewController?.displayFetchUserHeader(using: .init(name: user.name, profileImage: image))
                 }
+
             } catch (let error) {
                 print("Error is \(error.localizedDescription)")
             }

@@ -7,9 +7,13 @@
 
 import UIKit
 
+struct ServiceViewModel {
+    let services: [ServiceType]
+}
 
 protocol HomeDisplayLogic: AnyObject {
     func displayFetchUserHeader(using vm: SimpleHeaderViewModel)
+    func displaySubscribedServices(using vm: ServiceViewModel)
 }
 
 final class HomeViewController: UIViewController {
@@ -21,8 +25,9 @@ final class HomeViewController: UIViewController {
     private weak var serviceCollection, subscribedCollection: UICollectionView!
     private var interactor: HomeBusinessLogic?
     private var presenter: HomePresentingLogic?
+    private var safeAreaBottomHeight: CGFloat = 0
 
-    private var membershipData: [MembershipCellData] = [
+    private var membershipData: [MembershipViewModel] = [
         .init(backgroundColor: .systemYellow, imageName: "house.fill"),
         .init(backgroundColor: .systemGreen, imageName: "graduationcap.fill"),
         .init(backgroundColor: .systemPink, imageName: "dumbbell.fill"),
@@ -33,7 +38,11 @@ final class HomeViewController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         initialize()
     }
-    
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -46,17 +55,6 @@ final class HomeViewController: UIViewController {
         presenter.viewController = viewController
         self.presenter = presenter
         self.interactor = interactor
-        checkImage()
-    }
-
-    private func checkImage() {
-        guard let url = URL(string: "") else { return }
-        do {
-            let data = try Data(contentsOf: url)
-            print("image")
-        } catch {
-            print("error \(error.localizedDescription)")
-        }
     }
 
     override func viewDidLoad() {
@@ -233,19 +231,35 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(collectionView == subscribedCollection) {
-            let item =  indexPath.row
-            if(item == 0) {
-                let controller = RentViewController()
-                navigationController?.pushViewController(controller, animated: true)
-            } else if(item == 2) {
-                let controller = GymViewController()
-                navigationController?.pushViewController(controller, animated: true)
-            } else if(item == 3) {
-                let controller = LibraryViewController()
-                navigationController?.pushViewController(controller, animated: true)
-            }
+        collectionView == subscribedCollection ? handleSubscribeServiceClick(indexPath: indexPath):
+        handleServiceProvidedClick(indexPath: indexPath)
+    }
+
+    private func handleServiceProvidedClick(indexPath: IndexPath) {
+        if(indexPath.row == 0) {
+            showRentBottomSheet()
+        } else if(indexPath.row == 1) {
+            showCoachingBottomSheet()
+        } else if(indexPath.row == 2) {
+            showGymBottomSheet()
+        } else {
+            showLibraryBottomSheet()
         }
+    }
+
+    private func handleSubscribeServiceClick(indexPath: IndexPath) {
+        let row = indexPath.row
+        var controller: UIViewController = RentViewController()
+        if(row == 0) {
+            controller = RentViewController()
+        } else if(row == 1) {
+            controller = RentViewController()
+        } else if(row == 2) {
+            controller = GymViewController()
+        } else {
+            controller = LibraryViewController()
+        }
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
@@ -254,5 +268,129 @@ extension HomeViewController: HomeDisplayLogic {
 
     func displayFetchUserHeader(using vm: SimpleHeaderViewModel) {
         headerView.configure(using: vm)
+    }
+
+    func displaySubscribedServices(using vm: ServiceViewModel) {
+
+    }
+}
+
+// Bottom sheet handling
+extension HomeViewController {
+    
+    private func showRentBottomSheet() {
+        let title = ServiceConstants.rentTitle
+        let subtitle = ServiceConstants.rentSubtitle
+        let height = calculateBottomSheetHeight(title: title, subtitle: subtitle)
+        let delegate = BottomSheetTransitionDelegate(of: .init(width: view.bounds.width, height: CGFloat(height)))
+        let controller = BottomSheetViewController()
+        controller.transitioningDelegate = delegate
+        controller.modalPresentationStyle = .custom
+        present(controller, animated: true)
+
+        let primaryButton = BottomSheetButton(text: "Subscribe Now at ₹0") { [weak self] in
+            guard let self else { return }
+            interactor?.subscribeToService(service: .rent)
+            // update core data about subscribed services
+            // remove rent from all shown services
+        }
+
+        let vm = BottomSheetViewModel(image: ServiceConstants.rentImage, title: ServiceConstants.rentTitle, subtitle: ServiceConstants.rentSubtitle, bottomSheetAction: primaryButton)
+        controller.configure(using: vm)
+    }
+
+    private func showGymBottomSheet() {
+        let title = ServiceConstants.gymTitle
+        let subtitle = ServiceConstants.gymSubtitle
+        let height = calculateBottomSheetHeight(title: title, subtitle: subtitle)
+        let delegate = BottomSheetTransitionDelegate(of: .init(width: view.bounds.width, height: CGFloat(height)))
+        let controller = BottomSheetViewController()
+        controller.transitioningDelegate = delegate
+        controller.modalPresentationStyle = .custom
+        present(controller, animated: true)
+
+        let primaryButton = BottomSheetButton(text: "Subscribe Now at ₹0") { [weak self] in
+            guard let self else { return }
+            // update core data about subscribed services
+            // remove rent from all shown services
+            interactor?.subscribeToService(service: .gym)
+        }
+
+        let vm = BottomSheetViewModel(image: ServiceConstants.gymImage, title: title, subtitle: subtitle, bottomSheetAction: primaryButton)
+        controller.configure(using: vm)
+    }
+
+    private func showCoachingBottomSheet() {
+        let title = ServiceConstants.coachingTitle
+        let subtitle = ServiceConstants.coachingSubtitle
+        let height = calculateBottomSheetHeight(title: title, subtitle: subtitle)
+
+        let delegate = BottomSheetTransitionDelegate(of: .init(width: view.bounds.width, height: CGFloat(height)))
+        let controller = BottomSheetViewController()
+        controller.transitioningDelegate = delegate
+        controller.modalPresentationStyle = .custom
+        present(controller, animated: true)
+
+        let primaryButton = BottomSheetButton(text: "Subscribe Now at ₹0") { [weak self] in
+            guard let self else { return }
+            // update core data about subscribed services
+            // remove rent from all shown services
+            let controller = ViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+
+        let vm = BottomSheetViewModel(image: ServiceConstants.coachingImage, title: title, subtitle: subtitle, bottomSheetAction: primaryButton)
+        controller.configure(using: vm)
+    }
+
+    private func showLibraryBottomSheet() {
+        let title = ServiceConstants.libraryTitle
+        let subtitle = ServiceConstants.librarySubtitle
+        let height = calculateBottomSheetHeight(title: title, subtitle: subtitle)
+        let delegate = BottomSheetTransitionDelegate(of: .init(width: view.bounds.width, height: CGFloat(height)))
+        let controller = BottomSheetViewController()
+        controller.transitioningDelegate = delegate
+        controller.modalPresentationStyle = .custom
+        present(controller, animated: true)
+
+        let primaryButton = BottomSheetButton(text: "Subscribe Now at ₹0") { [weak self] in
+            guard let self else { return }
+            // update core data about subscribed services
+            // remove rent from all shown services
+            let controller = LibraryViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+
+        let vm = BottomSheetViewModel(image: ServiceConstants.libraryImage, title: title, subtitle: subtitle, bottomSheetAction: primaryButton)
+        controller.configure(using: vm)
+    }
+
+    private func calculateBottomSheetHeight(title: String, subtitle: String) -> Int  {
+
+        let titleWidth = view.bounds.width -
+        CGFloat(BottomSheetConstant.imageWidth +
+                BottomSheetConstant.imageLeading +
+                BottomSheetConstant.titleLeading +
+                BottomSheetConstant.titleTrailing)
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: BottomSheetConstant.titleFont,
+            .foregroundColor: BottomSheetConstant.titleColor
+        ]
+
+        let titleHeight = calculateHeightForText(txt: title, attributes: attributes, width: titleWidth)
+
+        let subtitleWidth = view.bounds.width - CGFloat(
+            BottomSheetConstant.subtitleLeading +
+            BottomSheetConstant.subtitleTrailing
+        )
+
+        let subtitleAttributes: [NSAttributedString.Key: Any] = [
+            .font: BottomSheetConstant.subtitleFont,
+            .foregroundColor: BottomSheetConstant.subtitleColor
+        ]
+        let subtitleHeight = calculateHeightForText(txt: subtitle, attributes: subtitleAttributes, width: subtitleWidth)
+        let height = BottomSheetConstant.titleTop + max(BottomSheetConstant.imageHeight, titleHeight) + BottomSheetConstant.subtitleTop + subtitleHeight + BottomSheetConstant.buttonTop + BottomSheetConstant.buttonHeight +
+        40
+        return height
     }
 }

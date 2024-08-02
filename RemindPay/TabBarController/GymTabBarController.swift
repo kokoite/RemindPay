@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class GymTabBarController: UIViewController {
 
     private var containerView: UIView!
@@ -22,7 +21,7 @@ final class GymTabBarController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         homeViewController = HomeViewController()
-        searchViewController = SearchViewController()
+        searchViewController = SearchViewController() 
         dashboardViewController = DashboardViewController()
         profileViewController = ProfileViewController()
     }
@@ -96,11 +95,11 @@ final class GymTabBarController: UIViewController {
                                      title: "Home",
                                      itemType: .home,
                                      isSelected: true)
-        let searchItem = GymTabBarItem(image: "magnifyingglass", title: "Search", itemType: .search, isSelected: false)
+//        let searchItem = GymTabBarItem(image: "magnifyingglass", title: "Search", itemType: .search, isSelected: false)
         let dashboardItem = GymTabBarItem(image: "indianrupeesign", title: "Dashboard", itemType: .dashboard, isSelected: false)
         let profileItem = GymTabBarItem(image: "person.fill", title: "Profile", itemType: .profile, isSelected: false)
         selectedItem = homeItem
-        tabBar.update(tabItems: [homeItem, searchItem, dashboardItem, profileItem], selectedItem: homeItem)
+        tabBar.update(tabItems: [homeItem, dashboardItem, profileItem], selectedItem: homeItem)
     }
 
     private func reloadContainerView(oldController: UIViewController?) {

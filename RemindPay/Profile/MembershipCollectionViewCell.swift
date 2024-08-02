@@ -8,7 +8,7 @@
 import UIKit
 
 
-struct MembershipCellData {
+struct MembershipViewModel {
     let backgroundColor: UIColor
     let imageName: String
 }
@@ -37,7 +37,7 @@ final class MembershipCollectionViewCell: UICollectionViewCell {
         setup()
     }
 
-    func configure(using data: MembershipCellData) {
+    func configure(using data: MembershipViewModel) {
         addGradient(color: data.backgroundColor)
         containerView.backgroundColor = .clear
         imageView.image = UIImage(systemName: data.imageName)

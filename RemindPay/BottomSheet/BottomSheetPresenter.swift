@@ -9,9 +9,6 @@ import Foundation
 import UIKit
 
 
-final class BottomSheetPresenter {
-
-}
 
 final class BottomSheetTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
 

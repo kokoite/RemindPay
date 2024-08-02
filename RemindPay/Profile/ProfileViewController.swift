@@ -8,7 +8,7 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
-    private var membershipData: [MembershipCellData] = [
+    private var membershipData: [MembershipViewModel] = [
         .init(backgroundColor: .systemOrange, imageName: "house.fill"),
         .init(backgroundColor: .systemPink, imageName: "graduationcap.fill"),
         .init(backgroundColor: .systemGreen, imageName: "dumbbell.fill"),

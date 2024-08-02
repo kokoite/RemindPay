@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23D56" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDTenant" representedClassName="CDTenant" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="joinedDate" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="phone" attributeType="String"/>
+        <attribute name="profileImage" attributeType="String"/>
+        <attribute name="propertyImages" attributeType="Transformable" valueTransformerName="ArrayOfStringTransformer" customClassName="[String]"/>
+        <attribute name="rentEndDate" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rentStartDate" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="CDUser" representedClassName="CDUser" syncable="YES">
         <attribute name="email" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
@@ -7,7 +17,7 @@
         <attribute name="name" attributeType="String"/>
         <attribute name="phone" attributeType="String"/>
         <attribute name="profileImageUrl" attributeType="String"/>
-        <attribute name="subscribedServices" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="subscribedServices" attributeType="Transformable" valueTransformerName="ArrayOfStringTransformer" customClassName="[String]"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
