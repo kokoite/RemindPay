@@ -11,10 +11,7 @@
 		A60F1C5A2C563A20001C2954 /* TenantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F1C592C563A20001C2954 /* TenantDetailViewController.swift */; };
 		A614618E2C5A1D86004BB308 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A614618D2C5A1D86004BB308 /* DatePickerController.swift */; };
 		A61461B02C5A4379004BB308 /* CreateGymUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461AF2C5A4379004BB308 /* CreateGymUserInteractor.swift */; };
-		A61461B22C5A4FC1004BB308 /* CreateOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461B12C5A4FC1004BB308 /* CreateOwnerViewController.swift */; };
 		A61461B42C5A56C0004BB308 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461B32C5A56BF004BB308 /* DropDownView.swift */; };
-		A61461B72C5A65C4004BB308 /* OwnerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461B62C5A65C4004BB308 /* OwnerInteractor.swift */; };
-		A61461B92C5A6652004BB308 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461B82C5A6652004BB308 /* Owner.swift */; };
 		A61461BB2C5A7C7B004BB308 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461BA2C5A7C7B004BB308 /* AuthenticationViewController.swift */; };
 		A61461BE2C5A8023004BB308 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461BD2C5A8023004BB308 /* Authentication.swift */; };
 		A61461D02C5AB889004BB308 /* AuthenticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61461CF2C5AB889004BB308 /* AuthenticationInteractor.swift */; };
@@ -131,10 +128,7 @@
 		A60F1C592C563A20001C2954 /* TenantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantDetailViewController.swift; sourceTree = "<group>"; };
 		A614618D2C5A1D86004BB308 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		A61461AF2C5A4379004BB308 /* CreateGymUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGymUserInteractor.swift; sourceTree = "<group>"; };
-		A61461B12C5A4FC1004BB308 /* CreateOwnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOwnerViewController.swift; sourceTree = "<group>"; };
 		A61461B32C5A56BF004BB308 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
-		A61461B62C5A65C4004BB308 /* OwnerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerInteractor.swift; sourceTree = "<group>"; };
-		A61461B82C5A6652004BB308 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		A61461BA2C5A7C7B004BB308 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		A61461BD2C5A8023004BB308 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		A61461CF2C5AB889004BB308 /* AuthenticationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationInteractor.swift; sourceTree = "<group>"; };
@@ -245,16 +239,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A61461B52C5A6566004BB308 /* Owner */ = {
-			isa = PBXGroup;
-			children = (
-				A61461B12C5A4FC1004BB308 /* CreateOwnerViewController.swift */,
-				A61461B62C5A65C4004BB308 /* OwnerInteractor.swift */,
-				A61461B82C5A6652004BB308 /* Owner.swift */,
-			);
-			path = Owner;
-			sourceTree = "<group>";
-		};
 		A61461BC2C5A7C85004BB308 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,7 +436,6 @@
 				A6FD4F6A2C5E2662005E23D1 /* ImageManager */,
 				A6D686A02C5B7CDA002C7653 /* Services */,
 				A61461BC2C5A7C85004BB308 /* Authentication */,
-				A61461B52C5A6566004BB308 /* Owner */,
 				A66D305C2C560B290016B974 /* CoreDataStack */,
 				A6C7634A2C5384DD0086AD51 /* Search */,
 				A63391FB2C4F9FE80095B21B /* TabBarController */,
@@ -725,7 +708,6 @@
 				A652EEBD2C5CFA720012153F /* Home.swift in Sources */,
 				A6794E0E2C47EB4A00080A38 /* BottomSheetPresenter.swift in Sources */,
 				A6969A2A2C46E0DF001EFAA4 /* GymRouter.swift in Sources */,
-				A61461B92C5A6652004BB308 /* Owner.swift in Sources */,
 				A6FD4F7B2C5E3726005E23D1 /* DateUtility.swift in Sources */,
 				A6A3A8B92C57966600F43D3D /* LibraryViewController.swift in Sources */,
 				A6F5143F2C464D1A002053CA /* ViewController.swift in Sources */,
@@ -754,7 +736,6 @@
 				A6FD4F692C5E1BFD005E23D1 /* TenantModel.swift in Sources */,
 				A64C8CC12C490CA800AF9508 /* UserDetailViewController.swift in Sources */,
 				A6563F9B2C5CBBBB003EE5BB /* BottomSheet+Constants.swift in Sources */,
-				A61461B72C5A65C4004BB308 /* OwnerInteractor.swift in Sources */,
 				A6F514452C464D1A002053CA /* RemindPay.xcdatamodeld in Sources */,
 				A614618E2C5A1D86004BB308 /* DatePickerController.swift in Sources */,
 				A6969A2E2C46E108001EFAA4 /* GymPresenter.swift in Sources */,
@@ -763,7 +744,6 @@
 				A6C763B62C53E6250086AD51 /* DashboardViewController + Gym.swift in Sources */,
 				A6D614DC2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift in Sources */,
 				A6D84DEB2C4E80D1002137BE /* DashboardViewController.swift in Sources */,
-				A61461B22C5A4FC1004BB308 /* CreateOwnerViewController.swift in Sources */,
 				A6969A282C46DEB5001EFAA4 /* GymModel.swift in Sources */,
 				A6525C722C54CC4700342F2C /* LineChart.swift in Sources */,
 				A6D686A62C5B9381002C7653 /* HomePresenter.swift in Sources */,
