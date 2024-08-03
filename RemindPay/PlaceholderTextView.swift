@@ -20,7 +20,6 @@ final class PlaceholderTextView: UITextView {
         textContainer.lineFragmentPadding = 0
         textContainer.lineBreakMode = .byTruncatingTail
         textContainer.maximumNumberOfLines = 2
-        textContainer.heightTracksTextView = true
         let label = UILabel()
         placeholderLabel = label
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),

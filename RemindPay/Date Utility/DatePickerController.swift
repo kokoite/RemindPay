@@ -18,6 +18,8 @@ final class DatePickerController: UIViewController, UIGestureRecognizerDelegate 
     private var containerView: UIView!
     private var datePicker: UIDatePicker!
     weak var delegate: DatePickerDelegate?
+    let utility = DateUtility.instance
+    var action: ((_ selectedDate: String)->Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +29,18 @@ final class DatePickerController: UIViewController, UIGestureRecognizerDelegate 
     @objc func containerClicked(_ sender: UITapGestureRecognizer) {
         delegate?.didDismiss(date: datePicker.date)
         delegate = nil
+        let date = utility.getDate(for: datePicker.date)
+        action?(date)
         view.removeFromSuperview()
         removeFromParent()
     }
 
     @objc func dateSelected() {
-        print(datePicker.date)
         delegate?.didSelect(date: datePicker.date)
-        delegate = nil
-        view.removeFromSuperview()
-        removeFromParent()
+        let date = utility.getDate(for: datePicker.date)
+//        action?(date)
+//        view.removeFromSuperview()
+//        removeFromParent()
     }
 
     private func setup() {
