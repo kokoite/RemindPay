@@ -39,6 +39,7 @@
 		A66251112C5F5D3700195512 /* DateControllerTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66251102C5F5D3700195512 /* DateControllerTransitionDelegate.swift */; };
 		A66251142C5F63F400195512 /* CDGymUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66251122C5F63F400195512 /* CDGymUser+CoreDataClass.swift */; };
 		A66251152C5F63F400195512 /* CDGymUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66251132C5F63F400195512 /* CDGymUser+CoreDataProperties.swift */; };
+		A66251172C5F860200195512 /* GymConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66251162C5F860200195512 /* GymConstant.swift */; };
 		A66D305E2C560B420016B974 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66D305D2C560B410016B974 /* CoreDataStack.swift */; };
 		A6794E0E2C47EB4A00080A38 /* BottomSheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6794E0D2C47EB4A00080A38 /* BottomSheetPresenter.swift */; };
 		A6794E102C47ECE200080A38 /* Extenstion+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */; };
@@ -163,6 +164,7 @@
 		A66251102C5F5D3700195512 /* DateControllerTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateControllerTransitionDelegate.swift; sourceTree = "<group>"; };
 		A66251122C5F63F400195512 /* CDGymUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGymUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A66251132C5F63F400195512 /* CDGymUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGymUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A66251162C5F860200195512 /* GymConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymConstant.swift; sourceTree = "<group>"; };
 		A66D305D2C560B410016B974 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A6794E0D2C47EB4A00080A38 /* BottomSheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetPresenter.swift; sourceTree = "<group>"; };
 		A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extenstion+ViewController.swift"; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				A6969A2B2C46E0F3001EFAA4 /* GymInteractor.swift */,
 				A6969A2D2C46E108001EFAA4 /* GymPresenter.swift */,
 				A6969A2F2C46E119001EFAA4 /* GymWorker.swift */,
+				A66251162C5F860200195512 /* GymConstant.swift */,
 			);
 			path = Gym;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				A6C7634C2C5384F90086AD51 /* SearchViewController.swift in Sources */,
 				A61461D22C5AB8DE004BB308 /* AuthenticationWorker.swift in Sources */,
 				A652EEBD2C5CFA720012153F /* Home.swift in Sources */,
+				A66251172C5F860200195512 /* GymConstant.swift in Sources */,
 				A6794E0E2C47EB4A00080A38 /* BottomSheetPresenter.swift in Sources */,
 				A6FD4F7D2C5E641B005E23D1 /* RentInteractor.swift in Sources */,
 				A6969A2A2C46E0DF001EFAA4 /* GymRouter.swift in Sources */,

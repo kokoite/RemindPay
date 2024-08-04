@@ -13,6 +13,9 @@ protocol GymBusinessLogic: AnyObject {
     func fetchAllUsers(request: Gym.Refresh.Request)
 }
 
+
+
+
 protocol GymDataStore: AnyObject {
 
 }

@@ -3,4 +3,54 @@
    uuid = "0672840C-3A4A-41B8-8FED-26C6D4BD3D29"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "53EAFA7C-1252-4773-AB82-F00BC4F20FF0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RemindPay/Services/Gym/GymViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "newUserAdded()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "53EAFA7C-1252-4773-AB82-F00BC4F20FF0 - 24719b1cb154c612"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RemindPay.GymViewController.newUserAdded() -&gt; ()"
+                  moduleName = "RemindPay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranjalagarwal/Desktop/Remind%20Pay/RemindPay/RemindPay/Services/Gym/GymViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "271"
+                  endingLineNumber = "271"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "53EAFA7C-1252-4773-AB82-F00BC4F20FF0 - 24719b1cb154c612"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RemindPay.GymViewController.newUserAdded() -&gt; ()"
+                  moduleName = "RemindPay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranjalagarwal/Desktop/Remind%20Pay/RemindPay/RemindPay/Services/Gym/GymViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "271"
+                  endingLineNumber = "271"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -110,8 +110,6 @@ final class CreateGymUserViewController: UIViewController, UINavigationControlle
         imageManager = ImageManager.instance
     }
 
-    
-
     private func setup() {
         setupScrollView()
         setupContainer()
@@ -133,6 +131,7 @@ extension CreateGymUserViewController: CreateGymUserDisplayLogic {
     func displayCreateUser(response: Gym.Create.Response) {
         switch response.state {
         case .success:
+            NotificationCenter.default.post(name: Notification.Name(GymConstant.userAdded), object: nil)
             navigationController?.popViewController(animated: true)
         case .error(let error):
             // show bottom sheet

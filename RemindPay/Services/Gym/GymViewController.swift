@@ -24,6 +24,7 @@ final class GymViewController: UIViewController{
     // MARK :- Lifecycle methods
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        addNotificationObservers()
         setupInitializers()
     }
     
@@ -96,6 +97,7 @@ final class GymViewController: UIViewController{
         setupHeader()
         setupUserCollectionView()
         setupCreateUserButton()
+        interactor?.fetchAllUsers(request: .init())
     }
 
     private func setupHeader() {
@@ -169,6 +171,7 @@ final class GymViewController: UIViewController{
         interactor = nil
         router = nil
         presenter = nil
+        removeNotificationObservers()
         print("deinit called \(self)")
     }
 }
@@ -249,5 +252,22 @@ extension GymViewController: GymDisplayLogic {
             print("Error \(error.localizedDescription)")
             // show error bottom sheet
         }
+    }
+}
+
+
+// MARK :- Notification Center related logic
+extension GymViewController {
+
+    private func addNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(newUserAdded), name: Notification.Name(rawValue: GymConstant.userAdded), object: nil)
+    }
+
+    private func removeNotificationObservers() {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: GymConstant.userAdded), object: nil)
+    }
+
+    @objc func newUserAdded() {
+        interactor?.fetchAllUsers(request: .init())
     }
 }
