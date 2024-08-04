@@ -99,7 +99,7 @@ final class GymTabBarController: UIViewController {
         let dashboardItem = GymTabBarItem(image: "indianrupeesign", title: "Dashboard", itemType: .dashboard, isSelected: false)
         let profileItem = GymTabBarItem(image: "person.fill", title: "Profile", itemType: .profile, isSelected: false)
         selectedItem = homeItem
-        tabBar.update(tabItems: [homeItem, dashboardItem, profileItem], selectedItem: homeItem)
+        tabBar.update(tabItems: [homeItem, profileItem], selectedItem: homeItem)
     }
 
     private func reloadContainerView(oldController: UIViewController?) {

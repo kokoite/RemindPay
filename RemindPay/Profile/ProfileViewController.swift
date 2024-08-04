@@ -163,7 +163,7 @@ final class ProfileViewController: UIViewController {
         let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
         let trailing = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
         let top = container.topAnchor.constraint(equalTo: userDetailContainerView.bottomAnchor, constant: 40)
-        let height = container.heightAnchor.constraint(equalToConstant: 300)
+        let height = container.heightAnchor.constraint(equalToConstant: 320)
         NSLayoutConstraint.activate([leading, trailing, top, height])
     }
 
