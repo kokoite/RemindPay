@@ -14,11 +14,27 @@ protocol CarouselViewDelegate: AnyObject {
     func numberOfItemsInCarousel() -> Int
 }
 
-final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     private var collectionView: UICollectionView!
     private var containerView: UIView!
     private var pageControlView: UIPageControl!
     weak var delegate: CarouselViewDelegate?
+    private var images: [UIImage] = []
+    private var width: CGFloat  = 1000
+
+
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        width = bounds.width
+    }
+
+
+    func configure(images: [UIImage]) {
+        self.images = images
+        pageControlView.numberOfPages = images.count
+        collectionView.reloadData()
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,13 +48,14 @@ final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDe
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        delegate?.numberOfItemsInCarousel() ?? 0
+        images.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCell", for: indexPath) as? CarouselCell else {
             return UICollectionViewCell()
         }
+        cell.configure(using: images[indexPath.row])
         return cell
     }
 
@@ -49,10 +66,6 @@ final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDe
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: frame.width, height: frame.height - 24)
-    }
-
-    func configure() {
-
     }
 
     private func setup() {
@@ -107,5 +120,11 @@ final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDe
         pageControl.numberOfPages = 10
         pageControl.currentPageIndicatorTintColor = .systemPink
         pageControl.pageIndicatorTintColor = .systemGray
+    }
+
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let x = scrollView.contentOffset.x
+        print(x)
     }
 }

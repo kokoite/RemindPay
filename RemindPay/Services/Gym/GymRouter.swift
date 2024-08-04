@@ -7,7 +7,7 @@
 import UIKit
 
 protocol GymRoutingLogic: AnyObject {
-    func routeToGymUserDetailPage()
+    func routeToGymUserDetailPage(using index: Int)
     func routeToCreateUserPage()
     func routeToProfilePage()
     func showFilterBottomSheet()
@@ -24,9 +24,17 @@ final class GymRouter: GymRoutingLogic, GymDataPassing {
     var dataStore: GymDataStore?
 
 
-    func routeToGymUserDetailPage() {
+    func routeToGymUserDetailPage(using index: Int) {
+        guard let dataStore, index < dataStore.response.count else {
+            print("Something went wrong while routing")
+            return
+        }
+
+        let user = dataStore.response[index]
+
         guard let navController = viewController?.navigationController else { return }
         let controller = GymUserDetailViewController()
+        controller.router?.dataStore?.user = user
         navController.pushViewController(controller, animated: true)
     }
 

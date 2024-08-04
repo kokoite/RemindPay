@@ -15,7 +15,7 @@ final class GymViewController: UIViewController{
     private var headerView: GeneralHeaderView!
     private var createUserButton: UIImageView!
     private var containerView: UIView!
-    private var interactor: GymInteractor?
+    private var interactor: (GymBusinessLogic & GymDataStore)?
     private var router: GymRouter?
     private var presenter: GymPresenter?
     private var users: [Gym.Refresh.User] = []
@@ -118,7 +118,6 @@ final class GymViewController: UIViewController{
         view.addSubview(container)
         container.setTranslatesMask()
         container.pinToEdges(in: view)
-//        container.backgroundColor = .systemPink
         containerView = container
     }
 
@@ -180,10 +179,8 @@ final class GymViewController: UIViewController{
 extension GymViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        router?.routeToGymUserDetailPage()
+        router?.routeToGymUserDetailPage(using: indexPath.row)
     }
-
-
 }
 
 extension GymViewController: UICollectionViewDataSource {

@@ -16,37 +16,14 @@ protocol GymBusinessLogic: AnyObject {
 
 protocol GymDataStore: AnyObject {
 
-    var selectedIndex: Int? { get }
+    var response: [Gym.User] {get}
 }
-
-// MARK :- Create User Business Logic
-protocol CreateGymUserBusinessLogic: AnyObject {
-
-    func createUser(request: Gym.Create.Request)
-}
-
-protocol CreateGymUserDataStore: AnyObject {
-
-}
-
-// MARK :- User Detail Business Logic
-protocol GymUserDetailBusinessLogic: AnyObject {
-
-    func fetchUserDetails()
-}
-
-protocol GymUserDetailDataStore: AnyObject {
-
-}
-
-
 
 final class GymInteractor: GymDataStore, GymBusinessLogic {
     var presenter: GymPresenter?
     weak var viewController: GymDisplayLogic?
-    weak var createViewController: CreateGymUserDisplayLogic?
-    weak var gymUserDetailViewController: GymUserDetailDisplayLogic?
     var selectedIndex: Int?
+    var response: [Gym.User] = []
 
     private let worker = GymWorker.instance
     private let createWorker = CreateGymUserWorker.instance
@@ -55,6 +32,7 @@ final class GymInteractor: GymDataStore, GymBusinessLogic {
         Task {
             do {
                 let users = try worker.fetchAllUsers()
+                self.response = users
                 let response: [Gym.Refresh.User] = users.map { user in
                         .init(name: user.name, phone: user.phone, expiryDate: user.planEnding, profileImage: user.profileImage[0])
                 }
@@ -71,36 +49,5 @@ final class GymInteractor: GymDataStore, GymBusinessLogic {
     }
 }
 
-// MARK :- Create Gym User
-extension GymInteractor: CreateGymUserBusinessLogic, CreateGymUserDataStore {
-    func createUser(request: Gym.Create.Request) {
-        Task {
-            do {
-                try createWorker.createUser(user: request.user)
-                DispatchQueue.main.async {
-                    self.createViewController?.displayCreateUser(response: .init(state: .success))
-                }
-            } catch let error {
-                print("Error \(error.localizedDescription)")
-                DispatchQueue.main.async {
-                    self.createViewController?.displayCreateUser(response: .init(state: .error(error: error)))
-                }
-            }
-        }
-    }
-}
 
-extension GymInteractor: GymUserDetailBusinessLogic, GymUserDetailDataStore {
-
-    func fetchUserDetails() {
-        guard let selectedIndex else { 
-            print("selected index is nil")
-            return
-        }
-
-        DispatchQueue.main.async { [weak self] in
-            self?.gymUserDetailViewController?.displayFetchUserDetail()
-        }
-    }
-}
 

@@ -21,8 +21,8 @@ final class CarouselCell: UICollectionViewCell {
         super.init(coder: coder)
     }
 
-    func configure() {
-
+    func configure(using image: UIImage) {
+        imageView.image = image
     }
 
     private func setup() {
@@ -54,7 +54,7 @@ final class CarouselCell: UICollectionViewCell {
         ].forEach { const in
             const.isActive = true
         }
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "happyFace")
         image.layer.cornerRadius = 20
         image.clipsToBounds = true

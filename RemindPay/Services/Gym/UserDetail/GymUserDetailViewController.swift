@@ -10,7 +10,7 @@ import SwiftUI
 
 protocol GymUserDetailDisplayLogic: AnyObject {
 
-    func displayFetchUserDetail()
+    func displayFetchUserDetail(using response: Gym.Fetch.ViewModel)
 }
 
 final class GymUserDetailViewController: UIViewController {
@@ -18,15 +18,20 @@ final class GymUserDetailViewController: UIViewController {
     private var containerScrollView: UIScrollView!
     private var carouselView: CarouselView!
     private var containerView, separatorView, carouselContainer: UIView!
-    private var nameView, phoneView, gymJoined, planStarted, planExpiry, addressView, diseaseView, weightView, heightView, bmiView, isActiveView, paymentView
-    : UILabel!
+    private var nameView, phoneView, gymJoined, planStarted, planExpiry,
+                addressView, diseaseView, weightView, heightView,
+                activeView, lastPaymentAmountView, lastPaymentDateView
+    : PlaceholderTextView!
 
-    private var nameContainer, phoneContainer, hwContainer, diseaseContainer, addressContainer, startExpiryContainer, paymentAmountDateContainer, joinedActiveContainer: UIStackView!
+
 
     private var chartContainer: UIStackView!
     private var editButton: UIButton!
-    private var interactor: GymUserDetailBusinessLogic?
+
     private var detailContainerView, userDetailContainerView: UIStackView!
+    private var interactor: GymUserDetailBusinessLogic?
+    var router: (GymUserDetailRoutingLogic & GymUserDetailDataPassing)?
+    private var presenter: GymUserDetailPresenter?
 
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -39,9 +44,15 @@ final class GymUserDetailViewController: UIViewController {
     }
 
     private func initialize() {
-        let interactor = GymInteractor()
-
+        let interactor = GymUserDetailInteractor()
+        let router = GymUserDetailRouter()
+        let presenter = GymUserDetailPresenter()
+        interactor.presenter = presenter
+        presenter.viewController = self
+        router.dataStore = interactor
+        self.router = router
         self.interactor = interactor
+        self.presenter = presenter
     }
 
     override func viewDidLoad() {
@@ -54,10 +65,6 @@ final class GymUserDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.tintColor = .black
-    }
-
-    func configure() {
-
     }
 
     @objc func editButtonClicked() {
@@ -73,9 +80,9 @@ final class GymUserDetailViewController: UIViewController {
         setupUserDetailContainer()
         setupUserDetails()
 
-        setupUserChartContainer()
-        setupWeightChart()
-        setupHeightChart()
+//        setupUserChartContainer()
+//        setupWeightChart()
+//        setupHeightChart()
 
         setupEditButton()
         interactor?.fetchUserDetails()
@@ -190,6 +197,29 @@ final class GymUserDetailViewController: UIViewController {
     }
 }
 
+extension GymUserDetailViewController: GymUserDetailDisplayLogic {
+
+    func displayFetchUserDetail(using response: Gym.Fetch.ViewModel) {
+        switch response.state {
+        case .success(let vm):
+            configure(using: vm)
+        case .error(let error):
+            print("Error is \(error.localizedDescription)")
+        }
+    }
+
+    private func configure(using vm: Gym.Fetch.User) {
+        nameView.text = vm.name
+        phoneView.text = vm.phone
+        addressView.text = vm.address
+        diseaseView.text = vm.disease
+        planStarted.text = vm.planStarting
+        planExpiry.text = vm.planEnding
+        lastPaymentAmountView.text = vm.lastPaymentAmount
+        carouselView.configure(images: vm.profileImage)
+    }
+}
+
 extension GymUserDetailViewController: CarouselViewDelegate {
     func didSelectItemAtIndexPath(indexPath: IndexPath) {
         print("item selected at index path \(indexPath)")
@@ -235,14 +265,12 @@ extension GymUserDetailViewController {
         let container = UIStackView()
         container.axis = .vertical
         container.spacing = 0
-
-        nameContainer = container
         container.backgroundColor = .white
         userDetailContainerView.addArrangedSubview(container)
 
         let label = getLabel(text: "Name")
         let view = getLabelContentView(text: "Pranjal")
-
+        nameView = view
         container.addArrangedSubview(label)
         container.addArrangedSubview(view)
     }
@@ -251,19 +279,20 @@ extension GymUserDetailViewController {
         let container = UIStackView()
         container.axis = .vertical
         container.spacing = 0
-        phoneContainer = container
+
         container.backgroundColor = .white
         userDetailContainerView.addArrangedSubview(container)
         let label = getLabel(text: "Phone")
         let view = getLabelContentView(text: "+91 8209131942")
 
         container.addArrangedSubview(label)
+        phoneView = view
         container.addArrangedSubview(view)
     }
 
     private func setupWeightAndHeightContainer() {
         let container = UIStackView()
-        hwContainer = container
+
         container.spacing = 20
         userDetailContainerView.addArrangedSubview(container)
         let weight = UIStackView()
@@ -272,6 +301,7 @@ extension GymUserDetailViewController {
         container.addArrangedSubview(weight)
         let weightLabel = getLabel(text: "Weight")
         let weightText = getLabelContentView(text: "80 kg")
+        weightView = weightText
 
         weight.addArrangedSubview(weightLabel)
         weight.addArrangedSubview(weightText)
@@ -282,6 +312,7 @@ extension GymUserDetailViewController {
         container.addArrangedSubview(height)
         let heightLabel = getLabel(text: "Height")
         let heightText = getLabelContentView(text: "180 cms")
+        heightView = heightText
 
         height.addArrangedSubview(heightLabel)
         height.addArrangedSubview(heightText)
@@ -290,10 +321,11 @@ extension GymUserDetailViewController {
     private func setupDisease() {
         let container = UIStackView()
         container.axis = .vertical
-        diseaseContainer = container
+
         userDetailContainerView.addArrangedSubview(container)
         let label = getLabel(text: "Existing disease")
         let text = getLabelContentView(text: "Nothing")
+        diseaseView = text
         container.addArrangedSubview(label)
         container.addArrangedSubview(text)
     }
@@ -301,11 +333,11 @@ extension GymUserDetailViewController {
     private func setupAddress() {
         let container = UIStackView()
         container.axis = .vertical
-        addressContainer = container
+
         userDetailContainerView.addArrangedSubview(container)
         let label = getLabel(text: "Current Address")
         let text = getLabelContentView(text: "Manas Hospital")
-
+        addressView = text
         container.addArrangedSubview(label)
         container.addArrangedSubview(text)
     }
@@ -313,7 +345,7 @@ extension GymUserDetailViewController {
 
     private func setupJoinedAndActive() {
         let container = UIStackView()
-        joinedActiveContainer = container
+
         container.spacing = 20
         userDetailContainerView.addArrangedSubview(container)
         let joined = UIStackView()
@@ -322,6 +354,7 @@ extension GymUserDetailViewController {
         container.addArrangedSubview(joined)
         let joinedLabel = getLabel(text: "Joined on")
         let joinedText = getLabelContentView(text: "20-07-2024")
+        gymJoined = joinedText
 
         joined.addArrangedSubview(joinedLabel)
         joined.addArrangedSubview(joinedText)
@@ -332,6 +365,7 @@ extension GymUserDetailViewController {
         container.addArrangedSubview(active)
         let activeLabel = getLabel(text: "Current Status")
         let activeText = getLabelContentView(text: "Active")
+        activeView = activeText
 
         active.addArrangedSubview(activeLabel)
         active.addArrangedSubview(activeText)
@@ -339,7 +373,7 @@ extension GymUserDetailViewController {
 
     private func setupPlanStartAndExpiry() {
         let container = UIStackView()
-        startExpiryContainer = container
+
         container.spacing = 20
         userDetailContainerView.addArrangedSubview(container)
         let joined = UIStackView()
@@ -348,6 +382,7 @@ extension GymUserDetailViewController {
         container.addArrangedSubview(joined)
         let joinedLabel = getLabel(text: "Plan started date")
         let joinedText = getLabelContentView(text: "20-07-2024")
+        planStarted = joinedText
         joined.addArrangedSubview(joinedLabel)
         joined.addArrangedSubview(joinedText)
         let active = UIStackView()
@@ -356,6 +391,7 @@ extension GymUserDetailViewController {
         container.addArrangedSubview(active)
         let activeLabel = getLabel(text: "Plan expiry Date")
         let activeText = getLabelContentView(text: "20-12-2024")
+        planExpiry = activeText
 
         active.addArrangedSubview(activeLabel)
         active.addArrangedSubview(activeText)
@@ -364,7 +400,7 @@ extension GymUserDetailViewController {
 
     private func setupPaymentDateAndAmount() {
         let container = UIStackView()
-        paymentAmountDateContainer = container
+
         container.spacing = 20
         userDetailContainerView.addArrangedSubview(container)
         let joined = UIStackView()
@@ -373,6 +409,7 @@ extension GymUserDetailViewController {
         container.addArrangedSubview(joined)
         let joinedLabel = getLabel(text: "Payment Date")
         let joinedText = getLabelContentView(text: "20-07-2024")
+        lastPaymentDateView = joinedText
 
         joined.addArrangedSubview(joinedLabel)
         joined.addArrangedSubview(joinedText)
@@ -383,6 +420,7 @@ extension GymUserDetailViewController {
         container.addArrangedSubview(active)
         let activeLabel = getLabel(text: "Payment Amount")
         let activeText = getLabelContentView(text: "₹2000")
+        lastPaymentAmountView = activeText
 
         active.addArrangedSubview(activeLabel)
         active.addArrangedSubview(activeText)

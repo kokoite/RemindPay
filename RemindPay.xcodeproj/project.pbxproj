@@ -40,6 +40,9 @@
 		A66251142C5F63F400195512 /* CDGymUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66251122C5F63F400195512 /* CDGymUser+CoreDataClass.swift */; };
 		A66251152C5F63F400195512 /* CDGymUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66251132C5F63F400195512 /* CDGymUser+CoreDataProperties.swift */; };
 		A66251172C5F860200195512 /* GymConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66251162C5F860200195512 /* GymConstant.swift */; };
+		A66251192C5FB3F100195512 /* GymUserDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66251182C5FB3F100195512 /* GymUserDetailInteractor.swift */; };
+		A662511B2C5FB7D600195512 /* GymUserDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A662511A2C5FB7D600195512 /* GymUserDetailRouter.swift */; };
+		A662511D2C5FBCB700195512 /* GymUserDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A662511C2C5FBCB700195512 /* GymUserDetailPresenter.swift */; };
 		A66D305E2C560B420016B974 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66D305D2C560B410016B974 /* CoreDataStack.swift */; };
 		A6794E0E2C47EB4A00080A38 /* BottomSheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6794E0D2C47EB4A00080A38 /* BottomSheetPresenter.swift */; };
 		A6794E102C47ECE200080A38 /* Extenstion+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */; };
@@ -165,6 +168,9 @@
 		A66251122C5F63F400195512 /* CDGymUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGymUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A66251132C5F63F400195512 /* CDGymUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGymUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A66251162C5F860200195512 /* GymConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymConstant.swift; sourceTree = "<group>"; };
+		A66251182C5FB3F100195512 /* GymUserDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymUserDetailInteractor.swift; sourceTree = "<group>"; };
+		A662511A2C5FB7D600195512 /* GymUserDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymUserDetailRouter.swift; sourceTree = "<group>"; };
+		A662511C2C5FBCB700195512 /* GymUserDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymUserDetailPresenter.swift; sourceTree = "<group>"; };
 		A66D305D2C560B410016B974 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A6794E0D2C47EB4A00080A38 /* BottomSheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetPresenter.swift; sourceTree = "<group>"; };
 		A6794E0F2C47ECE200080A38 /* Extenstion+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extenstion+ViewController.swift"; sourceTree = "<group>"; };
@@ -337,6 +343,9 @@
 			isa = PBXGroup;
 			children = (
 				A64C8CC02C490CA800AF9508 /* GymUserDetailViewController.swift */,
+				A66251182C5FB3F100195512 /* GymUserDetailInteractor.swift */,
+				A662511A2C5FB7D600195512 /* GymUserDetailRouter.swift */,
+				A662511C2C5FBCB700195512 /* GymUserDetailPresenter.swift */,
 			);
 			path = UserDetail;
 			sourceTree = "<group>";
@@ -781,10 +790,12 @@
 				A6983EBA2C479ED500AA71FE /* ErrorViewModel.swift in Sources */,
 				A6F514732C465B02002053CA /* GymViewController.swift in Sources */,
 				A6FAC9862C56B6710018BE8D /* CreateTenantViewController.swift in Sources */,
+				A66251192C5FB3F100195512 /* GymUserDetailInteractor.swift in Sources */,
 				A6D84DE42C4E30A2002137BE /* ProfileViewController.swift in Sources */,
 				A6FD4F692C5E1BFD005E23D1 /* Rent.swift in Sources */,
 				A64C8CC12C490CA800AF9508 /* GymUserDetailViewController.swift in Sources */,
 				A6563F9B2C5CBBBB003EE5BB /* BottomSheet+Constants.swift in Sources */,
+				A662511B2C5FB7D600195512 /* GymUserDetailRouter.swift in Sources */,
 				A6F514452C464D1A002053CA /* RemindPay.xcdatamodeld in Sources */,
 				A614618E2C5A1D86004BB308 /* DatePickerController.swift in Sources */,
 				A6969A2E2C46E108001EFAA4 /* GymPresenter.swift in Sources */,
@@ -795,6 +806,7 @@
 				A6D84DEB2C4E80D1002137BE /* DashboardViewController.swift in Sources */,
 				A6525C722C54CC4700342F2C /* LineChart.swift in Sources */,
 				A6D686A62C5B9381002C7653 /* HomePresenter.swift in Sources */,
+				A662511D2C5FBCB700195512 /* GymUserDetailPresenter.swift in Sources */,
 				A6F5146E2C46524A002053CA /* UserCollectionViewCell.swift in Sources */,
 				A63391FD2C4FA00E0095B21B /* TabBarController.swift in Sources */,
 				A6D6869F2C5B7889002C7653 /* CDUser+CoreDataProperties.swift in Sources */,

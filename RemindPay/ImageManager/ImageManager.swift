@@ -141,6 +141,20 @@ final class ImageManager {
         }
     }
 
+    func fetchImage(using filename: String) throws -> UIImage? {
+        let documents = getDocumentDirectory()
+        let filePath = documents.appendingPathComponent(filename)
+        do {
+            let image = try Data(contentsOf: filePath)
+            return UIImage(data: image)
+        } catch(let error) {
+            print("error \(error.localizedDescription)")
+            throw error
+        }
+    }
+}
+
+extension ImageManager {
     func saveImages(images: [UIImage]) async throws -> [String] {
 
         return try await withThrowingTaskGroup(of: String.self) { group in

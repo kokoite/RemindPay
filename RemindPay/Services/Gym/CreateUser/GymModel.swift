@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum Gym {
 
@@ -50,12 +51,28 @@ enum Gym {
         }
 
         struct Response {
-            let state: State
+            let user: Gym.User?
+            let error: Error?
         }
 
         enum State {
             case success(user: User)
             case error(error: Error)
+        }
+
+        struct ViewModel {
+            let state: State
+        }
+
+        struct User {
+            let name, phone, address,
+                disease, planStarting,
+                planEnding, joinedDate,
+                lastPaymentDate, lastPaymentAmount, age, planAmount
+            : String
+
+            let weight, height: [String]
+            let profileImage: [UIImage]
         }
     }
 
