@@ -44,6 +44,21 @@ enum Gym {
         }
     }
 
+    enum Fetch {
+        struct Request {
+            let index: Int
+        }
+
+        struct Response {
+            let state: State
+        }
+
+        enum State {
+            case success(user: User)
+            case error(error: Error)
+        }
+    }
+
     enum State {
         case success
         case error(error: Error)
@@ -59,6 +74,8 @@ enum Gym {
 
         let weight, height, profileImage: [String]
     }
+
+
 }
 
 

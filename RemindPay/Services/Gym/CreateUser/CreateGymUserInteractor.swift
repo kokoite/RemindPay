@@ -7,14 +7,7 @@
 
 import Foundation
 
-protocol CreateGymUserBusinessLogic: AnyObject {
 
-    func createUser(request: Gym.Create.Request)
-}
-
-protocol CreateGymUserDataStore: AnyObject {
-
-}
 
 final class CreateGymUserInteractor: CreateGymUserDataStore, CreateGymUserBusinessLogic {
 

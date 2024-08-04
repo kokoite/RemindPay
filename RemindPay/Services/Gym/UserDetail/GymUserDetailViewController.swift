@@ -8,18 +8,41 @@
 import UIKit
 import SwiftUI
 
-final class UserDetailViewController: UIViewController {
+protocol GymUserDetailDisplayLogic: AnyObject {
 
-    fileprivate var containerScrollView: UIScrollView!
-    fileprivate var carouselView: CarouselView!
-    fileprivate var containerView, separatorView, carouselContainer, userDetailContainerView: UIView!
-    fileprivate var nameView, phoneView, gymJoined, planStarted, planExpiry, addressView, diseaseView, weightView, heightView, bmiView, isActiveView, paymentView
+    func displayFetchUserDetail()
+}
+
+final class GymUserDetailViewController: UIViewController {
+
+    private var containerScrollView: UIScrollView!
+    private var carouselView: CarouselView!
+    private var containerView, separatorView, carouselContainer: UIView!
+    private var nameView, phoneView, gymJoined, planStarted, planExpiry, addressView, diseaseView, weightView, heightView, bmiView, isActiveView, paymentView
     : UILabel!
 
-    fileprivate var nameContainer, phoneContainer, hwContainer, diseaseContainer, addressContainer, startExpiryContainer, paymentAmountDateContainer, joinedActiveContainer: UIStackView!
+    private var nameContainer, phoneContainer, hwContainer, diseaseContainer, addressContainer, startExpiryContainer, paymentAmountDateContainer, joinedActiveContainer: UIStackView!
 
-    fileprivate var chartContainer: UIStackView!
+    private var chartContainer: UIStackView!
     private var editButton: UIButton!
+    private var interactor: GymUserDetailBusinessLogic?
+    private var detailContainerView, userDetailContainerView: UIStackView!
+
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        initialize()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
+    private func initialize() {
+        let interactor = GymInteractor()
+
+        self.interactor = interactor
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +67,7 @@ final class UserDetailViewController: UIViewController {
     private func setup() {
         setupScrollContainer()
         setupContainer()
+        setupDetailContainer()
         setupCarouselContainer()
         setupCarousel()
         setupUserDetailContainer()
@@ -54,6 +78,7 @@ final class UserDetailViewController: UIViewController {
         setupHeightChart()
 
         setupEditButton()
+        interactor?.fetchUserDetails()
     }
 
     private func setupScrollContainer() {
@@ -77,18 +102,27 @@ final class UserDetailViewController: UIViewController {
         container.widthAnchor.constraint(equalTo: containerScrollView.widthAnchor).isActive = true
     }
 
+    private func setupDetailContainer() {
+        let container = UIStackView()
+        detailContainerView = container
+        container.setTranslatesMask()
+        containerView.addSubview(container)
+        container.axis = .vertical
+        container.isLayoutMarginsRelativeArrangement = true
+        container.layoutMargins = .init(top: 20, left: 20, bottom: 20, right: 20)
+        container.pinToEdges(in: containerView)
+        container.layer.cornerRadius = 20
+        container.clipsToBounds = true
+        container.spacing = 25
+    }
+
     private func setupCarouselContainer() {
         let container = UIView()
         carouselContainer = container
         container.backgroundColor = .white
-        container.layer.cornerRadius = 20
         container.clipsToBounds = true
-        container.setTranslatesMask()
-        containerView.addSubview(container)
-        let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
-        let trailing = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
-        let top = container.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: 20)
-        NSLayoutConstraint.activate([leading, top, trailing])
+        container.layer.cornerRadius = 20
+        detailContainerView.addArrangedSubview(container)
     }
 
     private func setupCarousel() {
@@ -113,15 +147,9 @@ final class UserDetailViewController: UIViewController {
         container.isLayoutMarginsRelativeArrangement = true
         container.layoutMargins = .init(top: 0, left: 12, bottom: 20, right: 12)
         chartContainer = container
-        containerView.addSubview(container)
+        detailContainerView.addArrangedSubview(container)
         container.clipsToBounds = true
         container.layer.cornerRadius = 20
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
-        let trailing = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
-        let top = container.topAnchor.constraint(equalTo: userDetailContainerView.bottomAnchor, constant: 40)
-        let bottom = container.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20)
-        NSLayoutConstraint.activate([leading, trailing, top, bottom])
     }
 
     private func setupWeightChart() {
@@ -162,7 +190,7 @@ final class UserDetailViewController: UIViewController {
     }
 }
 
-extension UserDetailViewController: CarouselViewDelegate {
+extension GymUserDetailViewController: CarouselViewDelegate {
     func didSelectItemAtIndexPath(indexPath: IndexPath) {
         print("item selected at index path \(indexPath)")
     }
@@ -177,23 +205,22 @@ extension UserDetailViewController: CarouselViewDelegate {
 
 
 // User Detail Container
-extension UserDetailViewController {
+extension GymUserDetailViewController {
 
-    fileprivate func setupUserDetailContainer() {
-        let container = UIView()
+    private func setupUserDetailContainer() {
+        let container = UIStackView()
+        container.spacing = 10
+        container.isLayoutMarginsRelativeArrangement = true
+        container.layoutMargins = .init(top: 12, left: 12, bottom: 12, right: 12)
+        container.axis = .vertical
         container.backgroundColor = .white
         container.clipsToBounds = true
         container.layer.cornerRadius = 20
         userDetailContainerView = container
-        containerView.addSubview(container)
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
-        let trailing = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
-        let top = container.topAnchor.constraint(equalTo: carouselContainer.bottomAnchor, constant: 20)
-        NSLayoutConstraint.activate([leading, trailing, top])
+        detailContainerView.addArrangedSubview(container)
     }
 
-    fileprivate func setupUserDetails() {
+    private func setupUserDetails() {
         setupNameContainer()
         setupPhoneContainer()
         setupWeightAndHeightContainer()
@@ -208,17 +235,11 @@ extension UserDetailViewController {
         let container = UIStackView()
         container.axis = .vertical
         container.spacing = 0
-        container.isLayoutMarginsRelativeArrangement = true
-        container.layoutMargins = .init(top: 0, left: 12, bottom: 0, right: 12)
+
         nameContainer = container
         container.backgroundColor = .white
-        userDetailContainerView.addSubview(nameContainer)
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: userDetailContainerView.leadingAnchor)
-        let trailing = container.trailingAnchor.constraint(equalTo: userDetailContainerView.trailingAnchor)
-        let top = container.topAnchor.constraint(equalTo: userDetailContainerView.topAnchor ,constant: 12)
+        userDetailContainerView.addArrangedSubview(container)
 
-        NSLayoutConstraint.activate([leading, trailing, top])
         let label = getLabel(text: "Name")
         let view = getLabelContentView(text: "Pranjal")
 
@@ -230,17 +251,9 @@ extension UserDetailViewController {
         let container = UIStackView()
         container.axis = .vertical
         container.spacing = 0
-        container.isLayoutMarginsRelativeArrangement = true
-        container.layoutMargins = .init(top: 18, left: 12, bottom: 0, right: 12)
         phoneContainer = container
         container.backgroundColor = .white
-        userDetailContainerView.addSubview(container)
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: userDetailContainerView.leadingAnchor)
-        let trailing = container.trailingAnchor.constraint(equalTo: userDetailContainerView.trailingAnchor)
-        let top = container.topAnchor.constraint(equalTo: nameContainer.bottomAnchor )
-
-        NSLayoutConstraint.activate([leading, trailing, top])
+        userDetailContainerView.addArrangedSubview(container)
         let label = getLabel(text: "Phone")
         let view = getLabelContentView(text: "+91 8209131942")
 
@@ -252,14 +265,7 @@ extension UserDetailViewController {
         let container = UIStackView()
         hwContainer = container
         container.spacing = 20
-        container.isLayoutMarginsRelativeArrangement = true
-        container.layoutMargins = .init(top: 18, left: 12, bottom: 0, right: 12)
-        userDetailContainerView.addSubview(container)
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: userDetailContainerView.leadingAnchor)
-        let top = container.topAnchor.constraint(equalTo: phoneContainer.bottomAnchor)
-        let trailing = container.trailingAnchor.constraint(equalTo: userDetailContainerView.trailingAnchor)
-        NSLayoutConstraint.activate([leading, trailing, top])
+        userDetailContainerView.addArrangedSubview(container)
         let weight = UIStackView()
         weight.spacing = 0
         weight.axis = .vertical
@@ -284,19 +290,10 @@ extension UserDetailViewController {
     private func setupDisease() {
         let container = UIStackView()
         container.axis = .vertical
-        container.spacing = 0
-        container.isLayoutMarginsRelativeArrangement = true
-        container.layoutMargins = .init(top: 18, left: 12, bottom: 0, right: 12)
         diseaseContainer = container
-        userDetailContainerView.addSubview(container)
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: userDetailContainerView.leadingAnchor)
-        let trailing = container.trailingAnchor.constraint(equalTo: userDetailContainerView.trailingAnchor)
-        let top = container.topAnchor.constraint(equalTo: hwContainer.bottomAnchor)
-        NSLayoutConstraint.activate([leading, trailing, top])
+        userDetailContainerView.addArrangedSubview(container)
         let label = getLabel(text: "Existing disease")
         let text = getLabelContentView(text: "Nothing")
-
         container.addArrangedSubview(label)
         container.addArrangedSubview(text)
     }
@@ -304,17 +301,8 @@ extension UserDetailViewController {
     private func setupAddress() {
         let container = UIStackView()
         container.axis = .vertical
-        container.spacing = 0
-        container.isLayoutMarginsRelativeArrangement = true
-        container.layoutMargins = .init(top: 18, left: 12, bottom: 0, right: 12)
         addressContainer = container
-        userDetailContainerView.addSubview(container)
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: userDetailContainerView.leadingAnchor)
-        let trailing = container.trailingAnchor.constraint(equalTo: userDetailContainerView.trailingAnchor)
-        let top = container.topAnchor.constraint(equalTo: diseaseContainer.bottomAnchor)
-
-        NSLayoutConstraint.activate([leading, trailing, top])
+        userDetailContainerView.addArrangedSubview(container)
         let label = getLabel(text: "Current Address")
         let text = getLabelContentView(text: "Manas Hospital")
 
@@ -327,14 +315,7 @@ extension UserDetailViewController {
         let container = UIStackView()
         joinedActiveContainer = container
         container.spacing = 20
-        container.isLayoutMarginsRelativeArrangement = true
-        container.layoutMargins = .init(top: 18, left: 12, bottom: 0, right: 12)
-        userDetailContainerView.addSubview(container)
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: userDetailContainerView.leadingAnchor)
-        let top = container.topAnchor.constraint(equalTo: addressContainer.bottomAnchor)
-        let trailing = container.trailingAnchor.constraint(equalTo: userDetailContainerView.trailingAnchor)
-        NSLayoutConstraint.activate([leading, trailing, top])
+        userDetailContainerView.addArrangedSubview(container)
         let joined = UIStackView()
         joined.spacing = 0
         joined.axis = .vertical
@@ -360,14 +341,7 @@ extension UserDetailViewController {
         let container = UIStackView()
         startExpiryContainer = container
         container.spacing = 20
-        container.isLayoutMarginsRelativeArrangement = true
-        container.layoutMargins = .init(top: 18, left: 12, bottom: 0, right: 12)
-        userDetailContainerView.addSubview(container)
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: userDetailContainerView.leadingAnchor)
-        let top = container.topAnchor.constraint(equalTo: joinedActiveContainer.bottomAnchor)
-        let trailing = container.trailingAnchor.constraint(equalTo: userDetailContainerView.trailingAnchor)
-        NSLayoutConstraint.activate([leading, trailing, top])
+        userDetailContainerView.addArrangedSubview(container)
         let joined = UIStackView()
         joined.spacing = 0
         joined.axis = .vertical
@@ -392,15 +366,7 @@ extension UserDetailViewController {
         let container = UIStackView()
         paymentAmountDateContainer = container
         container.spacing = 20
-        container.isLayoutMarginsRelativeArrangement = true
-        container.layoutMargins = .init(top: 18, left: 12, bottom: 0, right: 12)
-        userDetailContainerView.addSubview(container)
-        container.setTranslatesMask()
-        let leading = container.leadingAnchor.constraint(equalTo: userDetailContainerView.leadingAnchor)
-        let top = container.topAnchor.constraint(equalTo: startExpiryContainer.bottomAnchor)
-        let trailing = container.trailingAnchor.constraint(equalTo: userDetailContainerView.trailingAnchor)
-
-        NSLayoutConstraint.activate([leading, trailing, top])
+        userDetailContainerView.addArrangedSubview(container)
         let joined = UIStackView()
         joined.spacing = 0
         joined.axis = .vertical
@@ -420,10 +386,10 @@ extension UserDetailViewController {
 
         active.addArrangedSubview(activeLabel)
         active.addArrangedSubview(activeText)
-        container.bottomAnchor.constraint(equalTo: userDetailContainerView.bottomAnchor, constant: -20).isActive = true
+
     }
 
-    fileprivate func getLabel(text: String) -> UILabel {
+    private func getLabel(text: String) -> UILabel {
         let label = UILabel()
         label.text = text
         label.textColor = .gray
@@ -431,13 +397,12 @@ extension UserDetailViewController {
         return label
     }
 
-    fileprivate func getLabelContentView(text: String) -> PlaceholderTextView {
+    private func getLabelContentView(text: String) -> PlaceholderTextView {
         let tv = PlaceholderTextView()
         tv.text = text
         tv.textContainer.lineFragmentPadding = 0
         tv.isEditable = false
         tv.isScrollEnabled = false
-        tv.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 4, right: 8)
         tv.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         tv.setTranslatesMask()
 
@@ -446,7 +411,7 @@ extension UserDetailViewController {
         return tv
     }
 
-    fileprivate func getSeparator() -> UIView {
+    private func getSeparator() -> UIView {
         let view = UIView()
         view.backgroundColor = .gray
         view.setTranslatesMask()

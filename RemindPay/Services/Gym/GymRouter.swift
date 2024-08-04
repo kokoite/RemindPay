@@ -26,7 +26,7 @@ final class GymRouter: GymRoutingLogic, GymDataPassing {
 
     func routeToGymUserDetailPage() {
         guard let navController = viewController?.navigationController else { return }
-        let controller = UserDetailViewController()
+        let controller = GymUserDetailViewController()
         navController.pushViewController(controller, animated: true)
     }
 

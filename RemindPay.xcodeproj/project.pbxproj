@@ -28,7 +28,7 @@
 		A63391FD2C4FA00E0095B21B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391FC2C4FA00E0095B21B /* TabBarController.swift */; };
 		A63391FF2C4FA5430095B21B /* GymTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63391FE2C4FA5430095B21B /* GymTabBarView.swift */; };
 		A64809082C4A793D0086D7A7 /* CreateGymUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64809072C4A793D0086D7A7 /* CreateGymUserViewController.swift */; };
-		A64C8CC12C490CA800AF9508 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC02C490CA800AF9508 /* UserDetailViewController.swift */; };
+		A64C8CC12C490CA800AF9508 /* GymUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC02C490CA800AF9508 /* GymUserDetailViewController.swift */; };
 		A64C8CC32C490CE600AF9508 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC22C490CE600AF9508 /* CarouselView.swift */; };
 		A64C8CC52C490E9100AF9508 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC42C490E9100AF9508 /* CarouselCell.swift */; };
 		A6525C722C54CC4700342F2C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6525C712C54CC4700342F2C /* LineChart.swift */; };
@@ -153,7 +153,7 @@
 		A63391FC2C4FA00E0095B21B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A63391FE2C4FA5430095B21B /* GymTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymTabBarView.swift; sourceTree = "<group>"; };
 		A64809072C4A793D0086D7A7 /* CreateGymUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGymUserViewController.swift; sourceTree = "<group>"; };
-		A64C8CC02C490CA800AF9508 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		A64C8CC02C490CA800AF9508 /* GymUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymUserDetailViewController.swift; sourceTree = "<group>"; };
 		A64C8CC22C490CE600AF9508 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		A64C8CC42C490E9100AF9508 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		A6525C712C54CC4700342F2C /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
@@ -336,7 +336,7 @@
 		A64C8CBF2C490C8E00AF9508 /* UserDetail */ = {
 			isa = PBXGroup;
 			children = (
-				A64C8CC02C490CA800AF9508 /* UserDetailViewController.swift */,
+				A64C8CC02C490CA800AF9508 /* GymUserDetailViewController.swift */,
 			);
 			path = UserDetail;
 			sourceTree = "<group>";
@@ -783,7 +783,7 @@
 				A6FAC9862C56B6710018BE8D /* CreateTenantViewController.swift in Sources */,
 				A6D84DE42C4E30A2002137BE /* ProfileViewController.swift in Sources */,
 				A6FD4F692C5E1BFD005E23D1 /* Rent.swift in Sources */,
-				A64C8CC12C490CA800AF9508 /* UserDetailViewController.swift in Sources */,
+				A64C8CC12C490CA800AF9508 /* GymUserDetailViewController.swift in Sources */,
 				A6563F9B2C5CBBBB003EE5BB /* BottomSheet+Constants.swift in Sources */,
 				A6F514452C464D1A002053CA /* RemindPay.xcdatamodeld in Sources */,
 				A614618E2C5A1D86004BB308 /* DatePickerController.swift in Sources */,
