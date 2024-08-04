@@ -26,8 +26,15 @@ final class UserCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK :-  Public methods
-    func configure() {
+    func configure(using vm: Rent.Refresh.Response.ViewModel) {
+        DispatchQueue.main.async {
+            let image = try? getImageFrom(fileName: vm.profileImage)
+            self.imageView.image = image
+        }
 
+        titleView.text = vm.name
+        subtitleView.text = vm.phone
+        expiryDateView.text = vm.expiryDate
     }
 
     private func setup() {
@@ -58,7 +65,7 @@ final class UserCollectionViewCell: UICollectionViewCell {
         image.clipsToBounds = true
         image.backgroundColor = .white
         image.layer.cornerRadius = 30
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.setTranslatesMask()
         let top = image.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 5)
         let bottom = image.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -5)
@@ -82,6 +89,9 @@ final class UserCollectionViewCell: UICollectionViewCell {
         let name = getLabel(text: "Pranjal Agarwal")
         let phone = getLabel(text: "+ 91 820 9131942")
         let expiry = getLabel(text: "Expiry: 20-07-2024")
+        titleView = name
+        subtitleView = phone
+        expiryDateView = expiry
         container.addArrangedSubview(name)
         container.addArrangedSubview(phone)
         container.addArrangedSubview(expiry)

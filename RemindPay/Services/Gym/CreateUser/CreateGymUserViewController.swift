@@ -6,27 +6,35 @@
 //
 
 import UIKit
-import AVFoundation
+import PhotosUI
+
+protocol CreateGymUserDisplayLogic: AnyObject {
+    func displayCreateUser(response: Gym.Create.Response)
+}
 
 final class CreateGymUserViewController: UIViewController, UINavigationControllerDelegate {
 
-    fileprivate var containerScrollView: UIScrollView!
-    fileprivate var containerView: UIView!
-    fileprivate var imageView: UIImageView!
-    fileprivate var createButton: UIButton!
-    fileprivate var detailContainerView: UIStackView!
-    fileprivate var nameView, phoneView, weightView,
+    private var containerScrollView: UIScrollView!
+    private var containerView: UIView!
+    private var imageView: UIImageView!
+    private var createButton: UIButton!
+    private var detailContainerView: UIStackView!
+    private var nameView, phoneView, weightView,
                 heightView,
                 paymentView,
-                addressView, diseaseView
+                addressView, diseaseView, ageView
     : PlaceholderTextView!
-    fileprivate var joinedView, expiryView: UILabel!
-    private var imagePicker: UIImagePickerController
+    private var joinedView, expiryView: UILabel!
+    private var interactor: CreateGymUserBusinessLogic?
+    private var imageManager: ImageManager!
+    private var dateController: DatePickerController!
+    private var selectedImageFilename: String!
+    private var selectedImage: UIImage?
 
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        imagePicker = UIImagePickerController()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        initialize()
     }
 
     required init?(coder: NSCoder) {
@@ -50,64 +58,59 @@ final class CreateGymUserViewController: UIViewController, UINavigationControlle
         navigationItem.compactAppearance = appearance
         navigationItem.compactScrollEdgeAppearance = appearance
         navigationController?.navigationBar.tintColor = .black
+        imageManager.singleImageDelegate = self
     }
 
-    @objc func expiryDateClicked() {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        imageManager.singleImageDelegate = nil
+    }
+
+    @objc func selectDate(_ sender: UITapGestureRecognizer) {
+        guard let label = sender.view as? UILabel else {
+            print("No label")
+            return
+        }
         let controller = DatePickerController()
-        addChild(controller)
-        containerView.addSubview(controller.view)
-        controller.delegate = self
-        controller.view.setTranslatesMask()
-        controller.view.pinToEdges(in: containerView)
-        controller.didMove(toParent: self)
+        controller.modalPresentationStyle = .fullScreen
+        controller.action = { (date) in
+            label.text = date
+        }
+        present(controller, animated: true)
     }
 
     @objc func createButtonClicked() {
-
+        guard let selectedImage else {
+            // show Bottom sheet
+            return
+        }
+        imageManager.saveImageToDocuments(image: selectedImage)
     }
 
     @objc func cameraClicked() {
-        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-            showAlert(title: "Camera not found", subtitle: "Sorry you won't be able to add users. We are not able to found camera on your device")
-            return
-        }
-        let status = AVCaptureDevice.authorizationStatus(for: .video)
-        if(status == .notDetermined) {
-            requestPermission()
-        } else if(status == .authorized) {
-            presentCamera()
-        } else {
-            print(status)
-            showPermissionDeniedAlert()
-        }
+        var config = PHPickerConfiguration()
+        config.filter = .images
+        config.selectionLimit = 1
+        let controller = PHPickerViewController(configuration: config)
+        controller.modalPresentationStyle = .fullScreen
+        controller.modalTransitionStyle = .coverVertical
+        controller.delegate = self
+        present(controller, animated: true)
     }
 
-    private func requestPermission() {
-        AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
-            guard let self else { return }
-            DispatchQueue.main.async {
-                granted ? self.presentCamera(): self.showPermissionDeniedAlert()
-            }
-        }
+    @objc func dismissKeyboard() {
+//        view.endEditing(false)
     }
 
-    private func presentCamera() {
-        imagePicker.sourceType = .camera
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true)
+    private func initialize() {
+        dateController = DatePickerController()
+        let interactor = CreateGymUserInteractor()
+        interactor.viewController = self
+        self.interactor = interactor
+        imageManager = ImageManager.instance
     }
 
-    private func showPermissionDeniedAlert() {
-        showAlert(title: "Permssion denied", subtitle: "Permission denined, Please grant permission in order to use this feature")
-    }
-
-    private func showAlert(title: String, subtitle: String) {
-        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default)
-        alert.addAction(action)
-        present(alert, animated: true)
-    }
+    
 
     private func setup() {
         setupScrollView()
@@ -125,21 +128,61 @@ final class CreateGymUserViewController: UIViewController, UINavigationControlle
     }
 }
 
-extension CreateGymUserViewController: UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let editedImage = info[.editedImage] as? UIImage {
-            imageView.image = editedImage
-        } else if let originalImage = info[.originalImage] as? UIImage {
-            imageView.image = originalImage
-        }
-        picker.dismiss(animated: true)
-    }
 
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true)
+extension CreateGymUserViewController: CreateGymUserDisplayLogic {
+    func displayCreateUser(response: Gym.Create.Response) {
+        switch response.state {
+        case .success:
+            navigationController?.popViewController(animated: true)
+        case .error(let error):
+            // show bottom sheet
+            print("Error \(error.localizedDescription)")
+            imageManager.deleteImage(image: selectedImageFilename)
+        }
     }
 }
 
+extension CreateGymUserViewController: SingleImageManagerDelelgate {
+
+    func didSaveImageToDocument(filename: String?, error: Error?) {
+        guard let filename, error == nil else {
+            // show bottom sheet
+            return
+        }
+        selectedImageFilename = filename
+        let user = Gym.User(id: UUID(),name: nameView.text, phone: phoneView.text, address: addressView.text, disease: diseaseView.text, planStarting: "20-08-2024", planEnding: "20-12-2024", joinedDate: "20-08-2024", lastPaymentDate: "20-08-2024",lastPaymentAmount: "2000", age: ageView.text, planAmount: paymentView.text, weight: [weightView.text], height: [heightView.text], profileImage: [selectedImageFilename])
+        interactor?.createUser(request: .init(user: user))
+    }
+
+    func didDeleteImageFromDocument(error: Error?) {
+        guard error == nil else {
+            // show bottom sheet
+            return
+        }
+        
+        // stop the loader
+    }
+}
+
+
+extension CreateGymUserViewController: PHPickerViewControllerDelegate {
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        defer {
+            dismiss(animated: true)
+        }
+        guard let provider = results.first?.itemProvider else { return }
+        if(provider.canLoadObject(ofClass: UIImage.self)) {
+            provider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                DispatchQueue.main.async {
+                    guard let self, let image = image as? UIImage, error == nil else { return }
+                    self.selectedImage = image
+                    self.imageView.image = image
+                }
+            }
+        }
+    }
+}
 
 extension CreateGymUserViewController: UITextViewDelegate {
 
@@ -189,6 +232,8 @@ extension CreateGymUserViewController {
         container.pinToEdges(in: containerScrollView)
         container.widthAnchor.constraint(equalTo: containerScrollView.widthAnchor).isActive = true
         container.backgroundColor = .white
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        container.addGestureRecognizer(gesture)
     }
 
 
@@ -197,7 +242,7 @@ extension CreateGymUserViewController {
         imageView = image
         image.isUserInteractionEnabled = true
         image.image = UIImage(systemName: "camera.circle.fill")
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.tintColor = .black
         image.backgroundColor = .white
         let gesture = UITapGestureRecognizer(target: self, action: #selector(cameraClicked))
@@ -209,7 +254,7 @@ extension CreateGymUserViewController {
         let height = image.heightAnchor.constraint(equalToConstant: 150)
         let width = image.widthAnchor.constraint(equalToConstant: 150)
         NSLayoutConstraint.activate([centerX, top, height ,width])
-        image.layer.cornerRadius = 75
+        image.layer.cornerRadius = 20
         image.clipsToBounds = true
     }
 
@@ -245,16 +290,32 @@ extension CreateGymUserViewController {
 
     fileprivate func setupPhoneView() {
         let container = UIStackView()
-        container.axis = .vertical
-        container.spacing = 0
-        let label = getLabel(text: "Phone")
-        container.addArrangedSubview(label)
-        let tf = getTextView(text: "8291375546")
-        phoneView = tf
-        container.addArrangedSubview(tf)
-        let separator = getSeparator()
-        container.addArrangedSubview(separator)
+        container.spacing = 20
         detailContainerView.addArrangedSubview(container)
+
+        let sContainer = UIStackView()
+        sContainer.axis = .vertical
+        let label1 = getLabel(text: "Phone number")
+        label1.numberOfLines = 0
+        let tv1 = getTextView(text: "8010923834")
+        phoneView = tv1
+        let sep1 = getSeparator()
+        sContainer.addArrangedSubview(label1)
+        sContainer.addArrangedSubview(tv1)
+        sContainer.addArrangedSubview(sep1)
+
+        let eContainer = UIStackView()
+        eContainer.axis = .vertical
+        let label2 = getLabel(text: "Age")
+        let tv2 = getTextView(text: "24")
+        ageView = tv2
+        let sep2 = getSeparator()
+        eContainer.addArrangedSubview(label2)
+        eContainer.addArrangedSubview(tv2)
+        eContainer.addArrangedSubview(sep2)
+
+        container.addArrangedSubview(sContainer)
+        container.addArrangedSubview(eContainer)
     }
 
     fileprivate func setupWeightHeightContainer() {
@@ -320,6 +381,8 @@ extension CreateGymUserViewController {
         container.spacing = 20
         detailContainerView.addArrangedSubview(container)
 
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectDate))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(selectDate))
         let sContainer = UIStackView()
         sContainer.axis = .vertical
         sContainer.spacing = 8
@@ -327,6 +390,8 @@ extension CreateGymUserViewController {
         label1.numberOfLines = 0
         let date = getTodaysDate()
         let tv1 = getLabel(text: date)
+        tv1.isUserInteractionEnabled = true
+        tv1.addGestureRecognizer(gesture)
         joinedView = tv1
         tv1.textColor = .gray
         tv1.font = UIFont.systemFont(ofSize: 16)
@@ -344,7 +409,6 @@ extension CreateGymUserViewController {
         tv2.textColor = .gray
         tv2.font = UIFont.systemFont(ofSize: 16)
         tv2.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(expiryDateClicked))
         tv2.addGestureRecognizer(tapGesture)
         let sep2 = getSeparator()
         eContainer.addArrangedSubview(label2)

@@ -17,6 +17,7 @@ final class CreateTenantWorker {
     func createTenant(tenant: Tenant) throws {
 
         let user = CDTenant(context: context)
+        user.id = tenant.id
         user.name = tenant.name
         user.address = tenant.address
         user.phone = tenant.phone

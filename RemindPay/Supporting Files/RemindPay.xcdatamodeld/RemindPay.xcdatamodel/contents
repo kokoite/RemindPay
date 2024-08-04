@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23D56" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDGymUser" representedClassName="CDGymUser" syncable="YES">
+        <attribute name="address" attributeType="String"/>
+        <attribute name="age" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="disease" attributeType="String"/>
+        <attribute name="height" attributeType="Transformable" valueTransformerName="ArrayOfStringTransformer" customClassName="[String]"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="joined" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastPaymentAmount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastPaymentDate" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="payment" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="phone" attributeType="String"/>
+        <attribute name="planEnd" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="planStart" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="profileImage" attributeType="Transformable" valueTransformerName="ArrayOfStringTransformer" customClassName="[String]"/>
+        <attribute name="weight" attributeType="Transformable" valueTransformerName="ArrayOfStringTransformer" customClassName="[String]"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="CDTenant" representedClassName="CDTenant" syncable="YES">
         <attribute name="address" attributeType="String"/>
         <attribute name="advance" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>

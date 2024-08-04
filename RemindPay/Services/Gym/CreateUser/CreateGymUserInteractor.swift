@@ -9,18 +9,32 @@ import Foundation
 
 protocol CreateGymUserBusinessLogic: AnyObject {
 
-    func createUser()
+    func createUser(request: Gym.Create.Request)
 }
 
 protocol CreateGymUserDataStore: AnyObject {
-    var owner: UUID? { get }
+
 }
 
 final class CreateGymUserInteractor: CreateGymUserDataStore, CreateGymUserBusinessLogic {
 
-    var owner: UUID? = nil
+    weak var viewController: CreateGymUserDisplayLogic?
+    let worker = CreateGymUserWorker.instance
 
-    func createUser() {
-        // create user
+    func createUser(request: Gym.Create.Request) {
+        Task {
+            do {
+                
+                try worker.createUser(user: request.user)
+                DispatchQueue.main.async {
+                    self.viewController?.displayCreateUser(response: .init(state: .success))
+                }
+            } catch let error {
+                print("Error \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.viewController?.displayCreateUser(response: .init(state: .error(error: error)))
+                }
+            }
+        }
     }
 }

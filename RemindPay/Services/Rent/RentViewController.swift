@@ -7,13 +7,21 @@
 
 import UIKit
 
+protocol RentDisplayLogic: AnyObject {
+    func displayFetchAllTenant(using tenants: [Rent.Refresh.Response.ViewModel])
+}
+
 final class RentViewController: UIViewController {
     
     private var scrollView: UIScrollView!
     private var containerView: UIView!
     private var headerView: GeneralHeaderView!
     private var userCollection: UICollectionView!
+    private var collectionContainer: UIStackView!
     private var createUserButton: UIImageView!
+    private var tenants: [Rent.Refresh.Response.ViewModel] = []
+    private var interactor: RentBusinessLogic?
+    private var lottieView: LottieView!
 
 
     override func viewWillLayoutSubviews() {
@@ -25,6 +33,16 @@ final class RentViewController: UIViewController {
         grd.endPoint = .init(x: 1, y: 0)
         grd.frame = view.bounds
         view.layer.insertSublayer(grd, at: 0)
+    }
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        initialize()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        initialize()
     }
 
 
@@ -48,11 +66,20 @@ final class RentViewController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
 
+    private func initialize() {
+        let interactor = RentInteractor()
+        interactor.viewController = self
+        self.interactor = interactor
+    }
+
     private func setup() {
         setupContainer()
         setupHeader()
+        setupCollectionContainer()
+        setupLottieView()
         setupCollectionView()
         setupCreateUserButton()
+        interactor?.fetchAllTenants()
     }
 
     private func setupContainer() {
@@ -75,7 +102,30 @@ final class RentViewController: UIViewController {
         NSLayoutConstraint.activate([leading, top, trailing])
         headerView = header
         header.configure(with: .init(iconImage: .system(name: "house"), background: nil, title: "Heyy Pranjal"))
-//        header.configure(color1: .orange, color2: .black)
+    }
+
+    private func setupCollectionContainer () {
+        let container = UIStackView()
+        container.backgroundColor = .white
+        container.clipsToBounds = true
+        container.layer.cornerRadius = 20
+        collectionContainer = container
+        containerView.addSubview(container)
+        container.setTranslatesMask()
+        [
+            container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            container.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            container.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ].forEach { const in
+            const.isActive = true
+        }
+    }
+
+    private func setupLottieView() {
+        let lottieView = LottieView()
+        self.lottieView = lottieView
+        collectionContainer.addArrangedSubview(lottieView)
     }
 
     private func setupCollectionView() {
@@ -86,19 +136,13 @@ final class RentViewController: UIViewController {
         container.showsVerticalScrollIndicator = false
         container.contentInset = .init(top: 12, left: 12, bottom: 12, right: 12)
         userCollection = container
-        container.clipsToBounds = true
-        container.layer.cornerRadius = 20
-//        container.backgroundColor = .white
+
         container.dataSource = self
         container.delegate = self
         container.register(UserCollectionViewCell.self, forCellWithReuseIdentifier: "rentCell")
         containerView.addSubview(container)
-        container.setTranslatesMask()
-        let top = container.topAnchor.constraint(equalTo: headerView.bottomAnchor)
-        let leading = container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
-        let trailing = container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
-        let bottom = container.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-        NSLayoutConstraint.activate([leading, top, bottom, trailing])
+        collectionContainer.addArrangedSubview(container)
+        container.isHidden = true 
     }
 
     private func setupCreateUserButton() {
@@ -135,11 +179,12 @@ extension RentViewController: UICollectionViewDataSource, UICollectionViewDelega
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rentCell", for: indexPath) as? UserCollectionViewCell else {
             return UICollectionViewCell()
         }
+        cell.configure(using: tenants[indexPath.row])
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return tenants.count
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -152,8 +197,30 @@ extension RentViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
+extension RentViewController: RentDisplayLogic {
+    
+    func displayFetchAllTenant(using tenants: [Rent.Refresh.Response.ViewModel]) {
+        self.tenants = tenants
+        updateLottieAndCollectionView()
+//        userCollection.reloadData()
+    }
+
+    private func updateLottieAndCollectionView() {
+        if(tenants.isEmpty) {
+            lottieView.isHidden = false
+            lottieView.play()
+            userCollection.isHidden = true
+        } else {
+            lottieView.pause()
+            lottieView.isHidden = true
+            userCollection.isHidden = false
+            userCollection.reloadData()
+        }
+    }
+}
 
 extension RentViewController: GeneralHeaderDelegate {
+    
     func didClickProfileImage() {
 
     }
@@ -169,10 +236,8 @@ extension RentViewController: GeneralHeaderDelegate {
     func onSearchViewTextChange(text: String) {
 
     }
-    
+
     func didClickOnBackButton() {
         navigationController?.popViewController(animated: true)
     }
-    
-
 }

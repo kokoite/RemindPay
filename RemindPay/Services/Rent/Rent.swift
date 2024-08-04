@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum TenantModel {
+enum Rent {
 
     enum Create {
 
@@ -23,6 +23,23 @@ enum TenantModel {
         enum State {
             case success
             case error(error: Error)
+        }
+    }
+
+
+    enum Refresh {
+
+        struct Request {
+
+        }
+
+        struct Response {
+
+            let tenants: [ViewModel]
+            
+            struct ViewModel {
+                let name, phone, expiryDate, profileImage: String
+            }
         }
     }
 }

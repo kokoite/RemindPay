@@ -16,15 +16,15 @@ extension CDTenant {
         return NSFetchRequest<CDTenant>(entityName: "CDTenant")
     }
 
-    @NSManaged public var id: UUID?
+    @NSManaged public var id: UUID
     @NSManaged public var joinedDate: Int64
-    @NSManaged public var name: String?
-    @NSManaged public var phone: String?
-    @NSManaged public var profileImage: String?
-    @NSManaged public var propertyImages: [String]?
+    @NSManaged public var name: String
+    @NSManaged public var phone: String
+    @NSManaged public var profileImage: String
+    @NSManaged public var propertyImages: [String]
     @NSManaged public var rentEndDate: Int64
     @NSManaged public var rentStartDate: Int64
-    @NSManaged public var address: String?
+    @NSManaged public var address: String
     @NSManaged public var agreementStartDate: Int64
     @NSManaged public var agreementEndDate: Int64
     @NSManaged public var rent: Int32

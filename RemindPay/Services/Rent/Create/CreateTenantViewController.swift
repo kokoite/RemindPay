@@ -11,18 +11,10 @@ import PhotosUI
 
 
 protocol CreateTenantDisplayLogic: AnyObject {
-    func displayCreateTenant(response: TenantModel.Create.Response)
+    func displayCreateTenant(response: Rent.Create.Response)
 }
 
-final class CreateTenantViewController: UIViewController, DatePickerDelegate {
-    func didSelect(date: Date) {
-
-    }
-    
-    func didDismiss(date: Date) {
-        
-    }
-    
+final class CreateTenantViewController: UIViewController {
 
     private var containerScrollView: UIScrollView!
     private var containerView: UIView!
@@ -68,7 +60,6 @@ final class CreateTenantViewController: UIViewController, DatePickerDelegate {
         navigationItem.compactAppearance = appearance
         navigationItem.compactScrollEdgeAppearance = appearance
         navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.barTintColor = .white
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -112,7 +103,7 @@ final class CreateTenantViewController: UIViewController, DatePickerDelegate {
     }
 
     @objc func selecteDate() {
-        
+
     }
 
     private func initialize() {
@@ -208,18 +199,14 @@ final class CreateTenantViewController: UIViewController, DatePickerDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if(scrollView.contentOffset.y > -87) {
-            navigationController?.navigationBar.isHidden = true
-        } else {
-            navigationController?.navigationBar.isHidden = false
-        }
+        
     }
 }
 
 
 extension CreateTenantViewController: CreateTenantDisplayLogic {
 
-    func displayCreateTenant(response: TenantModel.Create.Response) {
+    func displayCreateTenant(response: Rent.Create.Response) {
 
         let state = response.state
         switch(state) {

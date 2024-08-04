@@ -7,10 +7,10 @@
 import UIKit
 
 protocol GymDisplayLogic: AnyObject {
-
+    func displayRefresh(respnose: Gym.Refresh.Response)
 }
 
-final class GymViewController: UIViewController, GymDisplayLogic {
+final class GymViewController: UIViewController{
     private var userCollectionView: UICollectionView!
     private var headerView: GeneralHeaderView!
     private var createUserButton: UIImageView!
@@ -18,7 +18,7 @@ final class GymViewController: UIViewController, GymDisplayLogic {
     private var interactor: GymInteractor?
     private var router: GymRouter?
     private var presenter: GymPresenter?
-    private var shouldUpdateInset = true
+    private var users: [Gym.Refresh.User] = []
 
 
     // MARK :- Lifecycle methods
@@ -61,7 +61,6 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         router?.viewController = self
         presenter?.viewController = self
         navigationController?.navigationBar.isHidden = true
-        print("view controller will appear")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,7 +83,7 @@ final class GymViewController: UIViewController, GymDisplayLogic {
         let presenter = GymPresenter()
         router.dataStore = interactor
         router.viewController = self
-        interactor.presenter = presenter
+        interactor.viewController = self
         presenter.viewController = self
         self.presenter = presenter
         self.interactor = interactor
@@ -186,11 +185,15 @@ extension GymViewController: UICollectionViewDelegate {
 
 extension GymViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return users.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gymCell", for: indexPath) as? UserCollectionViewCell ?? UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gymCell", for: indexPath) as? UserCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        let user = users[indexPath.row]
+        cell.configure(using: .init(name: user.name, phone: user.phone, expiryDate: user.expiryDate, profileImage: user.profileImage))
         return cell
     }
 }
@@ -230,5 +233,21 @@ extension GymViewController: GeneralHeaderDelegate {
 extension GymViewController: FilterBottomSheetDelegate {
     func didClickOnButton(with action: FilterAction) {
         print(action)
+    }
+}
+
+
+extension GymViewController: GymDisplayLogic {
+
+    func displayRefresh(respnose: Gym.Refresh.Response) {
+
+        switch respnose.state {
+        case .success(let viewModel):
+            users = viewModel.users
+            userCollectionView.reloadData()
+        case .error(let error):
+            print("Error \(error.localizedDescription)")
+            // show error bottom sheet
+        }
     }
 }

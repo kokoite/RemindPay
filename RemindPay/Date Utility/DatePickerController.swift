@@ -27,20 +27,15 @@ final class DatePickerController: UIViewController, UIGestureRecognizerDelegate 
     }
 
     @objc func containerClicked(_ sender: UITapGestureRecognizer) {
-        delegate?.didDismiss(date: datePicker.date)
-        delegate = nil
         let date = utility.getDate(for: datePicker.date)
         action?(date)
-        view.removeFromSuperview()
-        removeFromParent()
+//        dismiss(animated: true)
     }
 
     @objc func dateSelected() {
-        delegate?.didSelect(date: datePicker.date)
         let date = utility.getDate(for: datePicker.date)
-//        action?(date)
-//        view.removeFromSuperview()
-//        removeFromParent()
+        action?(date)
+//        dismiss(animated: true)
     }
 
     private func setup() {
