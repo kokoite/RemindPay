@@ -72,7 +72,9 @@ final class CreateGymUserViewController: UIViewController, UINavigationControlle
             return
         }
         let controller = DatePickerController()
-        controller.modalPresentationStyle = .fullScreen
+        controller.modalPresentationStyle = .custom
+        let delegate = DateControllerTransitionDelegate()
+        controller.transitioningDelegate = delegate
         controller.action = { (date) in
             label.text = date
         }
@@ -99,7 +101,7 @@ final class CreateGymUserViewController: UIViewController, UINavigationControlle
     }
 
     @objc func dismissKeyboard() {
-//        view.endEditing(false)
+        view.endEditing(false)
     }
 
     private func initialize() {

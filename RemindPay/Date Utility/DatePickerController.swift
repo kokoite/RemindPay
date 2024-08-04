@@ -28,8 +28,7 @@ final class DatePickerController: UIViewController, UIGestureRecognizerDelegate 
 
     @objc func containerClicked(_ sender: UITapGestureRecognizer) {
         let date = utility.getDate(for: datePicker.date)
-        action?(date)
-//        dismiss(animated: true)
+        dismiss(animated: true)
     }
 
     @objc func dateSelected() {
@@ -48,7 +47,7 @@ final class DatePickerController: UIViewController, UIGestureRecognizerDelegate 
         containerView = container
         view.addSubview(container)
         container.setTranslatesMask()
-        container.backgroundColor = .black.withAlphaComponent(0.7)
+//        container.backgroundColor = .black.withAlphaComponent(0.7)
         container.pinToEdges(in: view)
         let gesture = UITapGestureRecognizer(target: self, action: #selector(containerClicked))
         gesture.delegate = self

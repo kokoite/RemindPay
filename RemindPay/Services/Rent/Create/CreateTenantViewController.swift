@@ -102,8 +102,19 @@ final class CreateTenantViewController: UIViewController {
         }
     }
 
-    @objc func selecteDate() {
-
+    @objc func selectDate(_ sender: UITapGestureRecognizer) {
+        guard let label = sender.view as? UILabel else {
+            print("No label")
+            return
+        }
+        let controller = DatePickerController()
+        controller.modalPresentationStyle = .custom
+        let delegate = DateControllerTransitionDelegate()
+        controller.transitioningDelegate = delegate
+        controller.action = { (date) in
+            label.text = date
+        }
+        present(controller, animated: true)
     }
 
     private func initialize() {
@@ -362,6 +373,8 @@ extension CreateTenantViewController {
     }
 
     private func setupRentStartEndContainer() {
+        let gesture1 = UITapGestureRecognizer(target: self, action: #selector(selectDate))
+        let gestur2 = UITapGestureRecognizer(target: self, action: #selector(selectDate))
         let container = UIStackView()
         container.spacing = 20
         container.distribution = .fillEqually
@@ -374,8 +387,7 @@ extension CreateTenantViewController {
         tv1.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         tv1.textColor = .gray
         tv1.isUserInteractionEnabled = true
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(selecteDate))
-        tv1.addGestureRecognizer(gesture)
+        tv1.addGestureRecognizer(gesture1)
         let sep1 = getSeparator()
         sContainer.addArrangedSubview(label1)
         sContainer.addArrangedSubview(tv1)
@@ -387,6 +399,8 @@ extension CreateTenantViewController {
         let label2 = getLabel(text: "Rent end date")
         let tv2 = getLabel(text: "20-07-2024")
         tv2.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        tv2.isUserInteractionEnabled = true
+        tv2.addGestureRecognizer(gestur2)
         tv2.textColor = .gray
         let sep2 = getSeparator()
         eContainer.addArrangedSubview(label2)
@@ -398,6 +412,8 @@ extension CreateTenantViewController {
     }
 
     private func setupAgreementStartEndContainer() {
+        let gesture1 = UITapGestureRecognizer(target: self, action: #selector(selectDate))
+        let gesture2 = UITapGestureRecognizer(target: self, action: #selector(selectDate))
         let container = UIStackView()
         container.spacing = 20
         detailContainerView.addArrangedSubview(container)
@@ -408,8 +424,7 @@ extension CreateTenantViewController {
         label1.numberOfLines = 0
         let tv1 = getLabel(text: "20-07-2024")
         tv1.isUserInteractionEnabled = true
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(selecteDate))
-        tv1.addGestureRecognizer(gesture)
+        tv1.addGestureRecognizer(gesture1)
         tv1.font = UIFont.systemFont(ofSize: 16)
         tv1.textColor = .gray
         let sep1 = getSeparator()
@@ -425,8 +440,7 @@ extension CreateTenantViewController {
         tv2.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         tv2.textColor = .gray
         tv2.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selecteDate))
-        tv2.addGestureRecognizer(tapGesture)
+        tv2.addGestureRecognizer(gesture2)
         let sep2 = getSeparator()
         eContainer.addArrangedSubview(label2)
         eContainer.addArrangedSubview(tv2)

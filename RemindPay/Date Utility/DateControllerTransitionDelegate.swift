@@ -37,4 +37,35 @@ final class DateControllerPresentationController: UIPresentationController {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(dismiss))
         dimmingView.addGestureRecognizer(gesture)
     }
+
+    override func presentationTransitionWillBegin() {
+        guard let containerView = containerView else { return }
+
+        let dimmingView = UIView(frame: containerView.bounds)
+        dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        dimmingView.alpha = 0
+        containerView.insertSubview(dimmingView, at: 0)
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(dismissBottomSheet))
+        dimmingView.addGestureRecognizer(gesture)
+
+        if let coordinator = presentedViewController.transitionCoordinator {
+            coordinator.animate(alongsideTransition: { _ in
+                dimmingView.alpha = 1
+            })
+        } else {
+            dimmingView.alpha = 1
+        }
+    }
+
+    override func dismissalTransitionWillBegin() {
+        if let coordinator = presentedViewController.transitionCoordinator {
+            coordinator.animate(alongsideTransition: { _ in
+                self.containerView?.subviews.first?.alpha = 0
+            })
+        }
+    }
+
+    @objc func dismissBottomSheet() {
+        presentedViewController.dismiss(animated: true)
+    }
 }
