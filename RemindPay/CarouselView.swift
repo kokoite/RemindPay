@@ -77,7 +77,9 @@ final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDe
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        collection.isPagingEnabled = true
         collection.showsHorizontalScrollIndicator = false
         collectionView = collection
         containerView.addSubview(collection)
