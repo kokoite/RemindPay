@@ -5,7 +5,12 @@
 //  Created by Pranjal Agarwal on 29/07/24.
 //
 
+
 import UIKit
+
+protocol LibraryViewDisplayLogic: AnyObject {
+    func displayRefreshAllUsers(using vm: Library.Refresh.ViewModel)
+}
 
 final class LibraryViewController: UIViewController {
 
@@ -13,7 +18,21 @@ final class LibraryViewController: UIViewController {
     private var headerView: GeneralHeaderView!
     private var searchContainer: UIStackView!
     private var userCollectionView: UICollectionView!
+    private var createUserButton: UIImageView!
+    private var users: [Library.Refresh.ViewModel.User] = []
 
+    private var interactor: LibraryBusinessLogic?
+    private var presenter: LibraryViewPresentingLogic?
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        initialize()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -22,9 +41,9 @@ final class LibraryViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         let grd = CAGradientLayer()
-        grd.colors = [ UIColor.purple.cgColor, UIColor.blue.cgColor]
+        grd.colors = [ UIColor.systemPink.cgColor, UIColor.black.cgColor]
         grd.locations = [0, 1]
-        grd.startPoint = .init(x: 0.5, y: 0.3)
+        grd.startPoint = .init(x: 0, y: 0.5)
         grd.endPoint = .init(x: 1, y: 0)
         grd.frame = view.bounds
         view.layer.insertSublayer(grd, at: 0)
@@ -40,20 +59,47 @@ final class LibraryViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
 
+    @objc func createUserClicked() {
+        let controller = CreateLibraryUserViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+
+    @objc func handleUserAdded() {
+        interactor?.fetchAllUsers(request: .init())
+    }
+
+    private func initialize() {
+        let interactor = LibraryInteractor()
+        let presenter = LibraryPresenter()
+        interactor.presenter = presenter
+        presenter.viewController = self
+        self.interactor = interactor
+        self.presenter = presenter
+        addNotificationObservers()
+    }
+
+    private func addNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUserAdded), name: Notification.Name(rawValue: LibraryConstants.userCreated), object: nil)
+    }
+
+    private func removeNotificationObservers() {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: LibraryConstants.userCreated), object: nil)
+    }
+
     private func setup() {
         setupContainerView()
         setupHeader()
         setupCollectionView()
+        setupCreateUserButton()
+        interactor?.fetchAllUsers(request: .init())
     }
 
     private func setupContainerView() {
         let container = UIView()
-//        container.backgroundColor = .systemOrange
         containerView = container
         view.addSubview(container)
         container.setTranslatesMask()
         container.pinToEdges(in: view)
-
     }
 
     private func setupHeader() {
@@ -67,14 +113,13 @@ final class LibraryViewController: UIViewController {
         let trailing = header.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         NSLayoutConstraint.activate([leading, trailing, top])
         header.configure(with: .init(iconImage: .system(name: "book"), background: nil, title: "Heyy Pranjal"))
-//        header.configure(color1: .black, color2: .blue)
     }
 
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         let container = UICollectionView(frame: .zero, collectionViewLayout: layout)
         userCollectionView = container
-        container.register(UserCollectionViewCell.self, forCellWithReuseIdentifier: "libraryCell")
+        container.register(LibraryUserCollectionViewCell.self, forCellWithReuseIdentifier: "libraryCell")
         container.dataSource = self
         container.delegate = self
         container.backgroundColor = .white
@@ -91,19 +136,46 @@ final class LibraryViewController: UIViewController {
         let bottom = container.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         NSLayoutConstraint.activate([leading, trailng, top, bottom])
     }
+
+    private func setupCreateUserButton() {
+        let image = UIImageView()
+        image.isUserInteractionEnabled = true
+        containerView.addSubview(image)
+        createUserButton = image
+        image.image = UIImage(systemName: "plus.circle.fill")
+        image.tintColor = .black
+        image.contentMode = .scaleAspectFill
+        image.setTranslatesMask()
+        let trailing = image.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
+        let bottom = image.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor, constant: -40)
+        let height = image.heightAnchor.constraint(equalToConstant: 60)
+        let width = image.widthAnchor.constraint(equalToConstant: 60)
+        NSLayoutConstraint.activate([trailing, bottom, height, width])
+        image.backgroundColor = .white
+        image.layer.cornerRadius = 30
+        image.clipsToBounds = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector((createUserClicked)))
+        image.addGestureRecognizer(gesture)
+    }
+
+    deinit {
+        print("deinit called \(self)")
+        removeNotificationObservers()
+    }
 }
 
 extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "libraryCell", for: indexPath) as? UserCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "libraryCell", for: indexPath) as? LibraryUserCollectionViewCell else {
             return UICollectionViewCell()
         }
+        cell.configure(using: users[indexPath.row])
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        users.count
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -113,6 +185,24 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = LibraryUserDetailViewController()
         navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+extension LibraryViewController: LibraryViewDisplayLogic {
+
+    func displayRefreshAllUsers(using vm: Library.Refresh.ViewModel) {
+        switch vm.state {
+        case .success(let users):
+            handleSuccessResponse(using: users)
+            print(users)
+        case .error(let error):
+            print("Error \(error.localizedDescription)")
+        }
+    }
+
+    private func handleSuccessResponse(using users: [Library.Refresh.ViewModel.User]) {
+        self.users =  users
+        userCollectionView.reloadData()
     }
 }
 

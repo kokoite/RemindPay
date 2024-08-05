@@ -33,6 +33,17 @@
 		A64C8CC52C490E9100AF9508 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC42C490E9100AF9508 /* CarouselCell.swift */; };
 		A64CBA1B2C60A3DA00823206 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = A64CBA1A2C60A3DA00823206 /* SkeletonView */; };
 		A64CBA1D2C60A68A00823206 /* RentUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA1C2C60A68A00823206 /* RentUserCollectionViewCell.swift */; };
+		A64CBA1F2C60C53200823206 /* LibraryUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA1E2C60C53200823206 /* LibraryUserCollectionViewCell.swift */; };
+		A64CBA212C60C57100823206 /* LibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA202C60C57100823206 /* LibraryModel.swift */; };
+		A64CBA232C60C57C00823206 /* LibraryConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA222C60C57C00823206 /* LibraryConstants.swift */; };
+		A64CBA262C60C60D00823206 /* CreateLibraryUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA252C60C60D00823206 /* CreateLibraryUserViewController.swift */; };
+		A64CBA282C60C6DA00823206 /* CreateLibraryUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA272C60C6DA00823206 /* CreateLibraryUserInteractor.swift */; };
+		A64CBA2A2C60D6A800823206 /* CreateLibraryUserWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA292C60D6A800823206 /* CreateLibraryUserWorker.swift */; };
+		A64CBA2D2C60D78000823206 /* CDLibraryUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA2B2C60D78000823206 /* CDLibraryUser+CoreDataClass.swift */; };
+		A64CBA2E2C60D78000823206 /* CDLibraryUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA2C2C60D78000823206 /* CDLibraryUser+CoreDataProperties.swift */; };
+		A64CBA302C60E0C700823206 /* LibraryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA2F2C60E0C700823206 /* LibraryInteractor.swift */; };
+		A64CBA322C60E1F100823206 /* LibraryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA312C60E1F100823206 /* LibraryWorker.swift */; };
+		A64CBA342C60E23900823206 /* LibraryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA332C60E23900823206 /* LibraryPresenter.swift */; };
 		A6525C722C54CC4700342F2C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6525C712C54CC4700342F2C /* LineChart.swift */; };
 		A652EEBB2C5CEA1D0012153F /* ArrayOfStringTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652EEBA2C5CEA1D0012153F /* ArrayOfStringTransformer.swift */; };
 		A652EEBD2C5CFA720012153F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652EEBC2C5CFA720012153F /* Home.swift */; };
@@ -162,6 +173,17 @@
 		A64C8CC22C490CE600AF9508 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		A64C8CC42C490E9100AF9508 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		A64CBA1C2C60A68A00823206 /* RentUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentUserCollectionViewCell.swift; sourceTree = "<group>"; };
+		A64CBA1E2C60C53200823206 /* LibraryUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryUserCollectionViewCell.swift; sourceTree = "<group>"; };
+		A64CBA202C60C57100823206 /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
+		A64CBA222C60C57C00823206 /* LibraryConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryConstants.swift; sourceTree = "<group>"; };
+		A64CBA252C60C60D00823206 /* CreateLibraryUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLibraryUserViewController.swift; sourceTree = "<group>"; };
+		A64CBA272C60C6DA00823206 /* CreateLibraryUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLibraryUserInteractor.swift; sourceTree = "<group>"; };
+		A64CBA292C60D6A800823206 /* CreateLibraryUserWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLibraryUserWorker.swift; sourceTree = "<group>"; };
+		A64CBA2B2C60D78000823206 /* CDLibraryUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDLibraryUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A64CBA2C2C60D78000823206 /* CDLibraryUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDLibraryUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A64CBA2F2C60E0C700823206 /* LibraryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryInteractor.swift; sourceTree = "<group>"; };
+		A64CBA312C60E1F100823206 /* LibraryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryWorker.swift; sourceTree = "<group>"; };
+		A64CBA332C60E23900823206 /* LibraryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPresenter.swift; sourceTree = "<group>"; };
 		A6525C712C54CC4700342F2C /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		A652EEBA2C5CEA1D0012153F /* ArrayOfStringTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayOfStringTransformer.swift; sourceTree = "<group>"; };
 		A652EEBC2C5CFA720012153F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -354,10 +376,22 @@
 			path = UserDetail;
 			sourceTree = "<group>";
 		};
+		A64CBA242C60C5FE00823206 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				A64CBA252C60C60D00823206 /* CreateLibraryUserViewController.swift */,
+				A64CBA272C60C6DA00823206 /* CreateLibraryUserInteractor.swift */,
+				A64CBA292C60D6A800823206 /* CreateLibraryUserWorker.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
 		A66D305C2C560B290016B974 /* CoreDataStack */ = {
 			isa = PBXGroup;
 			children = (
 				A66D305D2C560B410016B974 /* CoreDataStack.swift */,
+				A64CBA2C2C60D78000823206 /* CDLibraryUser+CoreDataProperties.swift */,
+				A64CBA2B2C60D78000823206 /* CDLibraryUser+CoreDataClass.swift */,
 				A66251132C5F63F400195512 /* CDGymUser+CoreDataProperties.swift */,
 				A66251122C5F63F400195512 /* CDGymUser+CoreDataClass.swift */,
 				A6FD4F752C5E36BD005E23D1 /* CDTenant+CoreDataClass.swift */,
@@ -390,8 +424,15 @@
 		A6A3A8B72C57964300F43D3D /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				A64CBA242C60C5FE00823206 /* Create */,
 				A6A3A8B82C57966600F43D3D /* LibraryViewController.swift */,
 				A6D614DB2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift */,
+				A64CBA1E2C60C53200823206 /* LibraryUserCollectionViewCell.swift */,
+				A64CBA202C60C57100823206 /* LibraryModel.swift */,
+				A64CBA222C60C57C00823206 /* LibraryConstants.swift */,
+				A64CBA2F2C60E0C700823206 /* LibraryInteractor.swift */,
+				A64CBA332C60E23900823206 /* LibraryPresenter.swift */,
+				A64CBA312C60E1F100823206 /* LibraryWorker.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -751,6 +792,7 @@
 				A66D305E2C560B420016B974 /* CoreDataStack.swift in Sources */,
 				A6FD4F6C2C5E266C005E23D1 /* ImageManager.swift in Sources */,
 				A6FD4F772C5E36BD005E23D1 /* CDTenant+CoreDataClass.swift in Sources */,
+				A64CBA2E2C60D78000823206 /* CDLibraryUser+CoreDataProperties.swift in Sources */,
 				A6983EBC2C47A77500AA71FE /* ErrorBottomSheetViewController.swift in Sources */,
 				A6C763B42C53CC540086AD51 /* PieChart.swift in Sources */,
 				A60DCA922C4ED37E00F8A4C2 /* GymBreakupView.swift in Sources */,
@@ -764,6 +806,7 @@
 				A6983EB82C4799E300AA71FE /* ErrorPresenter.swift in Sources */,
 				A6D84DE82C4E55B1002137BE /* MembershipCollectionViewCell.swift in Sources */,
 				A6D6869B2C5B6954002C7653 /* ApplicationWorker.swift in Sources */,
+				A64CBA282C60C6DA00823206 /* CreateLibraryUserInteractor.swift in Sources */,
 				A6D686CC2C5BFA4A002C7653 /* Service+Constants.swift in Sources */,
 				A6C7634C2C5384F90086AD51 /* SearchViewController.swift in Sources */,
 				A61461D22C5AB8DE004BB308 /* AuthenticationWorker.swift in Sources */,
@@ -773,15 +816,20 @@
 				A6FD4F7D2C5E641B005E23D1 /* RentInteractor.swift in Sources */,
 				A6969A2A2C46E0DF001EFAA4 /* GymRouter.swift in Sources */,
 				A6FD4F7B2C5E3726005E23D1 /* DateUtility.swift in Sources */,
+				A64CBA262C60C60D00823206 /* CreateLibraryUserViewController.swift in Sources */,
 				A6A3A8B92C57966600F43D3D /* LibraryViewController.swift in Sources */,
 				A66251142C5F63F400195512 /* CDGymUser+CoreDataClass.swift in Sources */,
+				A64CBA322C60E1F100823206 /* LibraryWorker.swift in Sources */,
 				A6F5143F2C464D1A002053CA /* ViewController.swift in Sources */,
+				A64CBA1F2C60C53200823206 /* LibraryUserCollectionViewCell.swift in Sources */,
 				A6BC081B2C5913A200AF7170 /* GlobalDataStruct.swift in Sources */,
 				A6F514772C468035002053CA /* SearchView.swift in Sources */,
 				A6F5143B2C464D1A002053CA /* AppDelegate.swift in Sources */,
 				A6F89BD92C5D261C0093E18D /* PropertyCollectionViewCell.swift in Sources */,
 				A61461BE2C5A8023004BB308 /* Authentication.swift in Sources */,
+				A64CBA2D2C60D78000823206 /* CDLibraryUser+CoreDataClass.swift in Sources */,
 				A62D2BA52C4B8D5B0066E2ED /* GymProfileViewController.swift in Sources */,
+				A64CBA302C60E0C700823206 /* LibraryInteractor.swift in Sources */,
 				A61461D02C5AB889004BB308 /* AuthenticationInteractor.swift in Sources */,
 				A6F5143D2C464D1A002053CA /* SceneDelegate.swift in Sources */,
 				A69693D22C4FC50300980EA7 /* GymTabBarController.swift in Sources */,
@@ -791,6 +839,7 @@
 				A6969A302C46E119001EFAA4 /* GymWorker.swift in Sources */,
 				A63391FA2C4F94A70095B21B /* SimpleHeaderView.swift in Sources */,
 				A6F514702C4653B3002053CA /* Utility+View.swift in Sources */,
+				A64CBA212C60C57100823206 /* LibraryModel.swift in Sources */,
 				A66251112C5F5D3700195512 /* DateControllerTransitionDelegate.swift in Sources */,
 				A6D84DE62C4E46D2002137BE /* PendingActionTableViewCell.swift in Sources */,
 				A6D6869E2C5B7889002C7653 /* CDUser+CoreDataClass.swift in Sources */,
@@ -804,6 +853,8 @@
 				A64C8CC12C490CA800AF9508 /* GymUserDetailViewController.swift in Sources */,
 				A6563F9B2C5CBBBB003EE5BB /* BottomSheet+Constants.swift in Sources */,
 				A662511B2C5FB7D600195512 /* GymUserDetailRouter.swift in Sources */,
+				A64CBA2A2C60D6A800823206 /* CreateLibraryUserWorker.swift in Sources */,
+				A64CBA342C60E23900823206 /* LibraryPresenter.swift in Sources */,
 				A6F514452C464D1A002053CA /* RemindPay.xcdatamodeld in Sources */,
 				A614618E2C5A1D86004BB308 /* DatePickerController.swift in Sources */,
 				A6969A2E2C46E108001EFAA4 /* GymPresenter.swift in Sources */,
@@ -816,6 +867,7 @@
 				A6D686A62C5B9381002C7653 /* HomePresenter.swift in Sources */,
 				A662511D2C5FBCB700195512 /* GymUserDetailPresenter.swift in Sources */,
 				A6F5146E2C46524A002053CA /* UserCollectionViewCell.swift in Sources */,
+				A64CBA232C60C57C00823206 /* LibraryConstants.swift in Sources */,
 				A63391FD2C4FA00E0095B21B /* TabBarController.swift in Sources */,
 				A6D6869F2C5B7889002C7653 /* CDUser+CoreDataProperties.swift in Sources */,
 				A6D686CA2C5BDC45002C7653 /* BottomSheetViewController.swift in Sources */,

@@ -22,6 +22,20 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="CDLibraryUser" representedClassName="CDLibraryUser" syncable="YES">
+        <attribute name="address" attributeType="String"/>
+        <attribute name="age" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="amount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="joined" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastPaymentAmount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastPaymentDate" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="phone" attributeType="String"/>
+        <attribute name="planEnd" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="planStart" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="profileImage" attributeType="String"/>
+    </entity>
     <entity name="CDTenant" representedClassName="CDTenant" syncable="YES">
         <attribute name="address" attributeType="String"/>
         <attribute name="advance" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>

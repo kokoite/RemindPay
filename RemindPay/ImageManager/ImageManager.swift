@@ -32,7 +32,7 @@ final class ImageManager {
     
     static let instance = ImageManager()
 
-    private init() { }
+
 
     weak var singleImageDelegate: SingleImageManagerDelelgate?
 

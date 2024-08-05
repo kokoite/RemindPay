@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appearance.shadowColor = .cardBackground
         let hasJoined = worker.hasUserAlreadyJoined()
         let controller = hasJoined ? GymTabBarController(): AuthenticationViewController()
-        let rootViewController = LightStatusNavigationController(rootViewController: controller)
+        let rootViewController = LightStatusNavigationController(rootViewController: LibraryViewController())
         rootViewController.navigationBar.standardAppearance = appearance
         rootViewController.navigationBar.scrollEdgeAppearance = appearance
         rootViewController.navigationBar.compactScrollEdgeAppearance = appearance

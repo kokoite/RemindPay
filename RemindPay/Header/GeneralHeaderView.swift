@@ -87,6 +87,7 @@ final class GeneralHeaderView: UIView {
         let container = UIView()
         containerView = container
         addSubview(container)
+//        container.backgroundColor = .darkCardBackground
         container.setTranslatesMask()
         container.pinToEdges(in: self)
     }

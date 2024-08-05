@@ -1,22 +1,20 @@
 //
-//  RentUserCollectionViewCell.swift
+//  LibraryUserCollectionViewCell.swift
 //  RemindPay
 //
 //  Created by Pranjal Agarwal on 05/08/24.
 //
 
-import Foundation
 import UIKit
 
-final class RentUserCollectionViewCell: UICollectionViewCell {
+final class LibraryUserCollectionViewCell: UICollectionViewCell {
 
-    private var containerView: UIView!
+    private var containerView, userDetailContainer: UIView!
     private var imageView: UIImageView!
     private var titleView: UILabel!
     private var subtitleView: UILabel!
     private var joiningDateView: UILabel!
     private var expiryDateView: UILabel!
-    private var userDetailContainer: UIStackView!
 
 
     override init(frame: CGRect) {
@@ -29,12 +27,8 @@ final class RentUserCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK :-  Public methods
-    func configure(using vm: Rent.Refresh.Response.ViewModel) {
-        DispatchQueue.main.async {
-            let image = try? getImageFrom(fileName: vm.profileImage)
-            self.imageView.image = image
-        }
-
+    func configure(using vm: Library.Refresh.ViewModel.User) {
+        imageView.image = vm.profileImage
         titleView.text = vm.name
         subtitleView.text = vm.phone
         expiryDateView.text = vm.expiryDate
@@ -46,7 +40,6 @@ final class RentUserCollectionViewCell: UICollectionViewCell {
         setupDetailContainer()
     }
 
-
     private func setupContainer() {
         let container = UIView()
         contentView.addSubview(container)
@@ -56,7 +49,7 @@ final class RentUserCollectionViewCell: UICollectionViewCell {
         let top = container.topAnchor.constraint(equalTo: contentView.topAnchor)
         let bottom = container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         NSLayoutConstraint.activate([leading, trailing, top, bottom])
-        container.backgroundColor = .white
+        container.backgroundColor = .cardBackground
         container.layer.cornerRadius = 20
         containerView = container
     }
@@ -65,7 +58,7 @@ final class RentUserCollectionViewCell: UICollectionViewCell {
         let image = UIImageView()
         containerView.addSubview(image)
         imageView = image
-//        image.image = UIImage(named: "happyFace")
+        image.image = UIImage(named: "happyFace")
         image.clipsToBounds = true
         image.backgroundColor = .white
         image.layer.cornerRadius = 30
@@ -82,7 +75,6 @@ final class RentUserCollectionViewCell: UICollectionViewCell {
 
     private func setupDetailContainer() {
         let container = UIStackView()
-        userDetailContainer = container
         container.axis = .vertical
         container.spacing = 12
         containerView.addSubview(container)
@@ -92,8 +84,8 @@ final class RentUserCollectionViewCell: UICollectionViewCell {
         let centerY = container.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         NSLayoutConstraint.activate([leading, trailing, centerY])
         let name = getLabel(text: "Pranjal Agarwal")
-        let phone = getLabel(text: "8209139142")
-        let expiry = getLabel(text: "20-08-2024")
+        let phone = getLabel(text: "+ 91 820 9131942")
+        let expiry = getLabel(text: "Expiry: 20-07-2024")
         titleView = name
         subtitleView = phone
         expiryDateView = expiry

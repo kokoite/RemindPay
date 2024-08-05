@@ -23,12 +23,12 @@ final class RentViewController: UIViewController {
     private var tenants: [Rent.Refresh.Response.ViewModel] = []
     private var interactor: RentBusinessLogic?
     private var lottieView: LottieView!
-
+    private var loaded = false
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         let grd = CAGradientLayer()
-        grd.colors = [ UIColor.orange.cgColor, UIColor.systemPink.cgColor]
+        grd.colors = [ UIColor.systemPink.cgColor, UIColor.black.cgColor]
         grd.locations = [0, 1]
         grd.startPoint = .init(x: 0, y: 0.5)
         grd.endPoint = .init(x: 1, y: 0)
@@ -75,6 +75,7 @@ final class RentViewController: UIViewController {
     }
 
     private func setup() {
+//        view.backgroundColor = .darkCardBackground
         setupContainer()
         setupHeader()
         setupCollectionContainer()
@@ -108,7 +109,7 @@ final class RentViewController: UIViewController {
 
     private func setupCollectionContainer () {
         let container = UIStackView()
-        container.backgroundColor = .white
+        container.backgroundColor = .cardBackground
         container.clipsToBounds = true
         container.layer.cornerRadius = 20
         collectionContainer = container
@@ -127,13 +128,14 @@ final class RentViewController: UIViewController {
     private func setupLottieView() {
         let lottieView = LottieView()
         self.lottieView = lottieView
+        lottieView.isHidden = true
         collectionContainer.addArrangedSubview(lottieView)
     }
 
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         let container = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        container.isSkeletonable = true
+        container.backgroundColor = .cardBackground
         layout.minimumLineSpacing = 12
         layout.minimumInteritemSpacing = 0
         container.showsVerticalScrollIndicator = false
@@ -143,9 +145,7 @@ final class RentViewController: UIViewController {
         container.dataSource = self
         container.delegate = self
         container.register(RentUserCollectionViewCell.self, forCellWithReuseIdentifier: "rentCell")
-        containerView.addSubview(container)
         collectionContainer.addArrangedSubview(container)
-        container.isHidden = true 
     }
 
     private func setupCreateUserButton() {
@@ -176,22 +176,21 @@ final class RentViewController: UIViewController {
 
 // CollectionView Delegates
 
-extension RentViewController: SkeletonCollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
-        "rentCell"
-    }
-
+extension RentViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rentCell", for: indexPath) as? RentUserCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(using: tenants[indexPath.row])
+        if(loaded) {
+            cell.configure(using: tenants[indexPath.row])
+        }
+
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tenants.count
+        return loaded ? tenants.count: 2
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -207,9 +206,9 @@ extension RentViewController: SkeletonCollectionViewDataSource, UICollectionView
 extension RentViewController: RentDisplayLogic {
     
     func displayFetchAllTenant(using tenants: [Rent.Refresh.Response.ViewModel]) {
-//        self.tenants = tenants
+        loaded = true
+        self.tenants = tenants
         updateLottieAndCollectionView()
-//        userCollection.reloadData()
     }
 
     private func updateLottieAndCollectionView() {
@@ -223,8 +222,6 @@ extension RentViewController: RentDisplayLogic {
             userCollection.isHidden = false
             userCollection.reloadData()
         }
-        userCollection.stopSkeletonAnimation()
-        userCollection.hideSkeleton()
     }
 }
 
