@@ -27,7 +27,8 @@ final class CreateTenantViewController: UIViewController {
     private var userImage: String!
     private var userSelectedImage: UIImage!
 
-    private var nameView, phoneView, advanceView, securityView, rentView, utilityView, joinedView, startingView, expiryView, addressView: PlaceholderTextView!
+    private var nameView, phoneView, advanceView, securityView, rentView, utilityView, addressView: PlaceholderTextView!
+    private var  joinedView, startingView, expiryView, agreementStartView, agreementEndView: UILabel!
     private var detailContainerView: UIStackView!
     private var cameraController, propertyController: PHPickerViewController!
     private var interactor: CreateTenantBusinessLogic?
@@ -87,13 +88,15 @@ final class CreateTenantViewController: UIViewController {
                 let name = nameView.text ?? ""
                 let phone = phoneView.text ?? ""
                 let address = addressView.text ?? ""
-                let rentStart = "20-07-2024"
-                let rentEnd = "20-12-2024"
+                let rentStart = startingView.text ?? ""
+                let rentEnd = expiryView.text ?? ""
+                let agrSt = agreementStartView.text ?? ""
+                let agrEnd = agreementEndView.text ?? ""
                 let rent = rentView.text ?? ""
                 let utilty = utilityView.text ?? ""
                 let advance = advanceView.text ?? ""
                 let security = securityView.text ?? ""
-                let tenant = Tenant(id: id, name: name, phone: phone, address: address, profileImage: userImage, agreementStartDate: rentStart, agreementEndDate: rentEnd, rentStartDate: rentStart, rentExpireDate: rentEnd, joinedDate: rentStart, advanceAmount: advance, securityAmount: security, rentAmount: rent, utilityAmount: utilty, propertyImages: propertyImages)
+                let tenant = Tenant(id: id, name: name, phone: phone, address: address, profileImage: userImage, agreementStartDate: agrSt, agreementEndDate: agrEnd, rentStartDate: rentStart, rentExpireDate: rentEnd, joinedDate: rentStart, advanceAmount: advance, securityAmount: security, rentAmount: rent, utilityAmount: utilty, propertyImages: propertyImages)
                 interactor?.createTenant(using: tenant)
 
             } catch (let error) {
@@ -113,6 +116,7 @@ final class CreateTenantViewController: UIViewController {
         controller.transitioningDelegate = delegate
         controller.action = { (date) in
             label.text = date
+            label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         }
         present(controller, animated: true)
     }
@@ -207,10 +211,6 @@ final class CreateTenantViewController: UIViewController {
 
     deinit {
         print("\(self) \(#function)")
-    }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
     }
 }
 
@@ -388,6 +388,7 @@ extension CreateTenantViewController {
         tv1.textColor = .gray
         tv1.isUserInteractionEnabled = true
         tv1.addGestureRecognizer(gesture1)
+        startingView = tv1
         let sep1 = getSeparator()
         sContainer.addArrangedSubview(label1)
         sContainer.addArrangedSubview(tv1)
@@ -402,6 +403,7 @@ extension CreateTenantViewController {
         tv2.isUserInteractionEnabled = true
         tv2.addGestureRecognizer(gestur2)
         tv2.textColor = .gray
+        expiryView = tv2
         let sep2 = getSeparator()
         eContainer.addArrangedSubview(label2)
         eContainer.addArrangedSubview(tv2)
@@ -427,6 +429,7 @@ extension CreateTenantViewController {
         tv1.addGestureRecognizer(gesture1)
         tv1.font = UIFont.systemFont(ofSize: 16)
         tv1.textColor = .gray
+        agreementStartView = tv1
         let sep1 = getSeparator()
         sContainer.addArrangedSubview(label1)
         sContainer.addArrangedSubview(tv1)
@@ -441,6 +444,7 @@ extension CreateTenantViewController {
         tv2.textColor = .gray
         tv2.isUserInteractionEnabled = true
         tv2.addGestureRecognizer(gesture2)
+        agreementEndView = tv2
         let sep2 = getSeparator()
         eContainer.addArrangedSubview(label2)
         eContainer.addArrangedSubview(tv2)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 protocol RentDisplayLogic: AnyObject {
     func displayFetchAllTenant(using tenants: [Rent.Refresh.Response.ViewModel])
@@ -54,6 +55,7 @@ final class RentViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        userCollection.showAnimatedGradientSkeleton()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -131,6 +133,7 @@ final class RentViewController: UIViewController {
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         let container = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        container.isSkeletonable = true
         layout.minimumLineSpacing = 12
         layout.minimumInteritemSpacing = 0
         container.showsVerticalScrollIndicator = false
@@ -139,7 +142,7 @@ final class RentViewController: UIViewController {
 
         container.dataSource = self
         container.delegate = self
-        container.register(UserCollectionViewCell.self, forCellWithReuseIdentifier: "rentCell")
+        container.register(RentUserCollectionViewCell.self, forCellWithReuseIdentifier: "rentCell")
         containerView.addSubview(container)
         collectionContainer.addArrangedSubview(container)
         container.isHidden = true 
@@ -173,10 +176,14 @@ final class RentViewController: UIViewController {
 
 // CollectionView Delegates
 
-extension RentViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension RentViewController: SkeletonCollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+        "rentCell"
+    }
+
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rentCell", for: indexPath) as? UserCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rentCell", for: indexPath) as? RentUserCollectionViewCell else {
             return UICollectionViewCell()
         }
         cell.configure(using: tenants[indexPath.row])
@@ -200,7 +207,7 @@ extension RentViewController: UICollectionViewDataSource, UICollectionViewDelega
 extension RentViewController: RentDisplayLogic {
     
     func displayFetchAllTenant(using tenants: [Rent.Refresh.Response.ViewModel]) {
-        self.tenants = tenants
+//        self.tenants = tenants
         updateLottieAndCollectionView()
 //        userCollection.reloadData()
     }
@@ -216,6 +223,8 @@ extension RentViewController: RentDisplayLogic {
             userCollection.isHidden = false
             userCollection.reloadData()
         }
+        userCollection.stopSkeletonAnimation()
+        userCollection.hideSkeleton()
     }
 }
 

@@ -31,6 +31,8 @@
 		A64C8CC12C490CA800AF9508 /* GymUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC02C490CA800AF9508 /* GymUserDetailViewController.swift */; };
 		A64C8CC32C490CE600AF9508 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC22C490CE600AF9508 /* CarouselView.swift */; };
 		A64C8CC52C490E9100AF9508 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C8CC42C490E9100AF9508 /* CarouselCell.swift */; };
+		A64CBA1B2C60A3DA00823206 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = A64CBA1A2C60A3DA00823206 /* SkeletonView */; };
+		A64CBA1D2C60A68A00823206 /* RentUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CBA1C2C60A68A00823206 /* RentUserCollectionViewCell.swift */; };
 		A6525C722C54CC4700342F2C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6525C712C54CC4700342F2C /* LineChart.swift */; };
 		A652EEBB2C5CEA1D0012153F /* ArrayOfStringTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652EEBA2C5CEA1D0012153F /* ArrayOfStringTransformer.swift */; };
 		A652EEBD2C5CFA720012153F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652EEBC2C5CFA720012153F /* Home.swift */; };
@@ -159,6 +161,7 @@
 		A64C8CC02C490CA800AF9508 /* GymUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymUserDetailViewController.swift; sourceTree = "<group>"; };
 		A64C8CC22C490CE600AF9508 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		A64C8CC42C490E9100AF9508 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
+		A64CBA1C2C60A68A00823206 /* RentUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		A6525C712C54CC4700342F2C /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		A652EEBA2C5CEA1D0012153F /* ArrayOfStringTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayOfStringTransformer.swift; sourceTree = "<group>"; };
 		A652EEBC2C5CFA720012153F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A624251F2C5625B7002FDACB /* DotLottie in Frameworks */,
+				A64CBA1B2C60A3DA00823206 /* SkeletonView in Frameworks */,
 				A62CA3E12C5E9ADB007A01D9 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +405,7 @@
 				A6FD4F7E2C5E6431005E23D1 /* RentWorker.swift */,
 				A60F1C592C563A20001C2954 /* TenantDetailViewController.swift */,
 				A6FD4F682C5E1BFD005E23D1 /* Rent.swift */,
+				A64CBA1C2C60A68A00823206 /* RentUserCollectionViewCell.swift */,
 			);
 			path = Rent;
 			sourceTree = "<group>";
@@ -606,6 +611,7 @@
 			packageProductDependencies = (
 				A624251E2C5625B7002FDACB /* DotLottie */,
 				A62CA3E02C5E9ADB007A01D9 /* Lottie */,
+				A64CBA1A2C60A3DA00823206 /* SkeletonView */,
 			);
 			productName = RemindPay;
 			productReference = A6F514372C464D1A002053CA /* RemindPay.app */;
@@ -683,6 +689,7 @@
 				A60DCA8C2C4ECD5000F8A4C2 /* XCRemoteSwiftPackageReference "Charts" */,
 				A6C7634D2C5388290086AD51 /* XCRemoteSwiftPackageReference "dotlottie-ios" */,
 				A62CA3DF2C5E9ADB007A01D9 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				A64CBA192C60A3DA00823206 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = A6F514382C464D1A002053CA /* Products */;
 			projectDirPath = "";
@@ -753,6 +760,7 @@
 				A694B41F2C4CBEC600B2311F /* PlaceholderTextView.swift in Sources */,
 				A67AEE032C4A41ED008C9610 /* FilterBottomSheetViewController.swift in Sources */,
 				A652EEBB2C5CEA1D0012153F /* ArrayOfStringTransformer.swift in Sources */,
+				A64CBA1D2C60A68A00823206 /* RentUserCollectionViewCell.swift in Sources */,
 				A6983EB82C4799E300AA71FE /* ErrorPresenter.swift in Sources */,
 				A6D84DE82C4E55B1002137BE /* MembershipCollectionViewCell.swift in Sources */,
 				A6D6869B2C5B6954002C7653 /* ApplicationWorker.swift in Sources */,
@@ -1178,6 +1186,14 @@
 				minimumVersion = 4.5.0;
 			};
 		};
+		A64CBA192C60A3DA00823206 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
 		A6C7634D2C5388290086AD51 /* XCRemoteSwiftPackageReference "dotlottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/LottieFiles/dotlottie-ios";
@@ -1198,6 +1214,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A62CA3DF2C5E9ADB007A01D9 /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
+		};
+		A64CBA1A2C60A3DA00823206 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A64CBA192C60A3DA00823206 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 

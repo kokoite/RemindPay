@@ -52,5 +52,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "174ADF63-CB37-426C-9B74-E99DA0F01D7B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RemindPay/Services/Rent/RentViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "displayFetchAllTenant(using:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "174ADF63-CB37-426C-9B74-E99DA0F01D7B - 7e3ea297999e9a7f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RemindPay.RentViewController.displayFetchAllTenant(using: Swift.Array&lt;RemindPay.Rent.Refresh.Response.ViewModel&gt;) -&gt; ()"
+                  moduleName = "RemindPay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranjalagarwal/Desktop/Remind%20Pay/RemindPay/RemindPay/Services/Rent/RentViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "211"
+                  endingLineNumber = "211"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  uuid = "174ADF63-CB37-426C-9B74-E99DA0F01D7B - 7e3ea297999e9a7f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RemindPay.RentViewController.displayFetchAllTenant(using: Swift.Array&lt;RemindPay.Rent.Refresh.Response.ViewModel&gt;) -&gt; ()"
+                  moduleName = "RemindPay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranjalagarwal/Desktop/Remind%20Pay/RemindPay/RemindPay/Services/Rent/RentViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "211"
+                  endingLineNumber = "211"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "30178BA1-EDE2-48FC-BBE2-9469D069D5C0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RemindPay/Services/Rent/RentViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "updateLottieAndCollectionView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
