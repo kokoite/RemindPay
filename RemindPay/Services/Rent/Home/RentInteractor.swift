@@ -13,17 +13,24 @@ protocol RentBusinessLogic: AnyObject {
     func fetchAllTenants()
 }
 
-final class RentInteractor: RentBusinessLogic {
-    
+protocol RentDataStore {
+    var users: [Tenant]? { get set }
+}
+
+final class RentInteractor: RentBusinessLogic, RentDataStore {
+
     weak var viewController: RentDisplayLogic?
     let worker = RentWorker.instance
     var response: [Tenant] = []
+    var users: [Tenant]?
+
 
 
     func fetchAllTenants() {
         Task {
             do {
                 let tenants = try await worker.fetchAllTenants()
+                self.users = tenants
                 let users: [Rent.Refresh.Response.ViewModel] = tenants.map { user in
                         .init(name: user.name, phone: user.phone, expiryDate: user.rentExpireDate, profileImage: user.profileImage)
                 }

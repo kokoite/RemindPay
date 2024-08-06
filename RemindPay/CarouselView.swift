@@ -19,7 +19,7 @@ final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDe
     private var containerView: UIView!
     private var pageControlView: UIPageControl!
     weak var delegate: CarouselViewDelegate?
-    private var images: [UIImage] = []
+    private var images: [UIImage?] = []
     private var width: CGFloat  = 1000
 
 
@@ -30,7 +30,7 @@ final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }
 
 
-    func configure(images: [UIImage]) {
+    func configure(images: [UIImage?]) {
         self.images = images
         pageControlView.numberOfPages = images.count
         collectionView.reloadData()
@@ -125,6 +125,9 @@ final class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDe
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let x = scrollView.contentOffset.x
-        print(x)
+        guard bounds.width > 0 else { return }
+        let imageWidth = bounds.width - 24
+        let pos = (x/imageWidth)
+        pageControlView.currentPage = Int(pos)
     }
 }

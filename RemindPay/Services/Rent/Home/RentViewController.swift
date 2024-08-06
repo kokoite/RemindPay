@@ -22,6 +22,7 @@ final class RentViewController: UIViewController {
     private var createUserButton: UIImageView!
     private var tenants: [Rent.Refresh.Response.ViewModel] = []
     private var interactor: RentBusinessLogic?
+    private var router: RentRoutingLogic?
     private var lottieView: LottieView!
     private var loaded = false
 
@@ -70,6 +71,10 @@ final class RentViewController: UIViewController {
 
     private func initialize() {
         let interactor = RentInteractor()
+        let router = RentRouter()
+        self.router = router
+        router.dataStore = interactor
+        router.viewController = self
         interactor.viewController = self
         self.interactor = interactor
     }
@@ -198,8 +203,7 @@ extension RentViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = TenantDetailViewController()
-        navigationController?.pushViewController(controller, animated: true)
+        router?.routeToDetailPage(using: indexPath.row)
     }
 }
 

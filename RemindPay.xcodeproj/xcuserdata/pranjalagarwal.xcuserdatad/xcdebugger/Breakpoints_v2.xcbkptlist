@@ -3,4 +3,70 @@
    uuid = "0672840C-3A4A-41B8-8FED-26C6D4BD3D29"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F3D27B6C-2864-4946-B9A5-8FC55D037A4E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RemindPay/Services/Rent/Home/RentRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "routeToDetailPage(using:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F3D27B6C-2864-4946-B9A5-8FC55D037A4E - c98fe8d5b7ddf411"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RemindPay.RentRouter.routeToDetailPage(using: Swift.Int) -&gt; ()"
+                  moduleName = "RemindPay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranjalagarwal/Desktop/Remind%20Pay/RemindPay/RemindPay/Services/Rent/Home/RentRouter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "380">
+               </Location>
+               <Location
+                  uuid = "F3D27B6C-2864-4946-B9A5-8FC55D037A4E - c98fe8d5b7ddf411"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RemindPay.RentRouter.routeToDetailPage(using: Swift.Int) -&gt; ()"
+                  moduleName = "RemindPay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranjalagarwal/Desktop/Remind%20Pay/RemindPay/RemindPay/Services/Rent/Home/RentRouter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "1400">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9B69658E-6F06-4B43-A449-A7F80D720368"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RemindPay/Services/Rent/Home/RentRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "routeToDetailPage(using:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

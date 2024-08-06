@@ -21,7 +21,7 @@ final class CarouselCell: UICollectionViewCell {
         super.init(coder: coder)
     }
 
-    func configure(using image: UIImage) {
+    func configure(using image: UIImage?) {
         imageView.image = image
     }
 

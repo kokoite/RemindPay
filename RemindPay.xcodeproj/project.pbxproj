@@ -73,6 +73,12 @@
 		A6983EBC2C47A77500AA71FE /* ErrorBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6983EBB2C47A77500AA71FE /* ErrorBottomSheetViewController.swift */; };
 		A6A3A8B92C57966600F43D3D /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3A8B82C57966600F43D3D /* LibraryViewController.swift */; };
 		A6A5AF772C561EC70051272A /* RentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A5AF762C561EC70051272A /* RentViewController.swift */; };
+		A6B664D92C61108B002F30F2 /* CoachingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B664D82C61108B002F30F2 /* CoachingViewController.swift */; };
+		A6B664DB2C6111A3002F30F2 /* CoachingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B664DA2C6111A3002F30F2 /* CoachingModel.swift */; };
+		A6B664E02C61172D002F30F2 /* RentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B664DF2C61172D002F30F2 /* RentRouter.swift */; };
+		A6B664E42C611953002F30F2 /* TenantRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B664E32C611953002F30F2 /* TenantRouter.swift */; };
+		A6B664E62C6119B8002F30F2 /* TenantInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B664E52C6119B8002F30F2 /* TenantInteractor.swift */; };
+		A6B664E82C611CAF002F30F2 /* TenantPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B664E72C611CAF002F30F2 /* TenantPresenter.swift */; };
 		A6BC081B2C5913A200AF7170 /* GlobalDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC081A2C5913A200AF7170 /* GlobalDataStruct.swift */; };
 		A6C7634C2C5384F90086AD51 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C7634B2C5384F90086AD51 /* SearchViewController.swift */; };
 		A6C763542C5391F60086AD51 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C763532C5391F60086AD51 /* BarChart.swift */; };
@@ -213,6 +219,12 @@
 		A6983EBB2C47A77500AA71FE /* ErrorBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBottomSheetViewController.swift; sourceTree = "<group>"; };
 		A6A3A8B82C57966600F43D3D /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		A6A5AF762C561EC70051272A /* RentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentViewController.swift; sourceTree = "<group>"; };
+		A6B664D82C61108B002F30F2 /* CoachingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingViewController.swift; sourceTree = "<group>"; };
+		A6B664DA2C6111A3002F30F2 /* CoachingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingModel.swift; sourceTree = "<group>"; };
+		A6B664DF2C61172D002F30F2 /* RentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentRouter.swift; sourceTree = "<group>"; };
+		A6B664E32C611953002F30F2 /* TenantRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantRouter.swift; sourceTree = "<group>"; };
+		A6B664E52C6119B8002F30F2 /* TenantInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantInteractor.swift; sourceTree = "<group>"; };
+		A6B664E72C611CAF002F30F2 /* TenantPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantPresenter.swift; sourceTree = "<group>"; };
 		A6BC081A2C5913A200AF7170 /* GlobalDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDataStruct.swift; sourceTree = "<group>"; };
 		A6C7634B2C5384F90086AD51 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A6C763532C5391F60086AD51 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
@@ -424,9 +436,9 @@
 		A6A3A8B72C57964300F43D3D /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				A6B664DC2C611405002F30F2 /* Detail */,
 				A64CBA242C60C5FE00823206 /* Create */,
 				A6A3A8B82C57966600F43D3D /* LibraryViewController.swift */,
-				A6D614DB2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift */,
 				A64CBA1E2C60C53200823206 /* LibraryUserCollectionViewCell.swift */,
 				A64CBA202C60C57100823206 /* LibraryModel.swift */,
 				A64CBA222C60C57C00823206 /* LibraryConstants.swift */,
@@ -440,15 +452,52 @@
 		A6A5AF752C561EBB0051272A /* Rent */ = {
 			isa = PBXGroup;
 			children = (
+				A6B664E22C61191E002F30F2 /* Home */,
+				A6B664E12C61190B002F30F2 /* Detail */,
 				A6F89BDA2C5D574B0093E18D /* Create */,
-				A6A5AF762C561EC70051272A /* RentViewController.swift */,
-				A6FD4F7C2C5E641B005E23D1 /* RentInteractor.swift */,
-				A6FD4F7E2C5E6431005E23D1 /* RentWorker.swift */,
-				A60F1C592C563A20001C2954 /* TenantDetailViewController.swift */,
 				A6FD4F682C5E1BFD005E23D1 /* Rent.swift */,
-				A64CBA1C2C60A68A00823206 /* RentUserCollectionViewCell.swift */,
 			);
 			path = Rent;
+			sourceTree = "<group>";
+		};
+		A6B664D72C611080002F30F2 /* Coaching */ = {
+			isa = PBXGroup;
+			children = (
+				A6B664D82C61108B002F30F2 /* CoachingViewController.swift */,
+				A6B664DA2C6111A3002F30F2 /* CoachingModel.swift */,
+			);
+			path = Coaching;
+			sourceTree = "<group>";
+		};
+		A6B664DC2C611405002F30F2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				A6D614DB2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		A6B664E12C61190B002F30F2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				A60F1C592C563A20001C2954 /* TenantDetailViewController.swift */,
+				A6B664E32C611953002F30F2 /* TenantRouter.swift */,
+				A6B664E52C6119B8002F30F2 /* TenantInteractor.swift */,
+				A6B664E72C611CAF002F30F2 /* TenantPresenter.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		A6B664E22C61191E002F30F2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A6B664DF2C61172D002F30F2 /* RentRouter.swift */,
+				A64CBA1C2C60A68A00823206 /* RentUserCollectionViewCell.swift */,
+				A6FD4F7E2C5E6431005E23D1 /* RentWorker.swift */,
+				A6FD4F7C2C5E641B005E23D1 /* RentInteractor.swift */,
+				A6A5AF762C561EC70051272A /* RentViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		A6C7634A2C5384DD0086AD51 /* Search */ = {
@@ -470,6 +519,7 @@
 		A6D686A02C5B7CDA002C7653 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A6B664D72C611080002F30F2 /* Coaching */,
 				A6A3A8B72C57964300F43D3D /* Library */,
 				A6A5AF752C561EBB0051272A /* Rent */,
 				A6F514712C465AE0002053CA /* Gym */,
@@ -778,8 +828,10 @@
 			files = (
 				A62CA3E62C5EA82C007A01D9 /* CreateGymUserWorker.swift in Sources */,
 				A6A5AF772C561EC70051272A /* RentViewController.swift in Sources */,
+				A6B664E82C611CAF002F30F2 /* TenantPresenter.swift in Sources */,
 				A60F1C5A2C563A20001C2954 /* TenantDetailViewController.swift in Sources */,
 				A6FD4F7F2C5E6431005E23D1 /* RentWorker.swift in Sources */,
+				A6B664E02C61172D002F30F2 /* RentRouter.swift in Sources */,
 				A6983EB62C47996900AA71FE /* ErrorModel.swift in Sources */,
 				A6F89BDE2C5D57AA0093E18D /* CreateTenantWorker.swift in Sources */,
 				A6794E102C47ECE200080A38 /* Extenstion+ViewController.swift in Sources */,
@@ -799,6 +851,7 @@
 				A63391F72C4F92AF0095B21B /* HomeViewController.swift in Sources */,
 				A62CA3E42C5EA649007A01D9 /* GymModel.swift in Sources */,
 				A61461B42C5A56C0004BB308 /* DropDownView.swift in Sources */,
+				A6B664E42C611953002F30F2 /* TenantRouter.swift in Sources */,
 				A694B41F2C4CBEC600B2311F /* PlaceholderTextView.swift in Sources */,
 				A67AEE032C4A41ED008C9610 /* FilterBottomSheetViewController.swift in Sources */,
 				A652EEBB2C5CEA1D0012153F /* ArrayOfStringTransformer.swift in Sources */,
@@ -820,6 +873,7 @@
 				A6A3A8B92C57966600F43D3D /* LibraryViewController.swift in Sources */,
 				A66251142C5F63F400195512 /* CDGymUser+CoreDataClass.swift in Sources */,
 				A64CBA322C60E1F100823206 /* LibraryWorker.swift in Sources */,
+				A6B664E62C6119B8002F30F2 /* TenantInteractor.swift in Sources */,
 				A6F5143F2C464D1A002053CA /* ViewController.swift in Sources */,
 				A64CBA1F2C60C53200823206 /* LibraryUserCollectionViewCell.swift in Sources */,
 				A6BC081B2C5913A200AF7170 /* GlobalDataStruct.swift in Sources */,
@@ -827,6 +881,7 @@
 				A6F5143B2C464D1A002053CA /* AppDelegate.swift in Sources */,
 				A6F89BD92C5D261C0093E18D /* PropertyCollectionViewCell.swift in Sources */,
 				A61461BE2C5A8023004BB308 /* Authentication.swift in Sources */,
+				A6B664D92C61108B002F30F2 /* CoachingViewController.swift in Sources */,
 				A64CBA2D2C60D78000823206 /* CDLibraryUser+CoreDataClass.swift in Sources */,
 				A62D2BA52C4B8D5B0066E2ED /* GymProfileViewController.swift in Sources */,
 				A64CBA302C60E0C700823206 /* LibraryInteractor.swift in Sources */,
@@ -862,6 +917,7 @@
 				A63391FF2C4FA5430095B21B /* GymTabBarView.swift in Sources */,
 				A6C763B62C53E6250086AD51 /* DashboardViewController + Gym.swift in Sources */,
 				A6D614DC2C57C8B20056BBC6 /* LibraryUserDetailViewController.swift in Sources */,
+				A6B664DB2C6111A3002F30F2 /* CoachingModel.swift in Sources */,
 				A6D84DEB2C4E80D1002137BE /* DashboardViewController.swift in Sources */,
 				A6525C722C54CC4700342F2C /* LineChart.swift in Sources */,
 				A6D686A62C5B9381002C7653 /* HomePresenter.swift in Sources */,
